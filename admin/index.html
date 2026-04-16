@@ -499,8 +499,8 @@ tbody tr:hover td{background:var(--off);}
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
 
 <script>
-// Backend serves frontend on same port — API is always same origin
-const API = window.location.origin;
+const API = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost')
+  ? 'http://localhost:3000' : '';
 
 const token = localStorage.getItem('sb_token');
 if (!token) window.location.href = 'login.html';

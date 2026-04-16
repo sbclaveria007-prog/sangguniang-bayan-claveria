@@ -97,19 +97,15 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// ── Serve static frontend (always — works for both dev and production) ─────
-// This means the entire site runs on http://localhost:3000
-// No separate static server needed — just open http://localhost:3000
-app.use(express.static(path.join(__dirname, '..')));
-
-// SPA fallback: serve index.html for any non-API route
-app.get('*', (req, res, next) => {
-  if (req.path.startsWith('/api')) return next();
-  const filePath = path.join(__dirname, '..', req.path);
-  res.sendFile(filePath, err => {
-    if (err) res.sendFile(path.join(__dirname, '..', 'index.html'));
+// ── Serve static frontend (production) ────────────────────────────────────
+if (NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '..')));
+  app.get('*', (req, res) => {
+    if (!req.path.startsWith('/api')) {
+      res.sendFile(path.join(__dirname, '..', 'index.html'));
+    }
   });
-});
+}
 
 // ── 404 handler ────────────────────────────────────────────────────────────
 app.use((req, res) => {
