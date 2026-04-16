@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Admin Login — SB Claveria</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:linear-gradient(135deg,#0a1f44 0%,#1e4d8c 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+.card{background:#fff;border-radius:16px;padding:48px 40px;max-width:420px;width:100%;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.3);}
+.seal{width:72px;height:72px;background:#c9a227;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;color:#0a1f44;font-weight:800;margin:0 auto 20px;border:3px solid #e8be4b;}
+h1{font-family:'Playfair Display',serif;color:#0a1f44;font-size:1.4rem;margin-bottom:6px;}
+.subtitle{color:#64748b;font-size:.88rem;margin-bottom:32px;line-height:1.5;}
+.error-box{background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:12px 16px;color:#b91c1c;font-size:.85rem;margin-bottom:20px;display:none;}
+.error-box.show{display:block;}
+.github-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;background:#24292e;color:#fff;border:none;border-radius:10px;font-size:.95rem;font-family:inherit;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s ease;margin-bottom:12px;}
+.github-btn:hover{background:#444;transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.25);}
+.github-btn i{font-size:1.2rem;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:#94a3b8;font-size:.8rem;}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.dev-form{text-align:left;}
+.dev-form label{display:block;font-size:.8rem;font-weight:600;color:#475569;margin-bottom:5px;}
+.dev-form input{width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:.88rem;font-family:inherit;outline:none;margin-bottom:12px;transition:.2s;}
+.dev-form input:focus{border-color:#1e4d8c;}
+.dev-btn{width:100%;padding:12px;background:#1e4d8c;color:#fff;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s;}
+.dev-btn:hover{background:#2563ab;}
+.notice{font-size:.75rem;color:#94a3b8;margin-top:20px;line-height:1.5;}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="seal">SB</div>
+  <h1>Sangguniang Bayan</h1>
+  <p class="subtitle">Claveria, Masbate — Staff Portal<br>Sign in to access the admin dashboard.</p>
+
+  <div class="error-box" id="errBox"></div>
+
+  <a class="github-btn" href="#" id="ghBtn" onclick="loginWithGitHub()">
+    <i class="fab fa-github"></i> Sign in with GitHub
+  </a>
+
+  <div class="divider">or dev login</div>
+
+  <div class="dev-form" id="devForm">
+    <label>Username</label>
+    <input type="text" id="devUsername" placeholder="e.g. admin" value="test_admin_user"/>
+    <label>JWT Token</label>
+    <input type="text" id="devToken" placeholder="Paste a JWT token"/>
+    <button class="dev-btn" onclick="devLogin()">Enter with Token</button>
+  </div>
+
+  <p class="notice">GitHub OAuth is required for production use.<br>Dev login is for local testing only.</p>
+</div>
+
+<script>
+// Backend serves frontend, so API is always on the same host/port
+const API = window.location.origin;
+
+function loginWithGitHub() {
+  window.location.href = `${API}/api/auth/github`;
+}
+
+function devLogin() {
+  const token = document.getElementById('devToken').value.trim();
+  if (!token) { showError('Paste a JWT token to continue.'); return; }
+  localStorage.setItem('sb_token', token);
+  window.location.href = 'index.html';
+}
+
+function showError(msg) {
+  const el = document.getElementById('errBox');
+  el.textContent = msg;
+  el.classList.add('show');
+}
+
+// Check for token in URL (GitHub OAuth redirect)
+const params = new URLSearchParams(window.location.search);
+const token  = params.get('token');
+const error  = params.get('error');
+
+if (token) {
+  localStorage.setItem('sb_token', token);
+  window.location.href = 'index.html';
+} else if (error) {
+  const msgs = {
+    state_mismatch: 'Authentication failed: security state mismatch. Please try again.',
+    auth_failed:    'GitHub authentication failed. Check your OAuth app configuration.',
+  };
+  showError(msgs[error] || `Error: ${error}`);
+}
+</script>
+</body>
+</html>

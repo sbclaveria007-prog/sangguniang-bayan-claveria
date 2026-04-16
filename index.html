@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Official Legislative Portal of the Sangguniang Bayan of Claveria, Masbate. Transparent legislation, citizen services, and local governance."/>
+<meta name="keywords" content="Sangguniang Bayan, Claveria, Masbate, ordinances, resolutions, legislative portal, Philippines"/>
+<meta name="author" content="Sangguniang Bayan of Claveria, Masbate"/>
+<meta property="og:title" content="Sangguniang Bayan of Claveria, Masbate"/>
+<meta property="og:description" content="Official Legislative Portal — Transparent Legislation. Responsive Governance."/>
+<meta property="og:type" content="website"/>
+<title>Sangguniang Bayan of Claveria, Masbate</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="tb-inner">
+    <span><i class="fas fa-globe" style="margin-right:5px;color:var(--gold-light)"></i>Republic of the Philippines &nbsp;|&nbsp; Province of Masbate &nbsp;|&nbsp; Municipality of Claveria</span>
+    <div class="tb-right">
+      <span><i class="fas fa-clock" style="margin-right:4px;color:var(--gold-light)"></i>Office Hours: Mon–Fri, 7AM–6PM</span>
+      <a href="mailto:sbclaveria@ymail.com"><i class="fas fa-envelope" style="margin-right:4px"></i>sbclaveria@ymail.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a class="logo-block" href="#">
+      <div class="logo-seal">SB</div>
+      <div class="logo-text">
+        <h1>Sangguniang Bayan</h1>
+        <p>Claveria, Masbate</p>
+      </div>
+    </a>
+    <div class="search-bar-header">
+      <i class="fas fa-magnifying-glass"></i>
+      <input type="text" placeholder="Search ordinances, resolutions…" id="headerSearch"/>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li>
+          <a href="#about">About the SB ▾</a>
+          <div class="dropdown">
+            <a href="#vice-mayor">Vice Mayor</a>
+            <a href="#members">SB Members</a>
+            <a href="#secretary">Office of the SB Secretary</a>
+          </div>
+        </li>
+        <li><a href="#documents">Legislative Docs</a></li>
+        <li><a href="#bulletin">Digital Bulletin</a></li>
+        <li><a href="#sessions">Sessions</a></li>
+        <li><a href="#services">Public Services</a></li>
+        <li><a href="#laws">Know Your Laws</a></li>
+        <li><a href="#proposals">Citizen Proposals</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#transparency">Transparency</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()" id="hamBtn">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#about">About the SB</a>
+    <a href="#vice-mayor">Vice Mayor</a>
+    <a href="#members">SB Members</a>
+    <a href="#secretary">Office of the SB Secretary</a>
+    <a href="#documents">Legislative Documents</a>
+    <a href="#bulletin">Digital Bulletin Board</a>
+    <a href="#sessions">Sessions &amp; Calendar</a>
+    <a href="#services">Public Services (ARTA)</a>
+    <a href="#laws">Know Your Local Laws</a>
+    <a href="#proposals">Citizen Proposals</a>
+    <a href="#news">News &amp; Announcements</a>
+    <a href="#transparency">Transparency</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-inner">
+    <div class="ticker-label"><i class="fas fa-bullhorn" style="margin-right:5px"></i>Latest</div>
+    <div class="ticker-text">🕖 NEW OFFICE HOURS: 7:00 AM – 6:00 PM (Mon–Wed), per Presidential Directive on Compressed Workweek &nbsp;|&nbsp; 📢 Regular Sessions held every Wednesday, 9:00 AM — Legislative Hall, Municipal Government Compound &nbsp;|&nbsp; 📋 Ordinance No. 2025-04 on Solid Waste Management now in effect &nbsp;|&nbsp; 🏍️ Tricycle Franchise renewal deadline: April 30, 2025 &nbsp;|&nbsp; 🎓 Scholarship Resolution No. 2025-12 approved — Check eligibility at the SB Office &nbsp;|&nbsp; 📧 Email us: sbclaveria@ymail.com</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-img" id="heroBgImg"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <p class="section-badge" style="display:inline-flex;margin-bottom:18px;background:rgba(201,162,39,.18);border-color:var(--gold-light);color:var(--gold-light);"><i class="fas fa-landmark"></i> Official Legislative Portal</p>
+      <h2>Welcome to the <span>Sangguniang Bayan</span><br>of Claveria, Masbate</h2>
+      <p>Transparent Legislation. Responsive Governance.<br>Your gateway to local laws, citizen services, and legislative records.</p>
+      <div class="hero-buttons">
+        <a href="#bulletin" class="btn btn-gold"><i class="fas fa-newspaper"></i> Latest Ordinances</a>
+        <a href="#bulletin" class="btn btn-outline"><i class="fas fa-clipboard-list"></i> Digital Bulletin</a>
+        <button class="btn btn-outline btn-sm" onclick="openModal('requestModal')"><i class="fas fa-file-lines"></i> Request Documents</button>
+        <button class="btn btn-outline btn-sm" onclick="document.getElementById('trackerSection').scrollIntoView({behavior:'smooth'})"><i class="fas fa-magnifying-glass"></i> Track Request</button>
+        <a href="#proposals" class="btn btn-outline btn-sm"><i class="fas fa-lightbulb"></i> Submit Proposal</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num" data-count="148">0</div><div class="hero-stat-label">Ordinances Enacted</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" data-count="312">0</div><div class="hero-stat-label">Resolutions Passed</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" data-count="10">0</div><div class="hero-stat-label">Council Members</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" data-count="2024">0</div><div class="hero-stat-label">Legislative Year</div></div>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="var(--off-white)">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z"/>
+    </svg>
+  </div>
+</section>
+
+<!-- SEARCH SECTION -->
+<section class="search-section">
+  <div class="container">
+    <div class="search-big">
+      <h3><i class="fas fa-magnifying-glass" style="color:var(--gold);margin-right:8px"></i>Smart Legislative Search</h3>
+      <div class="search-form">
+        <input type="text" placeholder="Search ordinances, resolutions, or topics…" id="mainSearch"/>
+        <select>
+          <option>All Types</option>
+          <option>Ordinances</option>
+          <option>Resolutions</option>
+          <option>Committee Reports</option>
+        </select>
+        <button onclick="doSearch()"><i class="fas fa-magnifying-glass" style="margin-right:6px"></i>Search</button>
+      </div>
+      <div class="search-tags">
+        <span class="search-tag" onclick="quickSearch('Solid Waste')">🗑️ Solid Waste</span>
+        <span class="search-tag" onclick="quickSearch('Tricycle Franchise')">🏍️ Tricycle Franchise</span>
+        <span class="search-tag" onclick="quickSearch('Scholarship')">🎓 Scholarship</span>
+        <span class="search-tag" onclick="quickSearch('Health')">🏥 Health</span>
+        <span class="search-tag" onclick="quickSearch('Environment')">🌿 Environment</span>
+        <span class="search-tag" onclick="quickSearch('Business')">🏪 Business</span>
+        <span class="search-tag" onclick="quickSearch('Youth')">👦 Youth</span>
+        <span class="search-tag" onclick="quickSearch('Women')">👩 Women</span>
+      </div>
+    </div>
+    <div id="searchResults" class="hidden mt-24" style="max-width:760px;margin:24px auto 0;">
+      <h4 style="color:var(--navy);margin-bottom:14px;font-size:.9rem;font-weight:600;">Search Results</h4>
+      <div id="searchList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL BULLETIN BOARD -->
+<section class="bulletin" id="bulletin">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-clipboard-list"></i> Newly Approved</div>
+      <h2 class="section-title">Digital Bulletin Board</h2>
+      <p class="section-sub">Newly approved ordinances and resolutions, publicly posted for citizen awareness and transparency.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="bb-grid">
+      <!-- Card 1 -->
+      <div class="bb-card">
+        <div class="bb-card-top">
+          <div class="bb-card-badge"><i class="fas fa-gavel"></i> Ordinance</div>
+          <div class="bb-card-num">Ordinance No. 2025-07</div>
+          <div class="bb-card-title">An Ordinance Establishing the Claveria Solid Waste Management Program</div>
+        </div>
+        <div class="bb-card-body">
+          <p class="bb-card-summary">Mandates the segregation of biodegradable, non-biodegradable, and special waste at source. Establishes collection schedules and imposes sanctions for non-compliance.</p>
+          <div class="bb-card-meta">
+            <span class="bb-card-date"><i class="fas fa-calendar-check" style="color:var(--green)"></i> Approved: Feb 26, 2025</span>
+            <span class="tag tag-green">Environment</span>
+          </div>
+        </div>
+        <div class="bb-card-footer">
+          <button class="btn btn-sm btn-navy" onclick="openModal('docModal')"><i class="fas fa-eye"></i> Read Full Text</button>
+          <button class="btn btn-sm btn-outline" style="color:var(--blue);border-color:var(--blue)"><i class="fas fa-download"></i> Download PDF</button>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="bb-card">
+        <div class="bb-card-top">
+          <div class="bb-card-badge"><i class="fas fa-gavel"></i> Ordinance</div>
+          <div class="bb-card-num">Ordinance No. 2025-06</div>
+          <div class="bb-card-title">An Ordinance Regulating the Operation of Tricycles for Hire in Claveria</div>
+        </div>
+        <div class="bb-card-body">
+          <p class="bb-card-summary">Sets routes, fares, operational guidelines, and franchise requirements for tricycles-for-hire. Requires annual franchise renewal through the SB Office.</p>
+          <div class="bb-card-meta">
+            <span class="bb-card-date"><i class="fas fa-calendar-check" style="color:var(--green)"></i> Approved: Feb 12, 2025</span>
+            <span class="tag tag-blue">Transportation</span>
+          </div>
+        </div>
+        <div class="bb-card-footer">
+          <button class="btn btn-sm btn-navy" onclick="openModal('docModal')"><i class="fas fa-eye"></i> Read Full Text</button>
+          <button class="btn btn-sm btn-outline" style="color:var(--blue);border-color:var(--blue)"><i class="fas fa-download"></i> Download PDF</button>
+        </div>
+      </div>
+      <!-- Card 3 — Resolution -->
+      <div class="bb-card">
+        <div class="bb-card-top resolution-top">
+          <div class="bb-card-badge"><i class="fas fa-scroll"></i> Resolution</div>
+          <div class="bb-card-num">Resolution No. 2025-18</div>
+          <div class="bb-card-title">Resolution Approving Scholarship Grants for Qualified Claveria Youth</div>
+        </div>
+        <div class="bb-card-body">
+          <p class="bb-card-summary">Approves the allocation of scholarship grants to 25 qualified college students from Claveria. Grants cover tuition and monthly stipends sourced from the Municipal Development Fund.</p>
+          <div class="bb-card-meta">
+            <span class="bb-card-date"><i class="fas fa-calendar-check" style="color:var(--green)"></i> Approved: Jan 29, 2025</span>
+            <span class="tag tag-orange">Education</span>
+          </div>
+        </div>
+        <div class="bb-card-footer">
+          <button class="btn btn-sm btn-navy" onclick="openModal('docModal')"><i class="fas fa-eye"></i> Read Full Text</button>
+          <button class="btn btn-sm btn-outline" style="color:var(--blue);border-color:var(--blue)"><i class="fas fa-download"></i> Download PDF</button>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="bb-card">
+        <div class="bb-card-top">
+          <div class="bb-card-badge"><i class="fas fa-gavel"></i> Ordinance</div>
+          <div class="bb-card-num">Ordinance No. 2025-05</div>
+          <div class="bb-card-title">An Ordinance Protecting Women and Children from Domestic Abuse</div>
+        </div>
+        <div class="bb-card-body">
+          <p class="bb-card-summary">Strengthens implementation of RA 9262 at the local level. Creates a Barangay Violence Against Women desk and mandates reporting protocols for frontline workers.</p>
+          <div class="bb-card-meta">
+            <span class="bb-card-date"><i class="fas fa-calendar-check" style="color:var(--green)"></i> Approved: Jan 15, 2025</span>
+            <span class="tag tag-green">Social</span>
+          </div>
+        </div>
+        <div class="bb-card-footer">
+          <button class="btn btn-sm btn-navy" onclick="openModal('docModal')"><i class="fas fa-eye"></i> Read Full Text</button>
+          <button class="btn btn-sm btn-outline" style="color:var(--blue);border-color:var(--blue)"><i class="fas fa-download"></i> Download PDF</button>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="bb-card">
+        <div class="bb-card-top">
+          <div class="bb-card-badge"><i class="fas fa-gavel"></i> Ordinance</div>
+          <div class="bb-card-num">Ordinance No. 2025-04</div>
+          <div class="bb-card-title">An Ordinance on the Protection of Coastal and Marine Resources</div>
+        </div>
+        <div class="bb-card-body">
+          <p class="bb-card-summary">Designates protected fishing zones, limits commercial fishing vessels within 15km of coastline, and establishes penalties for illegal fishing practices in Claveria waters.</p>
+          <div class="bb-card-meta">
+            <span class="bb-card-date"><i class="fas fa-calendar-check" style="color:var(--green)"></i> Approved: Jan 8, 2025</span>
+            <span class="tag tag-green">Fisheries</span>
+          </div>
+        </div>
+        <div class="bb-card-footer">
+          <button class="btn btn-sm btn-navy" onclick="openModal('docModal')"><i class="fas fa-eye"></i> Read Full Text</button>
+          <button class="btn btn-sm btn-outline" style="color:var(--blue);border-color:var(--blue)"><i class="fas fa-download"></i> Download PDF</button>
+        </div>
+      </div>
+      <!-- Card 6 — Resolution -->
+      <div class="bb-card">
+        <div class="bb-card-top resolution-top">
+          <div class="bb-card-badge"><i class="fas fa-scroll"></i> Resolution</div>
+          <div class="bb-card-num">Resolution No. 2025-15</div>
+          <div class="bb-card-title">Resolution Authorizing MARINA Registration Assistance for Motorboat Operators</div>
+        </div>
+        <div class="bb-card-body">
+          <p class="bb-card-summary">Authorizes the SB to issue resolutions supporting motorboat operators' MARINA registration. Provides a streamlined process through the SB Office for fishermen and boat owners.</p>
+          <div class="bb-card-meta">
+            <span class="bb-card-date"><i class="fas fa-calendar-check" style="color:var(--green)"></i> Approved: Jan 5, 2025</span>
+            <span class="tag tag-blue">Fisheries</span>
+          </div>
+        </div>
+        <div class="bb-card-footer">
+          <button class="btn btn-sm btn-navy" onclick="openModal('docModal')"><i class="fas fa-eye"></i> Read Full Text</button>
+          <button class="btn btn-sm btn-outline" style="color:var(--blue);border-color:var(--blue)"><i class="fas fa-download"></i> Download PDF</button>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-32">
+      <a href="#documents" class="btn btn-navy"><i class="fas fa-box-archive"></i> View Full Legislative Archive</a>
+    </div>
+  </div>
+</section>
+
+<!-- CITIZEN SERVICES (ARTA) -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-handshake-angle"></i> ARTA-Compliant</div>
+      <h2 class="section-title">Citizen Services Portal</h2>
+      <p class="section-sub">Efficient, transparent, and citizen-friendly services in compliance with the Anti-Red Tape Authority standards.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon svc-icon-navy"><i class="fas fa-users-gear"></i></div>
+        <div class="svc-title">CSO Accreditation</div>
+        <div class="svc-desc">Civil Society Organizations can apply for SB accreditation to participate in public hearings and legislative consultations.</div>
+        <div class="svc-steps">📋 Requirements: Constitution &amp; By-Laws, List of Officers, Financial Report</div>
+        <div class="svc-eta"><i class="fas fa-clock"></i> Processing: 5–7 working days</div>
+        <button class="btn btn-navy btn-sm" onclick="openModal('csoModal')">Apply for Accreditation</button>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon svc-icon-teal"><i class="fas fa-ferry"></i></div>
+        <div class="svc-title">MARINA Resolution (Motorboats)</div>
+        <div class="svc-desc">Request an SB Resolution for MARINA registration support for motorboats and fishing vessels operating in Claveria waters.</div>
+        <div class="svc-steps">📋 Requirements: Boat Certificate, Owner ID, Barangay Clearance</div>
+        <div class="svc-eta"><i class="fas fa-clock"></i> Processing: 3–5 working days</div>
+        <button class="btn btn-navy btn-sm" onclick="openModal('marinaModal')">Request Resolution</button>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon svc-icon-gold"><i class="fas fa-motorcycle"></i></div>
+        <div class="svc-title">Tricycle Franchise Application</div>
+        <div class="svc-desc">Apply for a new tricycle franchise or renew your existing franchise for tricycles-for-hire within Claveria.</div>
+        <div class="svc-steps">📋 Requirements: OR/CR, Driver's License, Barangay Clearance, Police Clearance</div>
+        <div class="svc-eta"><i class="fas fa-clock"></i> Processing: 5 working days</div>
+        <button class="btn btn-navy btn-sm" onclick="openModal('tricycleModal')">Apply for Franchise</button>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon svc-icon-blue"><i class="fas fa-file-contract"></i></div>
+        <div class="svc-title">Certified Legislative Documents</div>
+        <div class="svc-desc">Request certified true copies of ordinances, resolutions, committee reports, and session minutes for legal and official purposes.</div>
+        <div class="svc-steps">📋 Requirements: Valid ID, Request Letter, Official Fee Receipt</div>
+        <div class="svc-eta"><i class="fas fa-clock"></i> Processing: 2–3 working days</div>
+        <button class="btn btn-gold btn-sm" onclick="openModal('requestModal')">Request Document</button>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon svc-icon-green"><i class="fas fa-handshake"></i></div>
+        <div class="svc-title">Public Hearing Registration</div>
+        <div class="svc-desc">Register your name or organization to participate and give comments during public hearings on proposed ordinances.</div>
+        <div class="svc-steps">📋 Requirements: Name, Contact, Organization (if any)</div>
+        <div class="svc-eta"><i class="fas fa-clock"></i> Walk-in or Online Registration</div>
+        <button class="btn btn-navy btn-sm">Register to Speak</button>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon svc-icon-navy"><i class="fas fa-clipboard-check"></i></div>
+        <div class="svc-title">Legislative Certificate of No Objection</div>
+        <div class="svc-desc">Request an SB Certificate of No Objection for projects or activities requiring legislative endorsement in Claveria.</div>
+        <div class="svc-steps">📋 Requirements: Project Description, Location Plan, Endorsement Letter</div>
+        <div class="svc-eta"><i class="fas fa-clock"></i> Processing: 7 working days</div>
+        <button class="btn btn-navy btn-sm">Apply Now</button>
+      </div>
+    </div>
+    <div style="background:var(--gold-pale);border:1px solid var(--gold);border-radius:12px;padding:20px 24px;margin-top:32px;display:flex;gap:14px;align-items:flex-start;">
+      <i class="fas fa-circle-info" style="color:var(--gold);font-size:1.3rem;margin-top:2px;flex-shrink:0;"></i>
+      <div>
+        <strong style="color:var(--navy);">ARTA Compliance Notice:</strong>
+        <p style="color:var(--gray-600);font-size:.85rem;margin-top:4px;">All services are processed within the timeframes prescribed by the Anti-Red Tape Act of 2007 (RA 9485) and its amendments under RA 11032. Citizens may file a complaint with the ARTA if services are not delivered within prescribed periods.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENT TRACKER -->
+<section class="tracker-section" id="trackerSection">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-file-magnifying-glass"></i> Document Services</div>
+      <h2 class="section-title">Legislative Document Request &amp; Tracker</h2>
+      <p class="section-sub">Request certified copies of legislative documents and track the status of your request in real time.</p>
+      <div class="divider" style="background:linear-gradient(90deg,var(--gold),var(--gold-light));"></div>
+    </div>
+    <div class="tracker-wrap">
+      <div class="tracker-form-card">
+        <h3><i class="fas fa-file-plus" style="margin-right:8px;color:var(--gold-light)"></i>Submit Document Request</h3>
+        <div class="form-group"><label>Full Name *</label><input type="text" placeholder="e.g. Juan Dela Cruz"/></div>
+        <div class="form-group"><label>Contact Number *</label><input type="tel" placeholder="e.g. 09XXXXXXXXX"/></div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="youremail@example.com"/></div>
+        <div class="form-group">
+          <label>Document Type *</label>
+          <select>
+            <option>Select document type…</option>
+            <option>Certified True Copy – Ordinance</option>
+            <option>Certified True Copy – Resolution</option>
+            <option>Session Minutes</option>
+            <option>Committee Report</option>
+            <option>Legislative Accomplishment Report</option>
+            <option>Citizen's Charter</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Ordinance / Resolution Number (if known)</label><input type="text" placeholder="e.g. Ordinance No. 2025-07"/></div>
+        <div class="form-group"><label>Purpose of Request *</label><textarea placeholder="Describe the purpose of your document request…"></textarea></div>
+        <div class="form-group">
+          <label>Preferred Release Method</label>
+          <select>
+            <option>Pick-up at SB Office</option>
+            <option>Email (Soft Copy)</option>
+          </select>
+        </div>
+        <p class="form-note">📌 A tracking number will be issued upon submission. Processing fee: ₱50 per document (payable at the Municipal Treasurer's Office).</p>
+        <button class="btn btn-gold mt-16" style="width:100%;justify-content:center;" onclick="submitRequest()"><i class="fas fa-paper-plane"></i> Submit Request</button>
+      </div>
+      <div class="tracker-status-card">
+        <h3><i class="fas fa-magnifying-glass" style="margin-right:8px;color:var(--gold-light)"></i>Track Your Request</h3>
+        <div class="track-input-row">
+          <input type="text" placeholder="Enter tracking number (e.g. SB-2025-00123)" id="trackInput"/>
+          <button onclick="trackRequest()">Track</button>
+        </div>
+        <div id="statusResult">
+          <div class="status-result">
+            <div class="status-header">
+              <div>
+                <div class="status-doc">Sample: Certified Copy – Ordinance No. 2025-07</div>
+                <div class="status-date">Submitted: March 1, 2025 &nbsp;|&nbsp; Requested by: J. Dela Cruz</div>
+              </div>
+              <span class="tag tag-green">Active</span>
+            </div>
+            <div class="status-id">Tracking No.: SB-2025-00098</div>
+            <div class="status-steps">
+              <div class="step"><div class="step-dot done"><i class="fas fa-check"></i></div><div class="step-line"><div class="step-name">Submitted</div><div class="step-desc">Request received – March 1, 2025 at 10:23 AM</div></div></div>
+              <div class="step"><div class="step-dot done"><i class="fas fa-check"></i></div><div class="step-line"><div class="step-name">Processing</div><div class="step-desc">Document being prepared by SB Secretary's Office</div></div></div>
+              <div class="step"><div class="step-dot active"><i class="fas fa-spinner fa-spin"></i></div><div class="step-line"><div class="step-name" style="color:var(--gold-light)">Ready for Release</div><div class="step-desc">Document will be ready for pick-up by March 5, 2025</div></div></div>
+              <div class="step"><div class="step-dot pending">4</div><div class="step-line"><div class="step-name" style="color:rgba(255,255,255,.4)">Completed</div><div class="step-desc" style="color:rgba(255,255,255,.3)">Awaiting release</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KNOW YOUR LAWS -->
+<section class="laws" id="laws">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-scale-balanced"></i> Plain Language</div>
+      <h2 class="section-title">Know Your Local Laws</h2>
+      <p class="section-sub">Understand the ordinances that affect your daily life, explained in simple and accessible language.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="laws-filter">
+      <button class="filter-btn active" onclick="filterLaws('all',this)">All Sectors</button>
+      <button class="filter-btn" onclick="filterLaws('environment',this)">🌿 Environment</button>
+      <button class="filter-btn" onclick="filterLaws('health',this)">🏥 Health</button>
+      <button class="filter-btn" onclick="filterLaws('transport',this)">🏍️ Transport</button>
+      <button class="filter-btn" onclick="filterLaws('fisheries',this)">🎣 Fisheries</button>
+      <button class="filter-btn" onclick="filterLaws('youth',this)">🎓 Youth &amp; Education</button>
+      <button class="filter-btn" onclick="filterLaws('social',this)">👥 Social</button>
+      <button class="filter-btn" onclick="filterLaws('business',this)">🏪 Business</button>
+    </div>
+    <div class="laws-grid" id="lawsGrid">
+      <div class="law-card" data-sector="environment">
+        <div class="law-card-stripe stripe-green"></div>
+        <div class="law-card-body">
+          <div class="law-sector">🌿 Environment</div>
+          <div class="law-title">Claveria Solid Waste Management Ordinance (Ord. No. 2025-07)</div>
+          <div class="law-summary">Every household must separate garbage into biodegradable (food scraps, leaves) and non-biodegradable (plastics, metals) before collection day. Failure to segregate can result in a ₱500–₱2,000 fine.</div>
+        </div>
+        <div class="law-card-footer"><span class="tag tag-green">In Effect</span><button class="btn btn-sm btn-navy" onclick="openModal('docModal')">Learn More</button></div>
+      </div>
+      <div class="law-card" data-sector="transport">
+        <div class="law-card-stripe stripe-blue"></div>
+        <div class="law-card-body">
+          <div class="law-sector">🏍️ Transport</div>
+          <div class="law-title">Tricycle Franchise &amp; Operations Ordinance (Ord. No. 2025-06)</div>
+          <div class="law-summary">If you operate a tricycle for hire, you need a franchise from the SB, renewed every year. Your tricycle must display your franchise number and follow assigned routes. Unauthorized routes can result in confiscation.</div>
+        </div>
+        <div class="law-card-footer"><span class="tag tag-green">In Effect</span><button class="btn btn-sm btn-navy" onclick="openModal('docModal')">Learn More</button></div>
+      </div>
+      <div class="law-card" data-sector="fisheries">
+        <div class="law-card-stripe stripe-teal"></div>
+        <div class="law-card-body">
+          <div class="law-sector">🎣 Fisheries</div>
+          <div class="law-title">Coastal &amp; Marine Resources Protection (Ord. No. 2025-04)</div>
+          <div class="law-summary">Commercial fishing boats are prohibited within 15 kilometers of the Claveria coastline. Only municipal fishermen with valid licenses may fish in these protected zones. Illegal fishing using dynamite or cyanide carries criminal penalties.</div>
+        </div>
+        <div class="law-card-footer"><span class="tag tag-green">In Effect</span><button class="btn btn-sm btn-navy" onclick="openModal('docModal')">Learn More</button></div>
+      </div>
+      <div class="law-card" data-sector="social">
+        <div class="law-card-stripe stripe-red"></div>
+        <div class="law-card-body">
+          <div class="law-sector">👥 Social</div>
+          <div class="law-title">Women &amp; Children Protection Ordinance (Ord. No. 2025-05)</div>
+          <div class="law-summary">Domestic violence is illegal and punishable under local law. Victims may seek help from the Barangay VAW Desk, the MSWD, or the Municipal Police Station. All reports are handled confidentially.</div>
+        </div>
+        <div class="law-card-footer"><span class="tag tag-green">In Effect</span><button class="btn btn-sm btn-navy" onclick="openModal('docModal')">Learn More</button></div>
+      </div>
+      <div class="law-card" data-sector="youth">
+        <div class="law-card-stripe stripe-gold"></div>
+        <div class="law-card-body">
+          <div class="law-sector">🎓 Youth &amp; Education</div>
+          <div class="law-title">Youth Scholarship Program (Resolution No. 2025-18)</div>
+          <div class="law-summary">Qualified Claveria residents aged 18–24 enrolled in college may apply for a scholarship grant covering tuition and a monthly ₱1,500 stipend. Priority given to honor students and those from low-income families.</div>
+        </div>
+        <div class="law-card-footer"><span class="tag tag-green">Active</span><button class="btn btn-sm btn-navy" onclick="openModal('docModal')">Learn More</button></div>
+      </div>
+      <div class="law-card" data-sector="health">
+        <div class="law-card-stripe stripe-blue"></div>
+        <div class="law-card-body">
+          <div class="law-sector">🏥 Health</div>
+          <div class="law-title">Anti-Smoking Ordinance in Public Places (Ord. No. 2024-18)</div>
+          <div class="law-summary">Smoking is strictly prohibited in all government offices, schools, health centers, markets, and public transport terminals. Designated smoking areas are provided in specified locations. Violators face a fine of ₱200 for the first offense.</div>
+        </div>
+        <div class="law-card-footer"><span class="tag tag-green">In Effect</span><button class="btn btn-sm btn-navy" onclick="openModal('docModal')">Learn More</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNCIL MEMBERS -->
+<section class="council-section" id="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-users"></i> Your Representatives</div>
+      <h2 class="section-title">The Sangguniang Bayan</h2>
+      <p class="section-sub">Meet the elected officials serving the people of Claveria, Masbate in the Municipal Legislative Council.</p>
+      <div class="divider"></div>
+    </div>
+    <div id="vice-mayor" class="vm-card">
+      <div class="vm-avatar">VP</div>
+      <div class="vm-info">
+        <h3>Hon. Froilan V. Andueza</h3>
+        <div class="vm-role"><i class="fas fa-star" style="margin-right:5px"></i>Vice Mayor &amp; Presiding Officer, Sangguniang Bayan</div>
+        <p>Elected to serve as the Presiding Officer of the Sangguniang Bayan of Claveria, Masbate. Committed to transparent and responsive legislation for the people of Claveria.</p>
+        <div class="flex gap-12 mt-16" style="flex-wrap:wrap;">
+          <span style="color:rgba(255,255,255,.6);font-size:.82rem;"><i class="fas fa-envelope" style="margin-right:5px;color:var(--gold-light)"></i>sbclaveria@ymail.com</span>
+        </div>
+      </div>
+    </div>
+    <h3 id="members" style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:20px;font-size:1.2rem;">Sangguniang Bayan Members</h3>
+    <div class="members-grid">
+      <div class="member-card"><div class="member-avatar">DA</div><div class="member-name">Hon. Dakila Alim-Ante</div><div class="member-pos">1st Regular Member</div><div class="member-committee">Committee on Health &amp; Sanitation</div></div>
+      <div class="member-card"><div class="member-avatar">AS</div><div class="member-name">Hon. Adan F. Sandigan</div><div class="member-pos">2nd Regular Member</div><div class="member-committee">Committee on Public Works</div></div>
+      <div class="member-card"><div class="member-avatar">MA</div><div class="member-name">Hon. Mark A. Andueza</div><div class="member-pos">3rd Regular Member</div><div class="member-committee">Committee on Education</div></div>
+      <div class="member-card"><div class="member-avatar">NL</div><div class="member-name">Hon. Nonelona Lim</div><div class="member-pos">4th Regular Member</div><div class="member-committee">Committee on Agriculture</div></div>
+      <div class="member-card"><div class="member-avatar">EB</div><div class="member-name">Hon. Elvin M. Berdin</div><div class="member-pos">5th Regular Member</div><div class="member-committee">Committee on Finance &amp; Appropriations</div></div>
+      <div class="member-card"><div class="member-avatar">JA</div><div class="member-name">Hon. Joven P. Arriesgado</div><div class="member-pos">6th Regular Member</div><div class="member-committee">Committee on Environment</div></div>
+      <div class="member-card"><div class="member-avatar">VS</div><div class="member-name">Hon. Vicente R. Sabaulan</div><div class="member-pos">7th Regular Member</div><div class="member-committee">Committee on Trade &amp; Commerce</div></div>
+      <div class="member-card"><div class="member-avatar">RR</div><div class="member-name">Hon. Ric C. Rubia</div><div class="member-pos">8th Regular Member</div><div class="member-committee">Committee on Public Safety</div></div>
+      <div class="member-card"><div class="member-avatar">CA</div><div class="member-name">Hon. Charlie Albao</div><div class="member-pos">Ex-Officio Member</div><div class="member-committee">Liga ng mga Barangay President</div></div>
+      <div class="member-card"><div class="member-avatar">JD</div><div class="member-name">Hon. Joross M. Dela Cruz</div><div class="member-pos">Ex-Officio Member</div><div class="member-committee">SKFP President</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SB SECRETARY OFFICE -->
+<section class="secretary-section" id="secretary">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-briefcase"></i> SB Secretariat</div>
+      <h2 class="section-title">Office of the SB Secretary</h2>
+      <p class="section-sub">The Office of the SB Secretary manages all legislative records, document certifications, and public services of the Sangguniang Bayan.</p>
+      <div class="divider"></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+      <div style="width:4px;height:28px;background:linear-gradient(180deg,var(--gold),var(--gold-light));border-radius:4px;"></div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--navy);">Office of the Secretary to the Sangguniang Bayan</h3>
+    </div>
+    <div class="staff-grid">
+      <div class="staff-card"><div class="staff-avatar">LG</div><div class="staff-name">Lea M. Gonzales</div><div class="staff-pos">Secretary to the Sangguniang Bayan</div><div class="staff-desc">Oversees all legislative secretariat functions, certifies legislative documents, and manages SB records and archives.</div></div>
+      <div class="staff-card"><div class="staff-avatar">BM</div><div class="staff-name">Bernadette R. Marbella</div><div class="staff-pos">Planning Officer</div><div class="staff-desc">Handles legislative planning, prepares reports and agenda, and coordinates committee activities and public hearings.</div></div>
+      <div class="staff-card"><div class="staff-avatar">MA</div><div class="staff-name">Maryjoy Arcillas</div><div class="staff-pos">Administrative Assistant / Clerk</div><div class="staff-desc">Manages frontline citizen transactions, correspondence, document requests, and office administrative functions.</div></div>
+      <div class="staff-card"><div class="staff-avatar">IT</div><div class="staff-name">James L. Requiron</div><div class="staff-pos">Administrative Assistant / IT</div><div class="staff-desc">Manages the office's information technology systems, digital records, and technical support for legislative operations.</div></div>
+      <div class="staff-card"><div class="staff-avatar">KB</div><div class="staff-name">Karen R. Basterechia</div><div class="staff-pos">Administrative Aide / JO Clerk</div><div class="staff-desc">Handles proofreading of session transcripts and verbatim records, ensuring accuracy and completeness of all official session documentation.</div></div>
+      <div class="staff-card"><div class="staff-avatar">JL</div><div class="staff-name">Jesciebel Languido</div><div class="staff-pos">Administrative Aide / JO Clerk</div><div class="staff-desc">Handles accounting and vouchers document processing, inventory management, and maintains records of all financial transactions.</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;margin:36px 0 18px;">
+      <div style="width:4px;height:28px;background:linear-gradient(180deg,var(--navy),var(--blue-mid));border-radius:4px;"></div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--navy);">Office of the Vice Mayor</h3>
+    </div>
+    <div class="staff-grid" style="max-width:320px;">
+      <div class="staff-card"><div class="staff-avatar" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);">JS</div><div class="staff-name">Joel Sambajon</div><div class="staff-pos">Utility Aide</div><div class="staff-desc">Provides general utility and maintenance support for the Office of the Vice Mayor.</div></div>
+    </div>
+    <div style="background:var(--white);border-radius:12px;padding:24px;border:1px solid var(--gray-200);margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+      <div><i class="fas fa-location-dot" style="color:var(--gold);margin-right:8px"></i><strong>Location:</strong> Legislative Hall, Municipal Government Compound, Poblacion District 1, Claveria, Masbate 5419</div>
+      <div><i class="fas fa-clock" style="color:var(--gold);margin-right:8px"></i><strong>Office Hours:</strong> Monday–Friday, 7:00 AM – 6:00 PM</div>
+      <div><i class="fas fa-envelope" style="color:var(--gold);margin-right:8px"></i><strong>Email:</strong> sbclaveria@ymail.com</div>
+    </div>
+  </div>
+</section>
+
+<!-- SESSIONS CALENDAR -->
+<section class="sessions-section" id="sessions">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-calendar-days"></i> Sessions &amp; Calendar</div>
+      <h2 class="section-title">Upcoming Council Sessions</h2>
+      <p class="section-sub">Stay informed about scheduled regular and special sessions of the Sangguniang Bayan.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="sessions-wrap">
+      <div class="mini-cal">
+        <div class="cal-header">
+          <button class="cal-nav">◀</button>
+          <div class="cal-month">March 2025</div>
+          <button class="cal-nav">▶</button>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-day-name">S</div><div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div>
+          <div class="cal-day other-month">23</div><div class="cal-day other-month">24</div><div class="cal-day other-month">25</div><div class="cal-day other-month">26</div><div class="cal-day other-month">27</div><div class="cal-day other-month">28</div><div class="cal-day">1</div>
+          <div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day today">7</div><div class="cal-day">8</div>
+          <div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day session">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div>
+          <div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day session">20</div><div class="cal-day">21</div><div class="cal-day">22</div>
+          <div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day session">27</div><div class="cal-day">28</div><div class="cal-day">29</div>
+          <div class="cal-day">30</div><div class="cal-day">31</div>
+        </div>
+        <div style="margin-top:16px;font-size:.75rem;color:rgba(255,255,255,.55);">
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px;"><div style="width:14px;height:14px;border-radius:3px;background:var(--gold);"></div> Session Day</div>
+          <div style="display:flex;gap:8px;align-items:center;"><div style="width:14px;height:14px;border-radius:3px;border:1.5px solid var(--gold-light);"></div> Today</div>
+        </div>
+      </div>
+      <div class="sessions-list">
+        <div class="session-item"><div class="session-date-box"><div class="session-day">12</div><div class="session-mon">Mar</div></div><div class="session-info"><h4>Regular Session – Wednesday, March 12, 2025</h4><p><i class="fas fa-clock" style="margin-right:5px;color:var(--blue)"></i>9:00 AM &nbsp;|&nbsp; <i class="fas fa-location-dot" style="margin-right:3px;color:var(--blue)"></i>Legislative Hall, Municipal Government Compound</p><p style="font-size:.78rem;color:var(--gray-400);margin-top:4px;">Agenda: 2nd Reading – Solid Waste Ordinance Amendment; Committee Reports on Infrastructure</p></div><span class="session-type tag tag-blue">Regular</span></div>
+        <div class="session-item" style="border-left-color:var(--gold);"><div class="session-date-box"><div class="session-day">20</div><div class="session-mon">Mar</div></div><div class="session-info"><h4>Special Session – Budget Deliberation</h4><p><i class="fas fa-clock" style="margin-right:5px;color:var(--gold)"></i>2:00 PM &nbsp;|&nbsp; <i class="fas fa-location-dot" style="margin-right:3px;color:var(--gold)"></i>Legislative Hall, Municipal Government Compound</p><p style="font-size:.78rem;color:var(--gray-400);margin-top:4px;">Agenda: Review of Supplemental Budget No. 1, CY 2025; Public Hearing on Infrastructure Projects</p></div><span class="session-type tag tag-orange">Special</span></div>
+        <div class="session-item"><div class="session-date-box"><div class="session-day">26</div><div class="session-mon">Mar</div></div><div class="session-info"><h4>Regular Session – Wednesday, March 26, 2025</h4><p><i class="fas fa-clock" style="margin-right:5px;color:var(--blue)"></i>9:00 AM &nbsp;|&nbsp; <i class="fas fa-location-dot" style="margin-right:3px;color:var(--blue)"></i>Legislative Hall, Municipal Government Compound</p><p style="font-size:.78rem;color:var(--gray-400);margin-top:4px;">Agenda: 3rd Reading – Youth Scholarship Guidelines; New Business</p></div><span class="session-type tag tag-blue">Regular</span></div>
+        <div class="session-item" style="border-left-color:#16a34a;"><div class="session-date-box"><div class="session-day">2</div><div class="session-mon">Apr</div></div><div class="session-info"><h4>Regular Session – Wednesday, April 2, 2025</h4><p><i class="fas fa-clock" style="margin-right:5px;color:var(--blue)"></i>9:00 AM &nbsp;|&nbsp; <i class="fas fa-location-dot" style="margin-right:3px;color:var(--blue)"></i>Legislative Hall, Municipal Government Compound</p><p style="font-size:.78rem;color:var(--gray-400);margin-top:4px;">Regular sessions are held every Wednesday. Public is welcome to observe all open sessions.</p></div><span class="session-type tag tag-blue">Regular</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEGISLATIVE STATISTICS DASHBOARD -->
+<section class="dashboard" id="documents">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-chart-bar"></i> Legislative Dashboard</div>
+      <h2 class="section-title">Legislative Statistics</h2>
+      <p class="section-sub">Visual overview of the Sangguniang Bayan's legislative performance and accomplishments.</p>
+      <div class="divider" style="background:linear-gradient(90deg,var(--gold),var(--gold-light));"></div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-icon" style="background:rgba(201,162,39,.2);"><i class="fas fa-gavel" style="color:var(--gold-light)"></i></div><div class="stat-num" data-count="148">148</div><div class="stat-label">Total Ordinances Passed</div></div>
+      <div class="stat-card"><div class="stat-icon" style="background:rgba(37,99,171,.25);"><i class="fas fa-scroll" style="color:#93c5fd"></i></div><div class="stat-num" data-count="312">312</div><div class="stat-label">Resolutions Approved</div></div>
+      <div class="stat-card"><div class="stat-icon" style="background:rgba(22,163,74,.2);"><i class="fas fa-check-circle" style="color:#86efac"></i></div><div class="stat-num" data-count="23">23</div><div class="stat-label">Active Legislative Measures</div></div>
+      <div class="stat-card"><div class="stat-icon" style="background:rgba(220,38,38,.2);"><i class="fas fa-file-circle-check" style="color:#fca5a5"></i></div><div class="stat-num" data-count="456">456</div><div class="stat-label">Document Requests Processed</div></div>
+    </div>
+    <div class="chart-area">
+      <div class="chart-card">
+        <div class="chart-title"><i class="fas fa-chart-bar" style="margin-right:6px;color:var(--gold-light)"></i>Ordinances by Sector (2020–2025)</div>
+        <div class="bar-chart">
+          <div class="bar-item"><div class="bar-label">Environment</div><div class="bar-track"><div class="bar-fill" style="width:85%;background:linear-gradient(90deg,#22c55e,#86efac)"></div></div><div class="bar-val">28</div></div>
+          <div class="bar-item"><div class="bar-label">Health</div><div class="bar-track"><div class="bar-fill" style="width:70%;background:linear-gradient(90deg,#3b82f6,#93c5fd)"></div></div><div class="bar-val">23</div></div>
+          <div class="bar-item"><div class="bar-label">Transport</div><div class="bar-track"><div class="bar-fill" style="width:55%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><div class="bar-val">18</div></div>
+          <div class="bar-item"><div class="bar-label">Agriculture</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:linear-gradient(90deg,#a16207,#d97706)"></div></div><div class="bar-val">16</div></div>
+          <div class="bar-item"><div class="bar-label">Fisheries</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:linear-gradient(90deg,var(--teal),#14b8a6)"></div></div><div class="bar-val">15</div></div>
+          <div class="bar-item"><div class="bar-label">Social</div><div class="bar-track"><div class="bar-fill" style="width:40%;background:linear-gradient(90deg,#ec4899,#f9a8d4)"></div></div><div class="bar-val">13</div></div>
+          <div class="bar-item"><div class="bar-label">Education</div><div class="bar-track"><div class="bar-fill" style="width:33%;background:linear-gradient(90deg,#7c3aed,#a855f7)"></div></div><div class="bar-val">11</div></div>
+          <div class="bar-item"><div class="bar-label">Business</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:linear-gradient(90deg,#dc2626,#f87171)"></div></div><div class="bar-val">9</div></div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title"><i class="fas fa-chart-pie" style="margin-right:6px;color:var(--gold-light)"></i>Legislative Output 2025</div>
+        <svg viewBox="0 0 200 200" width="100%" style="max-height:160px;display:block;margin:auto;">
+          <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="30"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#22c55e" stroke-width="30" stroke-dasharray="130 372" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#3b82f6" stroke-width="30" stroke-dasharray="95 372" stroke-dashoffset="-130" transform="rotate(-90 100 100)"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="var(--gold)" stroke-width="30" stroke-dasharray="80 372" stroke-dashoffset="-225" transform="rotate(-90 100 100)"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#ec4899" stroke-width="30" stroke-dasharray="67 372" stroke-dashoffset="-305" transform="rotate(-90 100 100)"/>
+          <text x="100" y="97" text-anchor="middle" fill="white" font-size="18" font-family="Playfair Display" font-weight="700">47</text>
+          <text x="100" y="112" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="9">measures in 2025</text>
+        </svg>
+        <div class="pie-legend">
+          <div class="pie-item"><div class="pie-dot" style="background:#22c55e"></div><div class="pie-name">Ordinances</div><div class="pie-pct">35%</div></div>
+          <div class="pie-item"><div class="pie-dot" style="background:#3b82f6"></div><div class="pie-name">Resolutions</div><div class="pie-pct">25%</div></div>
+          <div class="pie-item"><div class="pie-dot" style="background:var(--gold)"></div><div class="pie-name">Committee Reports</div><div class="pie-pct">21%</div></div>
+          <div class="pie-item"><div class="pie-dot" style="background:#ec4899"></div><div class="pie-name">Public Hearings</div><div class="pie-pct">18%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CITIZEN LEGISLATIVE DASHBOARD -->
+<section class="citizen-dash" id="citizen-dashboard">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-user-gear"></i> Personalized</div>
+      <h2 class="section-title">Citizen Legislative Dashboard</h2>
+      <p class="section-sub">Laws, proposals, and hearings that may affect you — organized by sector.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="citizen-tabs">
+      <button class="ctab active" onclick="switchTab('fishers',this)">🎣 Fishers</button>
+      <button class="ctab" onclick="switchTab('youth',this)">🎓 Youth</button>
+      <button class="ctab" onclick="switchTab('farmers',this)">🌾 Farmers</button>
+      <button class="ctab" onclick="switchTab('business',this)">🏪 Business</button>
+      <button class="ctab" onclick="switchTab('transport',this)">🏍️ Transport</button>
+    </div>
+    <div class="cdash-grid" id="citizenDash"></div>
+  </div>
+</section>
+
+<!-- CITIZEN PROPOSALS -->
+<section class="proposals-section" id="proposals">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-lightbulb"></i> Citizen Participation</div>
+      <h2 class="section-title">Citizens' &amp; Organizations' Legislative Proposals</h2>
+      <p class="section-sub">Any resident or accredited organization of Claveria may submit a proposed ordinance or resolution for the Sangguniang Bayan's consideration.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="proposals-layout">
+      <div class="proposal-form-card" id="proposalFormWrap">
+        <h3><i class="fas fa-pen-to-square" style="margin-right:7px;"></i>Submit a Proposal</h3>
+        <p>Fill out this form to submit your proposed ordinance or resolution. The SB Secretary's Office will log it and forward it to the appropriate committee.</p>
+        <div id="proposalFormBody">
+          <div class="pf-group"><label>Your Full Name / Organization Name *</label><input type="text" id="pf-name" placeholder="e.g. Juan Dela Cruz or Claveria Farmers' Coop"/></div>
+          <div class="pf-group"><label>Submitter Type *</label><select id="pf-submitter-type"><option value="">Select type…</option><option>Individual Citizen</option><option>Accredited CSO / NGO</option><option>Barangay Council</option><option>Sectoral Organization</option><option>Business Association</option><option>Academic Institution</option></select></div>
+          <div class="pf-group"><label>Contact Number *</label><input type="tel" id="pf-contact" placeholder="09XXXXXXXXX"/></div>
+          <div class="pf-group"><label>Proposal Type *</label><select id="pf-type"><option value="">Select proposal type…</option><option>Proposed Ordinance</option><option>Proposed Resolution</option></select></div>
+          <div class="pf-group"><label>Sector / Topic Area *</label><select id="pf-sector"><option value="">Select sector…</option><option>Environment &amp; Sanitation</option><option>Health &amp; Nutrition</option><option>Education &amp; Youth</option><option>Fisheries &amp; Marine</option><option>Agriculture &amp; Farming</option><option>Transportation</option><option>Business &amp; Commerce</option><option>Social Services &amp; Women</option><option>Public Safety</option><option>Infrastructure</option><option>Other</option></select></div>
+          <div class="pf-group"><label>Proposed Title *</label><input type="text" id="pf-title" placeholder="e.g. An Ordinance Protecting Mangrove Areas in Claveria"/></div>
+          <div class="pf-group"><label>Brief Description / Rationale * <span style="color:rgba(255,255,255,.4);font-size:.75rem;">(max 500 chars)</span></label><textarea id="pf-desc" maxlength="500" placeholder="Describe the problem you want to address, your proposed solution, and who it will benefit…" oninput="updateCharCount(this)"></textarea><div class="char-count"><span id="charCount">0</span>/500</div></div>
+          <div class="pf-group"><label>Reference Laws / Supporting Docs (optional)</label><input type="text" id="pf-docs" placeholder="e.g. RA 9003, DENR AO 2013-19"/></div>
+          <div class="proposal-disclaimer"><i class="fas fa-circle-info" style="color:var(--gold-light);margin-right:5px;"></i>By submitting, you confirm this proposal is made in good faith for the benefit of Claveria. All proposals are subject to committee review and public hearing. Submission does not guarantee enactment.</div>
+          <button class="btn btn-gold" style="width:100%;justify-content:center;" onclick="submitProposal()"><i class="fas fa-paper-plane"></i> Submit Proposal to the SB</button>
+        </div>
+        <div id="proposalSuccessBody" class="hidden submit-success-overlay">
+          <i class="fas fa-check-circle"></i>
+          <h4>Proposal Submitted!</h4>
+          <p>Your proposal has been received and logged by the Office of the SB Secretary. It will be reviewed and referred to the appropriate committee within 5 working days.</p>
+          <div class="ref-num" id="proposalRefNum">CLP-2025-0041</div>
+          <p style="font-size:.76rem;margin-top:6px;color:#166534;">Reference number — keep this for follow-up inquiries at the SB Office.</p>
+          <button class="btn btn-navy btn-sm mt-16" onclick="resetProposalForm()"><i class="fas fa-plus"></i> Submit Another Proposal</button>
+        </div>
+      </div>
+      <div class="proposals-list-wrap">
+        <div class="proposals-count-bar">
+          <div class="pcount"><i class="fas fa-list" style="color:var(--navy);"></i>&nbsp;<span id="totalCount">6</span>&nbsp;Total</div>
+          <div class="pcount" style="color:#a16207;border-color:#fde68a;background:#fef9c3;"><i class="fas fa-clock" style="color:#a16207;"></i>&nbsp;<span id="pendingCount">2</span>&nbsp;Pending</div>
+          <div class="pcount" style="color:#1d4ed8;border-color:#bfdbfe;background:#dbeafe;"><i class="fas fa-magnifying-glass" style="color:#1d4ed8;"></i>&nbsp;<span id="reviewCount">2</span>&nbsp;Under Review</div>
+          <div class="pcount" style="color:#15803d;border-color:#bbf7d0;background:#dcfce7;"><i class="fas fa-check" style="color:#15803d;"></i>&nbsp;<span id="endorsedCount">2</span>&nbsp;Endorsed</div>
+        </div>
+        <div class="proposals-tabs">
+          <button class="ptab active" onclick="filterProposals('all',this)">All</button>
+          <button class="ptab" onclick="filterProposals('pending',this)">⏳ Pending</button>
+          <button class="ptab" onclick="filterProposals('review',this)">🔍 Under Review</button>
+          <button class="ptab" onclick="filterProposals('endorsed',this)">✅ Endorsed</button>
+          <button class="ptab" onclick="filterProposals('declined',this)">❌ Declined</button>
+        </div>
+        <div id="proposalsList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS & ANNOUNCEMENTS -->
+<section class="news-section" id="news">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-newspaper"></i> Latest Updates</div>
+      <h2 class="section-title">News &amp; Announcements</h2>
+      <p class="section-sub">Stay updated with the latest developments from the Sangguniang Bayan of Claveria.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="news-grid">
+      <div class="news-card" style="border:2px solid var(--gold);">
+        <div class="news-img" style="background:linear-gradient(135deg,#1e3a5f,#1e4d8c);"><div class="news-img-inner">🕖</div><span class="news-category" style="background:var(--gold);color:var(--navy);">LATEST</span></div>
+        <div class="news-body"><div class="news-date"><i class="fas fa-calendar" style="margin-right:5px;color:var(--gold)"></i>March 19, 2025</div><div class="news-title">New Office Hours: 7:00 AM – 6:00 PM Starting Today</div><div class="news-excerpt">In compliance with the directive of the President of the Republic of the Philippines, the SB of Claveria, Masbate adopts a compressed workweek schedule effective immediately. Citizens are advised to transact early.</div><button class="btn btn-sm btn-gold">Read More</button></div>
+      </div>
+      <div class="news-card">
+        <div class="news-img" style="background:linear-gradient(135deg,var(--navy),var(--blue-mid));"><div class="news-img-inner">⚖️</div><span class="news-category">Legislative</span></div>
+        <div class="news-body"><div class="news-date"><i class="fas fa-calendar" style="margin-right:5px;color:var(--gold)"></i>February 28, 2025</div><div class="news-title">SB Approves Solid Waste Management Ordinance on 3rd Reading</div><div class="news-excerpt">The Sangguniang Bayan unanimously approved the new Solid Waste Management Ordinance, mandating source segregation and scheduled collection in all 15 barangays.</div><button class="btn btn-sm btn-navy">Read More</button></div>
+      </div>
+      <div class="news-card">
+        <div class="news-img" style="background:linear-gradient(135deg,var(--teal),#14b8a6);"><div class="news-img-inner">🎓</div><span class="news-category">Education</span></div>
+        <div class="news-body"><div class="news-date"><i class="fas fa-calendar" style="margin-right:5px;color:var(--gold)"></i>February 15, 2025</div><div class="news-title">25 Claveria Youth to Receive College Scholarships Under New SB Resolution</div><div class="news-excerpt">Resolution No. 2025-18 allocates funds for 25 scholarship grants covering tuition and monthly stipends for qualified youth from low-income families.</div><button class="btn btn-sm btn-navy">Read More</button></div>
+      </div>
+      <div class="news-card">
+        <div class="news-img" style="background:linear-gradient(135deg,#b45309,#d97706);"><div class="news-img-inner">🏍️</div><span class="news-category">Public Service</span></div>
+        <div class="news-body"><div class="news-date"><i class="fas fa-calendar" style="margin-right:5px;color:var(--gold)"></i>February 5, 2025</div><div class="news-title">Tricycle Franchise Renewal Season Opens – Deadline Set for April 30</div><div class="news-excerpt">The Office of the SB Secretary announces the opening of the annual tricycle franchise renewal period. All operators must renew by April 30, 2025 to avoid penalties.</div><button class="btn btn-sm btn-navy">Read More</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPARENCY -->
+<section class="transparency" id="transparency">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-eye"></i> Open Government</div>
+      <h2 class="section-title">Transparency Corner</h2>
+      <p class="section-sub">Access public documents, reports, and records in compliance with the Right to Information Act and Open Government Partnership.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="trans-grid">
+      <a href="#" class="trans-card"><div class="trans-icon"><i class="fas fa-file-shield"></i></div><div class="trans-title">Citizen's Charter</div><div class="trans-desc">View our ARTA-compliant Citizen's Charter detailing all services, requirements, and timeframes.</div></a>
+      <a href="#bulletin" class="trans-card"><div class="trans-icon"><i class="fas fa-gavel"></i></div><div class="trans-title">Approved Ordinances Archive</div><div class="trans-desc">Browse the complete archive of all ordinances enacted by the Sangguniang Bayan.</div></a>
+      <a href="#" class="trans-card"><div class="trans-icon"><i class="fas fa-chart-line"></i></div><div class="trans-title">Legislative Accomplishment Reports</div><div class="trans-desc">Annual legislative accomplishment reports submitted to the Sangguniang Panlalawigan.</div></a>
+      <a href="#" class="trans-card"><div class="trans-icon"><i class="fas fa-clipboard-user"></i></div><div class="trans-title">Attendance of SB Members</div><div class="trans-desc">Track attendance records of SB members during regular and special sessions.</div></a>
+      <a href="#" class="trans-card"><div class="trans-icon"><i class="fas fa-coins"></i></div><div class="trans-title">Budget &amp; Financial Records</div><div class="trans-desc">View approved budgets and financial allocations for the SB operations and programs.</div></a>
+      <a href="#" class="trans-card"><div class="trans-icon"><i class="fas fa-microphone-lines"></i></div><div class="trans-title">Session Minutes &amp; Verbatim</div><div class="trans-desc">Access official minutes and verbatim proceedings of SB sessions open to the public.</div></a>
+    </div>
+
+    <!-- SCOREBOARD -->
+    <div class="scoreboard-wrap" id="sbScoreboard">
+      <div class="scoreboard-header">
+        <h3><i class="fas fa-trophy" style="color:var(--gold);margin-right:10px;"></i>SB Members Legislative Performance Scoreboard</h3>
+        <div class="sb-controls">
+          <select class="sb-year-select" onchange="renderScoreboard(this.value, currentSbSort)">
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="all">All Years</option>
+          </select>
+          <button class="sb-sort-btn active" onclick="renderScoreboard(currentSbYear,'total',this)">Sort: Total</button>
+          <button class="sb-sort-btn" onclick="renderScoreboard(currentSbYear,'authored',this)">Sort: Authored</button>
+          <button class="sb-sort-btn" onclick="renderScoreboard(currentSbYear,'sponsored',this)">Sort: Sponsored</button>
+        </div>
+      </div>
+      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 18px;margin-bottom:24px;display:flex;gap:12px;align-items:flex-start;">
+        <i class="fas fa-circle-info" style="color:#2563eb;flex-shrink:0;margin-top:2px;font-size:1rem;"></i>
+        <div style="font-size:.82rem;color:#1e3a5f;line-height:1.7;"><strong>How to read this scoreboard:</strong> Legislative output is <em>one dimension</em> of a member's service. Committee hearings, constituent assistance, and attendance are equally important. Figures are sourced from official session records verified by the Office of the SB Secretary.</div>
+      </div>
+      <div class="sb-trophy-row" id="sbTrophyRow"></div>
+      <div class="scoreboard-legend">
+        <div class="sb-legend-item"><div class="sb-legend-dot" style="background:var(--navy);"></div>Authored</div>
+        <div class="sb-legend-item"><div class="sb-legend-dot" style="background:var(--blue-mid);"></div>Sponsored</div>
+        <div class="sb-legend-item"><div class="sb-legend-dot" style="background:var(--teal);"></div>Co-Sponsored</div>
+        <div class="sb-legend-item"><div class="sb-legend-dot" style="background:var(--gold);border-radius:50%;"></div>Total Legislative Output</div>
+      </div>
+      <p style="font-size:.8rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Regular Members</p>
+      <div style="overflow-x:auto;margin-bottom:28px;"><table class="scoreboard-table"><thead class="sb-thead"><tr><th style="width:48px;">#</th><th>Member</th><th>Authored</th><th>Sponsored</th><th class="hide-mobile">Co-Sponsored</th><th class="hide-mobile">Breakdown</th><th>Total</th></tr></thead><tbody id="sbTableBody"></tbody></table></div>
+      <p style="font-size:.8rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Ex-Officio Members</p>
+      <p style="font-size:.78rem;color:var(--gray-400);margin-bottom:10px;">Ex-officio members hold external mandates as heads of their respective federations. Their legislative participation differs in scope from regular members.</p>
+      <div style="overflow-x:auto;margin-bottom:20px;"><table class="scoreboard-table"><thead class="sb-thead"><tr><th style="width:48px;">#</th><th>Member</th><th>Authored</th><th>Sponsored</th><th class="hide-mobile">Co-Sponsored</th><th class="hide-mobile">Breakdown</th><th>Total</th></tr></thead><tbody id="sbExOffTableBody"></tbody></table></div>
+      <div class="scoreboard-footer-note">
+        <i class="fas fa-circle-info"></i>
+        <div>
+          <p style="margin-bottom:8px;"><strong>Definitions:</strong></p>
+          <p style="margin-bottom:5px;"><strong>Author</strong> — the member who originates and writes the proposed ordinance or resolution.</p>
+          <p style="margin-bottom:5px;"><strong>Sponsor</strong> — the member who formally presents and defends the measure before the legislative body.</p>
+          <p style="margin-bottom:10px;"><strong>Co-Sponsor</strong> — a member who supports the measure and agrees to be listed as backing it.</p>
+          <p style="color:#94a3b8;font-size:.75rem;">⚠️ Note: These figures are placeholder data and must be replaced with verified records from the Office of the SB Secretary before publishing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+            <div style="width:44px;height:44px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy);font-size:1.1rem;">SB</div>
+            <div><h3 style="margin:0;">Sangguniang Bayan</h3><p style="color:var(--gold-light);font-size:.72rem;margin:0;text-transform:uppercase;letter-spacing:.05em;">Claveria, Masbate</p></div>
+          </div>
+          <p>Transparent Legislation. Responsive Governance. Serving the people of Claveria, Masbate with integrity, accountability, and dedication.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-btn"><i class="fas fa-rss"></i></a>
+          </div>
+          <div class="map-placeholder"><i class="fas fa-map-location-dot"></i><span>Legislative Hall, Poblacion District 1, Claveria, Masbate 5419</span><span style="font-size:.75rem;">Google Maps integration available</span></div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About the SB</a></li><li><a href="#bulletin">Digital Bulletin</a></li><li><a href="#services">Citizen Services</a></li><li><a href="#laws">Know Your Laws</a></li><li><a href="#proposals">Citizen Proposals</a></li><li><a href="#sessions">Sessions</a></li><li><a href="#transparency">Transparency</a></li></ul></div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="#">CSO Accreditation</a></li><li><a href="#">MARINA Resolution</a></li><li><a href="#">Tricycle Franchise</a></li><li><a href="#">Document Request</a></li><li><a href="#">Track Request</a></li><li><a href="#">Public Hearing Reg.</a></li></ul></div>
+        <div class="footer-col"><h4>Contact Us</h4><ul class="footer-contact"><li><i class="fas fa-location-dot"></i><span>Legislative Hall, Municipal Government Compound, Poblacion District 1, Claveria, Masbate 5419</span></li><li><i class="fas fa-envelope"></i><span>sbclaveria@ymail.com</span></li><li><i class="fas fa-clock"></i><span>Mon–Fri: 7:00 AM – 6:00 PM<br>Closed on holidays</span></li></ul></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2025 Sangguniang Bayan of Claveria, Masbate. All rights reserved.</span>
+      <span>Republic of the Philippines &nbsp;|&nbsp; <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Accessibility</a> &nbsp;|&nbsp; <a href="#">Site Map</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ==================== MODALS ==================== -->
+<div class="modal-overlay" id="docModal">
+  <div class="modal">
+    <div class="modal-header" style="position:relative;"><h3>Ordinance No. 2025-07</h3><p>An Ordinance Establishing the Claveria Solid Waste Management Program</p><button class="modal-close" onclick="closeModal('docModal')">✕</button></div>
+    <div class="modal-body">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;"><span class="tag tag-green">Environment</span><span class="tag tag-blue">Approved: Feb 26, 2025</span><span class="tag tag-green">In Effect</span></div>
+      <h4 style="color:var(--navy);margin-bottom:8px;">Plain Language Summary</h4>
+      <p style="color:var(--gray-600);font-size:.88rem;line-height:1.7;margin-bottom:16px;">This ordinance requires every household, business, and institution in Claveria to separate garbage into three categories: (1) biodegradable waste, (2) non-biodegradable waste, and (3) special or hazardous waste.</p>
+      <p style="color:var(--gray-600);font-size:.88rem;line-height:1.7;margin-bottom:16px;">Non-compliance is subject to fines of ₱500 for the first offense, ₱1,000 for the second, and ₱2,000 for subsequent violations.</p>
+      <div style="background:var(--gold-pale);border:1px solid var(--gold);border-radius:8px;padding:14px;margin-bottom:16px;"><strong style="color:var(--navy);font-size:.85rem;">What this means for you:</strong><p style="color:var(--gray-600);font-size:.83rem;margin-top:6px;">Prepare three separate bins at home. Your barangay will post collection schedules.</p></div>
+      <div style="display:flex;gap:10px;"><button class="btn btn-navy btn-sm"><i class="fas fa-download"></i> Download Full Text (PDF)</button><button class="btn btn-outline btn-sm" style="color:var(--blue);border-color:var(--blue)" onclick="openModal('requestModal');closeModal('docModal')"><i class="fas fa-file-lines"></i> Request Certified Copy</button></div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="requestModal">
+  <div class="modal">
+    <div class="modal-header" style="position:relative;"><h3>Document Request Form</h3><p>Office of the SB Secretary – Claveria, Masbate</p><button class="modal-close" onclick="closeModal('requestModal')">✕</button></div>
+    <div class="modal-body">
+      <div id="reqFormArea">
+        <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Full Name *</label><input type="text" placeholder="Your full name" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+        <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Document Requested *</label><select style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;background:white;"><option>Certified True Copy – Ordinance</option><option>Certified True Copy – Resolution</option><option>Session Minutes</option><option>Committee Report</option></select></div>
+        <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Ordinance / Resolution No.</label><input type="text" placeholder="e.g. Ordinance No. 2025-07" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+        <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Contact Number *</label><input type="tel" placeholder="09XXXXXXXXX" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+        <p style="font-size:.78rem;color:var(--gray-400);margin-bottom:16px;">📌 Processing fee: ₱50 per document. Pay at the Municipal Treasurer's Office upon release.</p>
+        <button class="btn btn-gold" style="width:100%;justify-content:center;" onclick="submitRequestModal()"><i class="fas fa-paper-plane"></i> Submit Request</button>
+      </div>
+      <div id="reqSuccessArea" class="hidden">
+        <div style="background:#dcfce7;border:1px solid #86efac;border-radius:10px;padding:18px;display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;"><i class="fas fa-check-circle" style="color:var(--green);font-size:1.4rem;"></i><div><h4 style="color:#15803d;font-weight:700;margin-bottom:4px;">Request Submitted Successfully!</h4><p style="color:#166534;font-size:.83rem;">Your request has been received by the Office of the SB Secretary.</p></div></div>
+        <div style="background:var(--off-white);border-radius:10px;padding:18px;text-align:center;"><p style="color:var(--gray-600);font-size:.83rem;margin-bottom:8px;">Your Tracking Number</p><div class="tracking-num" id="generatedTrackNum">SB-2025-00124</div><p style="color:var(--gray-400);font-size:.77rem;margin-top:8px;">Expected release: 2–3 working days.</p></div>
+        <button class="btn btn-navy mt-16" style="width:100%;justify-content:center;" onclick="closeModal('requestModal')">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="csoModal">
+  <div class="modal">
+    <div class="modal-header" style="position:relative;"><h3>CSO Accreditation Application</h3><p>Sangguniang Bayan of Claveria, Masbate</p><button class="modal-close" onclick="closeModal('csoModal')">✕</button></div>
+    <div class="modal-body">
+      <div style="background:var(--gold-pale);border:1px solid var(--gold);border-radius:8px;padding:14px;margin-bottom:18px;"><strong style="color:var(--navy);font-size:.85rem;"><i class="fas fa-circle-info" style="color:var(--gold);margin-right:5px;"></i>Requirements:</strong><ul style="color:var(--gray-600);font-size:.83rem;margin-top:8px;padding-left:18px;line-height:1.8;"><li>Organization's Constitution and By-Laws (certified copy)</li><li>List of Current Officers with contact info</li><li>Latest Annual Financial Report</li><li>Certificate of Registration (if any)</li><li>Barangay or Mayor's endorsement letter</li></ul></div>
+      <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Organization Name *</label><input type="text" placeholder="Name of your organization" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+      <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Contact Person &amp; Number *</label><input type="text" placeholder="Name and contact number" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+      <p style="font-size:.78rem;color:var(--gray-400);margin-bottom:14px;">Submit complete requirements in person at the Office of the SB Secretary. Processing takes 5–7 working days.</p>
+      <button class="btn btn-navy" style="width:100%;justify-content:center;" onclick="closeModal('csoModal')"><i class="fas fa-check"></i> Noted – I'll Visit the SB Office</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="marinaModal">
+  <div class="modal">
+    <div class="modal-header" style="position:relative;"><h3>MARINA Resolution Request</h3><p>For Motorboat Operators – Claveria, Masbate</p><button class="modal-close" onclick="closeModal('marinaModal')">✕</button></div>
+    <div class="modal-body">
+      <div style="background:var(--gold-pale);border:1px solid var(--gold);border-radius:8px;padding:14px;margin-bottom:18px;"><strong style="color:var(--navy);font-size:.85rem;"><i class="fas fa-circle-info" style="color:var(--gold);margin-right:5px;"></i>Requirements:</strong><ul style="color:var(--gray-600);font-size:.83rem;margin-top:8px;padding-left:18px;line-height:1.8;"><li>Boat Certificate / Registration Papers</li><li>Owner's Valid ID (government-issued)</li><li>Barangay Clearance</li><li>Application letter addressed to the Honorable Vice Mayor</li></ul></div>
+      <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Boat Owner's Name *</label><input type="text" placeholder="Full legal name" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+      <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Boat Name / Number *</label><input type="text" placeholder="Boat name or registration number" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+      <p style="font-size:.78rem;color:var(--gray-400);margin-bottom:14px;">Processing time: 3–5 working days. Bring original and photocopies of all requirements to the SB Office.</p>
+      <button class="btn btn-navy" style="width:100%;justify-content:center;" onclick="closeModal('marinaModal')"><i class="fas fa-check"></i> Understood – Visit SB Office</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="tricycleModal">
+  <div class="modal">
+    <div class="modal-header" style="position:relative;"><h3>Tricycle Franchise Application</h3><p>New Application or Renewal – Claveria, Masbate</p><button class="modal-close" onclick="closeModal('tricycleModal')">✕</button></div>
+    <div class="modal-body">
+      <div style="background:var(--gold-pale);border:1px solid var(--gold);border-radius:8px;padding:14px;margin-bottom:18px;"><strong style="color:var(--navy);font-size:.85rem;"><i class="fas fa-circle-info" style="color:var(--gold);margin-right:5px;"></i>Requirements:</strong><ul style="color:var(--gray-600);font-size:.83rem;margin-top:8px;padding-left:18px;line-height:1.8;"><li>Original Receipt &amp; Certificate of Registration (OR/CR)</li><li>Driver's License (Professional)</li><li>Barangay Clearance</li><li>Police Clearance</li><li>Medical Certificate</li><li>2x2 ID Photos (2 copies)</li></ul></div>
+      <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Application Type</label><select style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;background:white;"><option>New Franchise Application</option><option>Franchise Renewal</option><option>Transfer of Franchise</option></select></div>
+      <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Operator / Driver Name *</label><input type="text" placeholder="Full legal name" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+      <p style="font-size:.78rem;color:var(--gray-400);margin-bottom:14px;">Franchise fee: ₱500 (new) / ₱300 (renewal). Deadline for renewal: April 30, 2025.</p>
+      <button class="btn btn-gold" style="width:100%;justify-content:center;" onclick="closeModal('tricycleModal')"><i class="fas fa-motorcycle"></i> Proceed to SB Office</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

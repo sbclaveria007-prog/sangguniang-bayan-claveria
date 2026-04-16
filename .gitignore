@@ -1,0 +1,35 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor directories
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies (if a build system is added later)
+node_modules/
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Backend
+backend/node_modules/
+backend/db/*.db
+backend/.env
+backend/uploads/*
+!backend/uploads/.gitkeep
