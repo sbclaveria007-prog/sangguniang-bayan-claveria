@@ -498,74 +498,244 @@
   </div>
 </section>
 
-<!-- COUNCIL MEMBERS -->
+<!-- COUNCIL MEMBERS — ORG CHART -->
 <section class="council-section" id="about">
   <div class="container">
     <div class="section-header">
-      <div class="section-badge"><i class="fas fa-users"></i> Your Representatives</div>
+      <div class="section-badge"><i class="fas fa-sitemap"></i> Organizational Structure</div>
       <h2 class="section-title">The Sangguniang Bayan</h2>
-      <p class="section-sub">Meet the elected officials serving the people of Claveria, Masbate in the Municipal Legislative Council.</p>
+      <p class="section-sub">The Municipal Legislative Council of Claveria, Masbate — composed of elected officials who enact local legislation and represent the people's interest.</p>
       <div class="divider"></div>
     </div>
-    <div id="vice-mayor" class="vm-card">
-      <div class="vm-avatar">VP</div>
-      <div class="vm-info">
-        <h3>Hon. Froilan V. Andueza</h3>
-        <div class="vm-role"><i class="fas fa-star" style="margin-right:5px"></i>Vice Mayor &amp; Presiding Officer, Sangguniang Bayan</div>
-        <p>Elected to serve as the Presiding Officer of the Sangguniang Bayan of Claveria, Masbate. Committed to transparent and responsive legislation for the people of Claveria.</p>
-        <div class="flex gap-12 mt-16" style="flex-wrap:wrap;">
-          <span style="color:rgba(255,255,255,.6);font-size:.82rem;"><i class="fas fa-envelope" style="margin-right:5px;color:var(--gold-light)"></i>sbclaveria@ymail.com</span>
+
+    <!-- Level 1: Presiding Officer -->
+    <div class="org-top" id="vice-mayor">
+      <div class="presiding-card">
+        <div class="presiding-avatar">FA</div>
+        <div class="presiding-info">
+          <div class="presiding-role"><i class="fas fa-gavel" style="margin-right:6px;"></i>Vice Mayor &amp; Presiding Officer</div>
+          <h3>Hon. Froilan V. Andueza</h3>
+          <p>Elected to serve as the Presiding Officer of the Sangguniang Bayan of Claveria, Masbate. Leads all legislative sessions, oversees committee operations, and is committed to transparent and responsive governance.</p>
+          <div class="presiding-contact"><i class="fas fa-envelope"></i>sbclaveria@ymail.com</div>
         </div>
       </div>
     </div>
-    <h3 id="members" style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:20px;font-size:1.2rem;">Sangguniang Bayan Members</h3>
-    <div class="members-grid">
-      <div class="member-card"><div class="member-avatar">DA</div><div class="member-name">Hon. Dakila Alim-Ante</div><div class="member-pos">1st Regular Member</div><div class="member-committee">Committee on Health &amp; Sanitation</div></div>
-      <div class="member-card"><div class="member-avatar">AS</div><div class="member-name">Hon. Adan F. Sandigan</div><div class="member-pos">2nd Regular Member</div><div class="member-committee">Committee on Public Works</div></div>
-      <div class="member-card"><div class="member-avatar">MA</div><div class="member-name">Hon. Mark A. Andueza</div><div class="member-pos">3rd Regular Member</div><div class="member-committee">Committee on Education</div></div>
-      <div class="member-card"><div class="member-avatar">NL</div><div class="member-name">Hon. Nonelona Lim</div><div class="member-pos">4th Regular Member</div><div class="member-committee">Committee on Agriculture</div></div>
-      <div class="member-card"><div class="member-avatar">EB</div><div class="member-name">Hon. Elvin M. Berdin</div><div class="member-pos">5th Regular Member</div><div class="member-committee">Committee on Finance &amp; Appropriations</div></div>
-      <div class="member-card"><div class="member-avatar">JA</div><div class="member-name">Hon. Joven P. Arriesgado</div><div class="member-pos">6th Regular Member</div><div class="member-committee">Committee on Environment</div></div>
-      <div class="member-card"><div class="member-avatar">VS</div><div class="member-name">Hon. Vicente R. Sabaulan</div><div class="member-pos">7th Regular Member</div><div class="member-committee">Committee on Trade &amp; Commerce</div></div>
-      <div class="member-card"><div class="member-avatar">RR</div><div class="member-name">Hon. Ric C. Rubia</div><div class="member-pos">8th Regular Member</div><div class="member-committee">Committee on Public Safety</div></div>
-      <div class="member-card"><div class="member-avatar">CA</div><div class="member-name">Hon. Charlie Albao</div><div class="member-pos">Ex-Officio Member</div><div class="member-committee">Liga ng mga Barangay President</div></div>
-      <div class="member-card"><div class="member-avatar">JD</div><div class="member-name">Hon. Joross M. Dela Cruz</div><div class="member-pos">Ex-Officio Member</div><div class="member-committee">SKFP President</div></div>
+
+    <!-- Connector line -->
+    <div class="org-connector"></div>
+
+    <!-- Level 2 label -->
+    <div class="org-level-label"><span><i class="fas fa-users" style="margin-right:6px;color:var(--blue);"></i>Regular Members of the Sangguniang Bayan</span></div>
+
+    <!-- Level 2: Regular Members 4×2 grid -->
+    <div id="members" class="members-grid">
+      <div class="member-card">
+        <div class="member-avatar">DA</div>
+        <div class="member-name">Hon. Dakila Alim-Ante</div>
+        <div class="member-pos">1st Regular Member</div>
+        <div class="member-committee"><i class="fas fa-heartbeat" style="margin-right:4px;font-size:.65rem;"></i>Health &amp; Sanitation</div>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar">AS</div>
+        <div class="member-name">Hon. Adan F. Sandigan</div>
+        <div class="member-pos">2nd Regular Member</div>
+        <div class="member-committee"><i class="fas fa-hard-hat" style="margin-right:4px;font-size:.65rem;"></i>Public Works</div>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar">MA</div>
+        <div class="member-name">Hon. Mark A. Andueza</div>
+        <div class="member-pos">3rd Regular Member</div>
+        <div class="member-committee"><i class="fas fa-graduation-cap" style="margin-right:4px;font-size:.65rem;"></i>Education</div>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar">NL</div>
+        <div class="member-name">Hon. Nonelona Lim</div>
+        <div class="member-pos">4th Regular Member</div>
+        <div class="member-committee"><i class="fas fa-seedling" style="margin-right:4px;font-size:.65rem;"></i>Agriculture</div>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar">EB</div>
+        <div class="member-name">Hon. Elvin M. Berdin</div>
+        <div class="member-pos">5th Regular Member</div>
+        <div class="member-committee"><i class="fas fa-coins" style="margin-right:4px;font-size:.65rem;"></i>Finance &amp; Appropriations</div>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar">JA</div>
+        <div class="member-name">Hon. Joven P. Arriesgado</div>
+        <div class="member-pos">6th Regular Member</div>
+        <div class="member-committee"><i class="fas fa-leaf" style="margin-right:4px;font-size:.65rem;"></i>Environment</div>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar">VS</div>
+        <div class="member-name">Hon. Vicente R. Sabaulan</div>
+        <div class="member-pos">7th Regular Member</div>
+        <div class="member-committee"><i class="fas fa-store" style="margin-right:4px;font-size:.65rem;"></i>Trade &amp; Commerce</div>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar">RR</div>
+        <div class="member-name">Hon. Ric C. Rubia</div>
+        <div class="member-pos">8th Regular Member</div>
+        <div class="member-committee"><i class="fas fa-shield-halved" style="margin-right:4px;font-size:.65rem;"></i>Public Safety</div>
+      </div>
+    </div>
+
+    <!-- Ex-Officio label and row -->
+    <div class="org-level-label" style="margin-top:28px;"><span><i class="fas fa-star" style="margin-right:6px;color:var(--teal);"></i>Ex-Officio Members</span></div>
+    <div class="org-exofficio-row">
+      <div class="member-card exofficio">
+        <div class="member-avatar">CA</div>
+        <div class="member-name">Hon. Charlie Albao</div>
+        <div class="member-pos">Ex-Officio Member</div>
+        <div class="member-committee"><i class="fas fa-landmark" style="margin-right:4px;font-size:.65rem;"></i>Liga ng mga Barangay President</div>
+      </div>
+      <div class="member-card exofficio">
+        <div class="member-avatar">JD</div>
+        <div class="member-name">Hon. Joross M. Dela Cruz</div>
+        <div class="member-pos">Ex-Officio Member</div>
+        <div class="member-committee"><i class="fas fa-users" style="margin-right:4px;font-size:.65rem;"></i>SKFP President</div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--gray-200);">
+      <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--gray-600);">
+        <div style="width:24px;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-mid));border-radius:2px;"></div>Regular Member
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--gray-600);">
+        <div style="width:24px;height:3px;background:linear-gradient(90deg,var(--teal),#14b8a6);border-radius:2px;"></div>Ex-Officio Member
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--gray-600);">
+        <div style="width:16px;height:16px;border-radius:50%;background:var(--gold);"></div>Presiding Officer
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SB SECRETARY OFFICE -->
+<!-- SB SECRETARY OFFICE — ORG CHART -->
 <section class="secretary-section" id="secretary">
   <div class="container">
     <div class="section-header">
-      <div class="section-badge"><i class="fas fa-briefcase"></i> SB Secretariat</div>
+      <div class="section-badge"><i class="fas fa-sitemap"></i> Secretariat Structure</div>
       <h2 class="section-title">Office of the SB Secretary</h2>
-      <p class="section-sub">The Office of the SB Secretary manages all legislative records, document certifications, and public services of the Sangguniang Bayan.</p>
+      <p class="section-sub">The Secretariat manages all legislative records, document certifications, and citizen-facing public services of the Sangguniang Bayan.</p>
       <div class="divider"></div>
     </div>
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
-      <div style="width:4px;height:28px;background:linear-gradient(180deg,var(--gold),var(--gold-light));border-radius:4px;"></div>
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--navy);">Office of the Secretary to the Sangguniang Bayan</h3>
+
+    <!-- Two-office layout -->
+    <div class="sec-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+
+      <!-- LEFT: Office of the SB Secretary -->
+      <div class="sec-org-wrap">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
+          <div style="width:4px;height:28px;background:linear-gradient(180deg,var(--gold),var(--gold-light));border-radius:4px;"></div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);">Office of the SB Secretary</h3>
+        </div>
+
+        <!-- Head -->
+        <div class="sec-head-row">
+          <div class="sec-head-card">
+            <div class="sec-head-avatar">LG</div>
+            <div class="sec-head-info">
+              <div class="sec-head-pos"><i class="fas fa-crown" style="margin-right:5px;"></i>Secretary to the Sangguniang Bayan</div>
+              <h4>Lea M. Gonzales</h4>
+              <p>Oversees all legislative secretariat functions, certifies documents, and manages SB records and archives.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="org-connector" style="height:32px;"></div>
+
+        <!-- Sub-level label -->
+        <div class="org-level-label" style="margin-bottom:16px;"><span style="font-size:.68rem;">Administrative Staff</span></div>
+
+        <!-- Staff grid 2×2 then single -->
+        <div class="sec-staff-grid">
+          <div class="staff-card">
+            <div class="staff-avatar">BM</div>
+            <div class="staff-name">Bernadette R. Marbella</div>
+            <div class="staff-pos">Planning Officer</div>
+            <div class="staff-desc">Legislative planning, agenda preparation, and coordination of committee activities and public hearings.</div>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">MA</div>
+            <div class="staff-name">Maryjoy Arcillas</div>
+            <div class="staff-pos">Admin Assistant / Clerk</div>
+            <div class="staff-desc">Frontline citizen transactions, correspondence, document requests, and office administration.</div>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">JR</div>
+            <div class="staff-name">James L. Requiron</div>
+            <div class="staff-pos">Admin Assistant / IT</div>
+            <div class="staff-desc">Information technology systems, digital records management, and technical support for legislative operations.</div>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">KB</div>
+            <div class="staff-name">Karen R. Basterechia</div>
+            <div class="staff-pos">Admin Aide / JO Clerk</div>
+            <div class="staff-desc">Proofreading of session transcripts and verbatim records, ensuring accuracy of all official documentation.</div>
+          </div>
+          <div class="staff-card" style="grid-column:1 / -1;max-width:calc(50% - 8px);margin:0 auto;">
+            <div class="staff-avatar">JL</div>
+            <div class="staff-name">Jesciebel Languido</div>
+            <div class="staff-pos">Admin Aide / JO Clerk</div>
+            <div class="staff-desc">Accounting and voucher processing, inventory management, and financial transaction records.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Office of the Vice Mayor -->
+      <div class="sec-org-wrap">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
+          <div style="width:4px;height:28px;background:linear-gradient(180deg,var(--navy),var(--blue-mid));border-radius:4px;"></div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);">Office of the Vice Mayor</h3>
+        </div>
+
+        <!-- Vice Mayor office description card -->
+        <div style="background:linear-gradient(135deg,var(--navy),var(--blue-mid));border-radius:16px;padding:24px;margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;">
+            <div style="width:52px;height:52px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--navy);font-weight:800;flex-shrink:0;border:2px solid rgba(255,255,255,.2);">FA</div>
+            <div>
+              <div style="color:var(--gold-light);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:2px;">Office Head</div>
+              <div style="color:white;font-weight:700;font-size:.95rem;">Hon. Froilan V. Andueza</div>
+              <div style="color:rgba(255,255,255,.6);font-size:.76rem;">Vice Mayor, Claveria, Masbate</div>
+            </div>
+          </div>
+          <p style="color:rgba(255,255,255,.65);font-size:.8rem;line-height:1.6;border-top:1px solid rgba(255,255,255,.1);padding-top:12px;">The Office of the Vice Mayor directs the legislative agenda, presides over all council sessions, and coordinates the overall operations of the Sangguniang Bayan.</p>
+        </div>
+
+        <!-- Sub-level label -->
+        <div class="org-level-label" style="margin-bottom:16px;"><span style="font-size:.68rem;">Support Staff</span></div>
+
+        <!-- Utility aide card -->
+        <div class="vm-office-card">
+          <div class="vm-office-avatar">JS</div>
+          <div>
+            <div class="vm-office-name">Joel Sambajon</div>
+            <div class="vm-office-pos">Utility Aide</div>
+            <div class="vm-office-desc">Provides general utility and maintenance support for the Office of the Vice Mayor.</div>
+          </div>
+        </div>
+
+        <!-- Functions of the office -->
+        <div style="margin-top:24px;background:var(--white);border-radius:12px;padding:20px;border:1px solid var(--gray-200);">
+          <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:14px;"><i class="fas fa-list-check" style="color:var(--gold);margin-right:6px;"></i>Key Functions</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Presides over all regular and special sessions</li>
+            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Signs approved ordinances and resolutions</li>
+            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Appoints standing and special committees</li>
+            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Coordinates with the Municipal Mayor on legislation</li>
+            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Acts as Mayor in case of absence or incapacity</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="staff-grid">
-      <div class="staff-card"><div class="staff-avatar">LG</div><div class="staff-name">Lea M. Gonzales</div><div class="staff-pos">Secretary to the Sangguniang Bayan</div><div class="staff-desc">Oversees all legislative secretariat functions, certifies legislative documents, and manages SB records and archives.</div></div>
-      <div class="staff-card"><div class="staff-avatar">BM</div><div class="staff-name">Bernadette R. Marbella</div><div class="staff-pos">Planning Officer</div><div class="staff-desc">Handles legislative planning, prepares reports and agenda, and coordinates committee activities and public hearings.</div></div>
-      <div class="staff-card"><div class="staff-avatar">MA</div><div class="staff-name">Maryjoy Arcillas</div><div class="staff-pos">Administrative Assistant / Clerk</div><div class="staff-desc">Manages frontline citizen transactions, correspondence, document requests, and office administrative functions.</div></div>
-      <div class="staff-card"><div class="staff-avatar">IT</div><div class="staff-name">James L. Requiron</div><div class="staff-pos">Administrative Assistant / IT</div><div class="staff-desc">Manages the office's information technology systems, digital records, and technical support for legislative operations.</div></div>
-      <div class="staff-card"><div class="staff-avatar">KB</div><div class="staff-name">Karen R. Basterechia</div><div class="staff-pos">Administrative Aide / JO Clerk</div><div class="staff-desc">Handles proofreading of session transcripts and verbatim records, ensuring accuracy and completeness of all official session documentation.</div></div>
-      <div class="staff-card"><div class="staff-avatar">JL</div><div class="staff-name">Jesciebel Languido</div><div class="staff-pos">Administrative Aide / JO Clerk</div><div class="staff-desc">Handles accounting and vouchers document processing, inventory management, and maintains records of all financial transactions.</div></div>
-    </div>
-    <div style="display:flex;align-items:center;gap:10px;margin:36px 0 18px;">
-      <div style="width:4px;height:28px;background:linear-gradient(180deg,var(--navy),var(--blue-mid));border-radius:4px;"></div>
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--navy);">Office of the Vice Mayor</h3>
-    </div>
-    <div class="staff-grid" style="max-width:320px;">
-      <div class="staff-card"><div class="staff-avatar" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);">JS</div><div class="staff-name">Joel Sambajon</div><div class="staff-pos">Utility Aide</div><div class="staff-desc">Provides general utility and maintenance support for the Office of the Vice Mayor.</div></div>
-    </div>
-    <div style="background:var(--white);border-radius:12px;padding:24px;border:1px solid var(--gray-200);margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
-      <div><i class="fas fa-location-dot" style="color:var(--gold);margin-right:8px"></i><strong>Location:</strong> Legislative Hall, Municipal Government Compound, Poblacion District 1, Claveria, Masbate 5419</div>
-      <div><i class="fas fa-clock" style="color:var(--gold);margin-right:8px"></i><strong>Office Hours:</strong> Monday–Friday, 7:00 AM – 6:00 PM</div>
-      <div><i class="fas fa-envelope" style="color:var(--gold);margin-right:8px"></i><strong>Email:</strong> sbclaveria@ymail.com</div>
+
+    <!-- Office info strip -->
+    <div class="office-info-strip">
+      <div class="office-info-item"><i class="fas fa-location-dot"></i><div><strong>Location</strong><br>Legislative Hall, Municipal Government Compound, Poblacion District 1, Claveria, Masbate 5419</div></div>
+      <div class="office-info-item"><i class="fas fa-clock"></i><div><strong>Office Hours</strong><br>Monday – Friday, 7:00 AM – 6:00 PM</div></div>
+      <div class="office-info-item"><i class="fas fa-envelope"></i><div><strong>Email</strong><br>sbclaveria@ymail.com</div></div>
     </div>
   </div>
 </section>
