@@ -596,18 +596,6 @@
       </div>
     </div>
 
-    <!-- Legend -->
-    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--gray-200);">
-      <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--gray-600);">
-        <div style="width:24px;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-mid));border-radius:2px;"></div>Regular Member
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--gray-600);">
-        <div style="width:24px;height:3px;background:linear-gradient(90deg,var(--teal),#14b8a6);border-radius:2px;"></div>Ex-Officio Member
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--gray-600);">
-        <div style="width:16px;height:16px;border-radius:50%;background:var(--gold);"></div>Presiding Officer
-      </div>
-    </div>
   </div>
 </section>
 
@@ -621,113 +609,95 @@
       <div class="divider"></div>
     </div>
 
-    <!-- Two-office layout -->
-    <div class="sec-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+    <!-- ── OFFICE OF THE SB SECRETARY ── -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
+      <div style="width:4px;height:28px;background:linear-gradient(180deg,var(--gold),var(--gold-light));border-radius:4px;"></div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);">Office of the Secretary to the Sangguniang Bayan</h3>
+    </div>
 
-      <!-- LEFT: Office of the SB Secretary -->
-      <div class="sec-org-wrap">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
-          <div style="width:4px;height:28px;background:linear-gradient(180deg,var(--gold),var(--gold-light));border-radius:4px;"></div>
-          <h3 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);">Office of the SB Secretary</h3>
-        </div>
-
-        <!-- Head -->
-        <div class="sec-head-row">
-          <div class="sec-head-card">
-            <div class="sec-head-avatar">LG</div>
-            <div class="sec-head-info">
-              <div class="sec-head-pos"><i class="fas fa-crown" style="margin-right:5px;"></i>Secretary to the Sangguniang Bayan</div>
-              <h4>Lea M. Gonzales</h4>
-              <p>Oversees all legislative secretariat functions, certifies documents, and manages SB records and archives.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Connector -->
-        <div class="org-connector" style="height:32px;"></div>
-
-        <!-- Sub-level label -->
-        <div class="org-level-label" style="margin-bottom:16px;"><span style="font-size:.68rem;">Administrative Staff</span></div>
-
-        <!-- Staff grid 2×2 then single -->
-        <div class="sec-staff-grid">
-          <div class="staff-card">
-            <div class="staff-avatar">BM</div>
-            <div class="staff-name">Bernadette R. Marbella</div>
-            <div class="staff-pos">Planning Officer</div>
-            <div class="staff-desc">Legislative planning, agenda preparation, and coordination of committee activities and public hearings.</div>
-          </div>
-          <div class="staff-card">
-            <div class="staff-avatar">MA</div>
-            <div class="staff-name">Maryjoy Arcillas</div>
-            <div class="staff-pos">Admin Assistant / Clerk</div>
-            <div class="staff-desc">Frontline citizen transactions, correspondence, document requests, and office administration.</div>
-          </div>
-          <div class="staff-card">
-            <div class="staff-avatar">JR</div>
-            <div class="staff-name">James L. Requiron</div>
-            <div class="staff-pos">Admin Assistant / IT</div>
-            <div class="staff-desc">Information technology systems, digital records management, and technical support for legislative operations.</div>
-          </div>
-          <div class="staff-card">
-            <div class="staff-avatar">KB</div>
-            <div class="staff-name">Karen R. Basterechia</div>
-            <div class="staff-pos">Admin Aide / JO Clerk</div>
-            <div class="staff-desc">Proofreading of session transcripts and verbatim records, ensuring accuracy of all official documentation.</div>
-          </div>
-          <div class="staff-card" style="grid-column:1 / -1;max-width:calc(50% - 8px);margin:0 auto;">
-            <div class="staff-avatar">JL</div>
-            <div class="staff-name">Jesciebel Languido</div>
-            <div class="staff-pos">Admin Aide / JO Clerk</div>
-            <div class="staff-desc">Accounting and voucher processing, inventory management, and financial transaction records.</div>
-          </div>
+    <!-- Head of Office -->
+    <div class="sec-head-row">
+      <div class="sec-head-card">
+        <div class="sec-head-avatar">LG</div>
+        <div class="sec-head-info">
+          <div class="sec-head-pos"><i class="fas fa-crown" style="margin-right:5px;"></i>Secretary to the Sangguniang Bayan</div>
+          <h4>Lea M. Gonzales</h4>
+          <p>Oversees all legislative secretariat functions, certifies documents, and manages SB records and archives.</p>
         </div>
       </div>
+    </div>
 
-      <!-- RIGHT: Office of the Vice Mayor -->
-      <div class="sec-org-wrap">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
-          <div style="width:4px;height:28px;background:linear-gradient(180deg,var(--navy),var(--blue-mid));border-radius:4px;"></div>
-          <h3 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);">Office of the Vice Mayor</h3>
+    <!-- Connector -->
+    <div class="org-connector" style="height:32px;"></div>
+
+    <!-- Administrative Staff label -->
+    <div class="org-level-label" style="margin-bottom:20px;"><span style="font-size:.68rem;">Administrative Staff</span></div>
+
+    <!-- Staff grid — 3 columns, all 5 staff aligned in the grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px;">
+      <div class="staff-card">
+        <div class="staff-avatar">BM</div>
+        <div class="staff-name">Bernadette R. Marbella</div>
+        <div class="staff-pos">Planning Officer</div>
+        <div class="staff-desc">Legislative planning, agenda preparation, and coordination of committee activities and public hearings.</div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-avatar">MA</div>
+        <div class="staff-name">Maryjoy Arcillas</div>
+        <div class="staff-pos">Admin Assistant / Clerk</div>
+        <div class="staff-desc">Frontline citizen transactions, correspondence, document requests, and office administration.</div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-avatar">JR</div>
+        <div class="staff-name">James L. Requiron</div>
+        <div class="staff-pos">Admin Assistant / IT</div>
+        <div class="staff-desc">Information technology systems, digital records management, and technical support for legislative operations.</div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-avatar">KB</div>
+        <div class="staff-name">Karen R. Basterechia</div>
+        <div class="staff-pos">Admin Aide / JO Clerk</div>
+        <div class="staff-desc">Proofreading of session transcripts and verbatim records, ensuring accuracy of all official documentation.</div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-avatar">JL</div>
+        <div class="staff-name">Jesciebel Languido</div>
+        <div class="staff-pos">Admin Aide / JO Clerk</div>
+        <div class="staff-desc">Accounting and voucher processing, inventory management, and financial transaction records.</div>
+      </div>
+    </div>
+
+    <!-- ── OFFICE OF THE VICE MAYOR ── -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
+      <div style="width:4px;height:28px;background:linear-gradient(180deg,var(--navy),var(--blue-mid));border-radius:4px;"></div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);">Office of the Vice Mayor</h3>
+    </div>
+
+    <!-- Vice Mayor head card -->
+    <div class="sec-head-row">
+      <div class="sec-head-card">
+        <div class="sec-head-avatar" style="background:var(--gold);color:var(--navy);">FA</div>
+        <div class="sec-head-info">
+          <div class="sec-head-pos"><i class="fas fa-crown" style="margin-right:5px;"></i>Office Head — Vice Mayor</div>
+          <h4>Hon. Froilan V. Andueza</h4>
+          <p>Presides over all council sessions, signs approved ordinances and resolutions, and directs the overall legislative operations of the Sangguniang Bayan.</p>
         </div>
+      </div>
+    </div>
 
-        <!-- Vice Mayor office description card -->
-        <div style="background:linear-gradient(135deg,var(--navy),var(--blue-mid));border-radius:16px;padding:24px;margin-bottom:20px;">
-          <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;">
-            <div style="width:52px;height:52px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--navy);font-weight:800;flex-shrink:0;border:2px solid rgba(255,255,255,.2);">FA</div>
-            <div>
-              <div style="color:var(--gold-light);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:2px;">Office Head</div>
-              <div style="color:white;font-weight:700;font-size:.95rem;">Hon. Froilan V. Andueza</div>
-              <div style="color:rgba(255,255,255,.6);font-size:.76rem;">Vice Mayor, Claveria, Masbate</div>
-            </div>
-          </div>
-          <p style="color:rgba(255,255,255,.65);font-size:.8rem;line-height:1.6;border-top:1px solid rgba(255,255,255,.1);padding-top:12px;">The Office of the Vice Mayor directs the legislative agenda, presides over all council sessions, and coordinates the overall operations of the Sangguniang Bayan.</p>
-        </div>
+    <!-- Connector -->
+    <div class="org-connector" style="height:32px;"></div>
 
-        <!-- Sub-level label -->
-        <div class="org-level-label" style="margin-bottom:16px;"><span style="font-size:.68rem;">Support Staff</span></div>
+    <!-- Support Staff label -->
+    <div class="org-level-label" style="margin-bottom:20px;"><span style="font-size:.68rem;">Support Staff</span></div>
 
-        <!-- Utility aide card -->
-        <div class="vm-office-card">
-          <div class="vm-office-avatar">JS</div>
-          <div>
-            <div class="vm-office-name">Joel Sambajon</div>
-            <div class="vm-office-pos">Utility Aide</div>
-            <div class="vm-office-desc">Provides general utility and maintenance support for the Office of the Vice Mayor.</div>
-          </div>
-        </div>
-
-        <!-- Functions of the office -->
-        <div style="margin-top:24px;background:var(--white);border-radius:12px;padding:20px;border:1px solid var(--gray-200);">
-          <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:14px;"><i class="fas fa-list-check" style="color:var(--gold);margin-right:6px;"></i>Key Functions</div>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
-            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Presides over all regular and special sessions</li>
-            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Signs approved ordinances and resolutions</li>
-            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Appoints standing and special committees</li>
-            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Coordinates with the Municipal Mayor on legislation</li>
-            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Acts as Mayor in case of absence or incapacity</li>
-          </ul>
-        </div>
+    <!-- Joel Sambajon — centered single card -->
+    <div style="display:flex;justify-content:center;margin-bottom:40px;">
+      <div class="staff-card" style="max-width:280px;width:100%;">
+        <div class="staff-avatar" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);border-color:var(--navy);">JS</div>
+        <div class="staff-name">Joel Sambajon</div>
+        <div class="staff-pos">Utility Aide</div>
+        <div class="staff-desc">Provides general utility and maintenance support for the Office of the Vice Mayor.</div>
       </div>
     </div>
 
@@ -739,7 +709,6 @@
     </div>
   </div>
 </section>
-
 <!-- SESSIONS CALENDAR -->
 <section class="sessions-section" id="sessions">
   <div class="container">
