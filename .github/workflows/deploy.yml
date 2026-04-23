@@ -7,10 +7,14 @@ on:
     branches: [main]
 
 jobs:
-  # ── Test ──────────────────────────────────────────────────────────────────
+  # ── Test backend ──────────────────────────────────────────────────────────
   test:
     name: Run Backend Tests
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: backend      # all steps run inside backend/ by default
 
     steps:
       - name: Checkout
@@ -20,21 +24,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          # No 'cache:' here — avoids the lock-file lookup that causes the error
+          # No cache: option — avoids lock-file scanning errors
 
       - name: Install dependencies
-        run: npm install
-        working-directory: backend
+        # --omit=optional skips better-sqlite3 native compile entirely
+        # sql.js (pure JS) is used automatically as the fallback
+        run: npm install --omit=optional
 
-      - name: Run tests
+      - name: Run test suite
         run: node tests/run.js
-        working-directory: backend
         env:
           NODE_ENV: test
           JWT_SECRET: ci_test_jwt_secret
           SESSION_SECRET: ci_test_session_secret
 
-  # ── Deploy backend to Render ──────────────────────────────────────────────
+  # ── Deploy backend → Render ───────────────────────────────────────────────
   deploy-backend:
     name: Deploy to Render
     runs-on: ubuntu-latest
@@ -51,7 +55,7 @@ jobs:
             echo "Skipping — RENDER_DEPLOY_HOOK_URL secret not set."
           fi
 
-  # ── Deploy frontend to GitHub Pages ──────────────────────────────────────
+  # ── Deploy frontend → GitHub Pages ───────────────────────────────────────
   deploy-pages:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
@@ -74,11 +78,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload site
+      - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
-      - name: Deploy
+      - name: Deploy to Pages
         id: deployment
         uses: actions/deploy-pages@v4
