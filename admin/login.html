@@ -55,8 +55,8 @@ h1{font-family:'Playfair Display',serif;color:#0a1f44;font-size:1.4rem;margin-bo
 </div>
 
 <script>
-const API = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost')
-  ? 'http://localhost:5500' : '';
+// Backend serves frontend, so API is always on the same host/port
+const API = window.location.origin;
 
 function loginWithGitHub() {
   window.location.href = `${API}/api/auth/github`;

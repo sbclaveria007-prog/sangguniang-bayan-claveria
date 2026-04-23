@@ -1,0 +1,93 @@
+## render.yaml
+## Full deployment configuration for Render.com
+## Docs: https://render.com/docs/yaml-spec
+
+services:
+  ## ── Web Service (Backend API + Frontend) ─────────────────────────────────
+  - type: web
+    name: sb-claveria
+    runtime: node
+    region: singapore          # Closest region to Claveria, Masbate
+    plan: free                 # Free tier
+
+    ## Root directory — all commands run from here
+    rootDir: backend
+
+    ## Build command — install deps, init DB, seed data
+    ## better-sqlite3 is optional; sql.js is the guaranteed fallback
+    buildCommand: |
+      npm install --omit=dev &&
+      node db/init.js &&
+      node db/seed.js
+
+    ## Start command — just run the server (DB already seeded in build)
+    startCommand: node server.js
+
+    ## Node version — pin to LTS 20 to match local dev
+    ## This matches the .nvmrc in the repo root
+    envVars:
+      - key: NODE_VERSION
+        value: 20.11.1
+
+      - key: NODE_ENV
+        value: production
+
+      ## PORT is automatically set by Render — do not override here
+
+      ## Session & JWT secrets — set these in Render dashboard, NOT here
+      ## Go to: Dashboard → Your Service → Environment → Add Environment Variable
+      - key: SESSION_SECRET
+        generateValue: true    ## Render auto-generates a secure random value
+
+      - key: JWT_SECRET
+        generateValue: true    ## Render auto-generates a secure random value
+
+      ## GitHub OAuth — set these in Render dashboard
+      - key: GITHUB_CLIENT_ID
+        sync: false            ## Must be set manually in Render dashboard
+
+      - key: GITHUB_CLIENT_SECRET
+        sync: false            ## Must be set manually in Render dashboard
+
+      ## This will be: https://sb-claveria.onrender.com/api/auth/github/callback
+      ## Replace sb-claveria with your actual Render service name
+      - key: GITHUB_CALLBACK_URL
+        value: https://sb-claveria.onrender.com/api/auth/github/callback
+
+      - key: FRONTEND_URL
+        value: https://sb-claveria.onrender.com
+
+      ## GitHub repo for publishing legislative documents
+      - key: GITHUB_REPO_OWNER
+        sync: false            ## Set in Render dashboard
+
+      - key: GITHUB_REPO_NAME
+        value: sangguniang-bayan-claveria
+
+      - key: GITHUB_REPO_BRANCH
+        value: main
+
+      ## Admin users — your GitHub usernames (comma-separated)
+      - key: ADMIN_GITHUB_USERS
+        sync: false            ## Set in Render dashboard
+
+      - key: STAFF_GITHUB_USERS
+        sync: false            ## Set in Render dashboard
+
+    ## Health check path
+    healthCheckPath: /api/health
+
+    ## Auto-deploy when you push to main branch
+    autoDeploy: true
+
+## ── Optional: Add Render PostgreSQL for persistent data ──────────────────
+## Uncomment the database section below if you want persistent storage.
+## Free tier: 256MB, 97-day expiry (then $7/month to continue).
+## Without this, the app uses in-memory SQLite that resets on each deploy.
+##
+## databases:
+##   - name: sb-claveria-db
+##     databaseName: sb_claveria
+##     user: sb_claveria_user
+##     plan: free
+##     region: singapore

@@ -1,6 +1,6 @@
 # OS files
 .DS_Store
-Thumbs.db
+Thumbbs.db
 desktop.ini
 
 # Editor directories
@@ -13,12 +13,14 @@ desktop.ini
 *.log
 npm-debug.log*
 
-# Dependencies (if a build system is added later)
+# node_modules — but KEEP lock files (GitHub Actions and Render need them)
 node_modules/
 dist/
 build/
+!package-lock.json
+!backend/package-lock.json
 
-# Environment files
+# Environment files — never commit secrets
 .env
 .env.local
 
@@ -27,7 +29,7 @@ build/
 *.bak
 *.swp
 
-# Backend
+# Backend runtime files
 backend/node_modules/
 backend/db/*.db
 backend/.env
