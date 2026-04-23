@@ -9,6 +9,9 @@ const rateLimit    = require('express-rate-limit');
 const path         = require('path');
 
 const { attachUser } = require('./middleware/auth');
+const { initDb } = require('./db/connection');
+
+// DB is initialized in the startup block below
 
 // ── Routes ─────────────────────────────────────────────────────────────────
 const authRouter      = require('./routes/auth');
@@ -97,15 +100,19 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// ── Serve static frontend (production) ────────────────────────────────────
-if (NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '..')));
-  app.get('*', (req, res) => {
-    if (!req.path.startsWith('/api')) {
-      res.sendFile(path.join(__dirname, '..', 'index.html'));
-    }
+// ── Serve static frontend (always — works for both dev and production) ─────
+// This means the entire site runs on http://localhost:3000
+// No separate static server needed — just open http://localhost:3000
+app.use(express.static(path.join(__dirname, '..')));
+
+// SPA fallback: serve index.html for any non-API route
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api')) return next();
+  const filePath = path.join(__dirname, '..', req.path);
+  res.sendFile(filePath, err => {
+    if (err) res.sendFile(path.join(__dirname, '..', 'index.html'));
   });
-}
+});
 
 // ── 404 handler ────────────────────────────────────────────────────────────
 app.use((req, res) => {
@@ -126,10 +133,34 @@ app.use((err, req, res, _next) => {
 
 // ── Start ───────────────────────────────────────────────────────────────────
 if (require.main === module) {
-  app.listen(PORT, () => {
-    console.log(`SB Claveria API running on http://localhost:${PORT}`);
-    console.log(`Environment: ${NODE_ENV}`);
-    console.log(`Frontend:    ${FRONTEND_URL}`);
+  // Initialise DB (async — handles both better-sqlite3 and sql.js)
+  initDb().then(() => {
+    // Auto-init schema and seed if empty
+    const { initDatabase } = require('./db/init');
+    const { seedDatabase } = require('./db/seed');
+    const { getDb }        = require('./db/connection');
+
+    initDatabase();
+
+    const db = getDb();
+    try {
+      const cnt = db.prepare('SELECT COUNT(*) as cnt FROM members').get();
+      if (!cnt || cnt.cnt === 0) {
+        seedDatabase();
+        console.log('[startup] Database seeded with initial SB Claveria data.');
+      } else {
+        console.log(`[startup] Database ready (${cnt.cnt} members loaded).`);
+      }
+    } catch { seedDatabase(); }
+
+    app.listen(PORT, () => {
+      console.log(`SB Claveria API running on http://localhost:${PORT}`);
+      console.log(`Environment: ${NODE_ENV}`);
+      console.log(`Frontend:    ${FRONTEND_URL}`);
+    });
+  }).catch(err => {
+    console.error('[startup] Fatal DB error:', err.message);
+    process.exit(1);
   });
 }
 

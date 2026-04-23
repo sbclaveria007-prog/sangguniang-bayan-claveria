@@ -20,10 +20,9 @@ process.env.PORT            = '0'; // OS assigns port
 
 const { initDatabase } = require('../db/init');
 const { seedDatabase } = require('../db/seed');
-const { closeDb }      = require('../db/connection');
+const { closeDb, initDb } = require('../db/connection');
 
-initDatabase(TEST_DB);
-seedDatabase();
+// DB init — handled inside main() async function below
 
 const app    = require('../server');
 const { generateToken } = require('../middleware/auth');
@@ -1024,6 +1023,11 @@ async function main() {
   console.log('\x1b[1m\x1b[34m  SB Claveria Backend — Full Integration Tests\x1b[0m');
   console.log('\x1b[1m\x1b[34m════════════════════════════════════════════════\x1b[0m');
   console.log(`  DB:  ${TEST_DB}`);
+
+  // Initialise DB (supports both better-sqlite3 and sql.js)
+  await initDb();
+  initDatabase(TEST_DB);
+  seedDatabase();
 
   await startServer();
   console.log(`  API: ${baseUrl}\n`);

@@ -1,14 +1,13 @@
 'use strict';
-const Database = require('better-sqlite3');
-const path = require('path');
+/**
+ * db/init.js — Initialize database schema.
+ * Works with both better-sqlite3 (local) and sql.js (Render/cloud).
+ */
+const { getDb, DB_PATH } = require('./connection');
 
-const DB_PATH = process.env.DB_PATH || path.join(__dirname, 'sb_claveria.db');
-
-function initDatabase(dbPath) {
-  const p = dbPath || DB_PATH;
-  const db = new Database(p);
-  db.pragma('journal_mode = WAL');
-  db.pragma('foreign_keys = ON');
+function initDatabase() {
+  console.log('[init] Initialising schema...');
+  const db = getDb();
 
   db.exec(`
     CREATE TABLE IF NOT EXISTS users (
@@ -27,7 +26,7 @@ function initDatabase(dbPath) {
     CREATE TABLE IF NOT EXISTS documents (
       id            INTEGER PRIMARY KEY AUTOINCREMENT,
       doc_number    TEXT NOT NULL,
-      doc_type      TEXT NOT NULL CHECK(doc_type IN ('ordinance','resolution','committee_report','minutes')),
+      doc_type      TEXT NOT NULL,
       title         TEXT NOT NULL,
       summary       TEXT,
       full_text     TEXT,
@@ -48,13 +47,13 @@ function initDatabase(dbPath) {
 
     CREATE TABLE IF NOT EXISTS council_sessions (
       id           INTEGER PRIMARY KEY AUTOINCREMENT,
-      session_type TEXT NOT NULL DEFAULT 'regular' CHECK(session_type IN ('regular','special','committee')),
+      session_type TEXT NOT NULL DEFAULT 'regular',
       session_date TEXT NOT NULL,
       start_time   TEXT NOT NULL DEFAULT '09:00',
       location     TEXT NOT NULL DEFAULT 'Legislative Hall, Municipal Government Compound',
       agenda       TEXT,
       minutes_doc  INTEGER REFERENCES documents(id),
-      status       TEXT NOT NULL DEFAULT 'scheduled' CHECK(status IN ('scheduled','ongoing','adjourned','cancelled')),
+      status       TEXT NOT NULL DEFAULT 'scheduled',
       created_at   TEXT NOT NULL DEFAULT (datetime('now'))
     );
 
@@ -69,7 +68,7 @@ function initDatabase(dbPath) {
       title          TEXT NOT NULL,
       description    TEXT NOT NULL,
       reference_laws TEXT,
-      status         TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending','review','endorsed','declined','enacted')),
+      status         TEXT NOT NULL DEFAULT 'pending',
       votes_for      INTEGER NOT NULL DEFAULT 0,
       votes_against  INTEGER NOT NULL DEFAULT 0,
       reviewer_notes TEXT,
@@ -81,9 +80,9 @@ function initDatabase(dbPath) {
 
     CREATE TABLE IF NOT EXISTS proposal_votes (
       id          INTEGER PRIMARY KEY AUTOINCREMENT,
-      proposal_id INTEGER NOT NULL REFERENCES proposals(id) ON DELETE CASCADE,
+      proposal_id INTEGER NOT NULL REFERENCES proposals(id),
       voter_ip    TEXT NOT NULL,
-      direction   INTEGER NOT NULL CHECK(direction IN (1,-1)),
+      direction   INTEGER NOT NULL,
       created_at  TEXT NOT NULL DEFAULT (datetime('now')),
       UNIQUE(proposal_id, voter_ip)
     );
@@ -98,7 +97,7 @@ function initDatabase(dbPath) {
       doc_reference   TEXT,
       purpose         TEXT NOT NULL,
       release_method  TEXT NOT NULL DEFAULT 'pickup',
-      status          TEXT NOT NULL DEFAULT 'submitted' CHECK(status IN ('submitted','processing','ready','released','cancelled')),
+      status          TEXT NOT NULL DEFAULT 'submitted',
       assigned_to     INTEGER REFERENCES users(id),
       notes           TEXT,
       fee_paid        INTEGER NOT NULL DEFAULT 0,
@@ -109,11 +108,11 @@ function initDatabase(dbPath) {
     CREATE TABLE IF NOT EXISTS service_apps (
       id             INTEGER PRIMARY KEY AUTOINCREMENT,
       ref_number     TEXT NOT NULL UNIQUE,
-      service_type   TEXT NOT NULL CHECK(service_type IN ('cso_accreditation','marina_resolution','tricycle_franchise','cno')),
+      service_type   TEXT NOT NULL,
       applicant_name TEXT NOT NULL,
       contact_number TEXT NOT NULL,
       details        TEXT,
-      status         TEXT NOT NULL DEFAULT 'submitted' CHECK(status IN ('submitted','processing','approved','rejected')),
+      status         TEXT NOT NULL DEFAULT 'submitted',
       assigned_to    INTEGER REFERENCES users(id),
       notes          TEXT,
       created_at     TEXT NOT NULL DEFAULT (datetime('now')),
@@ -156,7 +155,7 @@ function initDatabase(dbPath) {
       doc_id       INTEGER REFERENCES documents(id),
       commit_sha   TEXT,
       commit_url   TEXT,
-      status       TEXT NOT NULL DEFAULT 'success' CHECK(status IN ('success','error')),
+      status       TEXT NOT NULL DEFAULT 'success',
       error_msg    TEXT,
       triggered_by INTEGER REFERENCES users(id),
       created_at   TEXT NOT NULL DEFAULT (datetime('now'))
@@ -173,22 +172,21 @@ function initDatabase(dbPath) {
       created_at  TEXT NOT NULL DEFAULT (datetime('now'))
     );
 
-    CREATE INDEX IF NOT EXISTS idx_documents_type       ON documents(doc_type);
-    CREATE INDEX IF NOT EXISTS idx_documents_status     ON documents(status);
-    CREATE INDEX IF NOT EXISTS idx_documents_sector     ON documents(sector);
-    CREATE INDEX IF NOT EXISTS idx_proposals_status     ON proposals(status);
-    CREATE INDEX IF NOT EXISTS idx_doc_requests_status  ON doc_requests(status);
-    CREATE INDEX IF NOT EXISTS idx_sessions_date        ON council_sessions(session_date);
-    CREATE INDEX IF NOT EXISTS idx_news_published       ON news(published);
+    CREATE INDEX IF NOT EXISTS idx_documents_type      ON documents(doc_type);
+    CREATE INDEX IF NOT EXISTS idx_documents_status    ON documents(status);
+    CREATE INDEX IF NOT EXISTS idx_documents_sector    ON documents(sector);
+    CREATE INDEX IF NOT EXISTS idx_proposals_status    ON proposals(status);
+    CREATE INDEX IF NOT EXISTS idx_doc_requests_status ON doc_requests(status);
+    CREATE INDEX IF NOT EXISTS idx_sessions_date       ON council_sessions(session_date);
+    CREATE INDEX IF NOT EXISTS idx_news_published      ON news(published);
   `);
 
-  db.close();
-  return p;
+  console.log('[init] Schema ready.');
 }
 
 if (require.main === module) {
-  const p = initDatabase();
-  console.log('Database initialized:', p);
+  initDatabase();
+  process.exit(0);
 }
 
 module.exports = { initDatabase, DB_PATH };
