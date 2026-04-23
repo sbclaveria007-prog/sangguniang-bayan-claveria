@@ -153,13 +153,6 @@ function showResults(results, q) {
 }
 
 document.getElementById('mainSearch').addEventListener('keypress', e => { if (e.key === 'Enter') doSearch(); });
-document.getElementById('headerSearch').addEventListener('keypress', e => {
-  if (e.key === 'Enter') {
-    document.getElementById('mainSearch').value = document.getElementById('headerSearch').value;
-    doSearch();
-    document.getElementById('searchResults').scrollIntoView({behavior:'smooth'});
-  }
-});
 
 // ---- FILTER LAWS ----
 function filterLaws(sector, btn) {

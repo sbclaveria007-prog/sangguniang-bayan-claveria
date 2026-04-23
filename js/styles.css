@@ -203,29 +203,113 @@ section{padding:72px 0;}
 .law-card-footer{padding:12px 20px;border-top:1px solid var(--gray-100);display:flex;justify-content:space-between;align-items:center;}
 
 /* ---- ABOUT / COUNCIL ---- */
-.council-section{background:var(--white);}
-.vm-card{background:linear-gradient(135deg,var(--navy),var(--blue-mid));border-radius:16px;padding:36px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin-bottom:40px;box-shadow:var(--shadow-lg);}
-.vm-avatar{width:110px;height:110px;border-radius:50%;background:var(--gold);border:4px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--navy);flex-shrink:0;}
-.vm-info h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:white;margin-bottom:4px;}
-.vm-info .vm-role{color:var(--gold-light);font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;}
-.vm-info p{color:rgba(255,255,255,.75);font-size:.88rem;line-height:1.6;}
-.members-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
-.member-card{background:var(--off-white);border-radius:12px;padding:20px;text-align:center;border:1px solid var(--gray-200);transition:var(--transition);}
-.member-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--blue);}
-.member-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-mid));margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;color:white;border:3px solid var(--gold);}
-.member-name{font-weight:700;color:var(--navy);font-size:.92rem;margin-bottom:4px;}
-.member-pos{color:var(--gray-400);font-size:.78rem;margin-bottom:6px;}
-.member-committee{font-size:.75rem;color:var(--blue);font-weight:600;}
+/* ---- ABOUT THE SB — ORG CHART ---- */
+.council-section{background:linear-gradient(180deg,var(--white) 0%,var(--gray-100) 100%);}
+
+/* Top-level presiding officer node */
+.org-top{display:flex;justify-content:center;margin-bottom:0;position:relative;}
+.org-top::after{content:'';position:absolute;bottom:-32px;left:50%;width:2px;height:32px;background:var(--gray-200);}
+.presiding-card{background:linear-gradient(135deg,var(--navy) 0%,var(--blue-mid) 100%);border-radius:20px;padding:32px 40px;display:flex;align-items:center;gap:28px;box-shadow:0 12px 48px rgba(10,31,68,.22);max-width:680px;width:100%;position:relative;}
+.presiding-card::before{content:'PRESIDING OFFICER';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.65rem;font-weight:800;letter-spacing:.12em;padding:4px 16px;border-radius:20px;white-space:nowrap;}
+.presiding-avatar{width:96px;height:96px;border-radius:50%;background:var(--gold);border:4px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--navy);font-weight:800;flex-shrink:0;box-shadow:0 4px 20px rgba(201,162,39,.4);}
+.presiding-info h3{font-family:'Playfair Display',serif;font-size:1.35rem;color:white;margin-bottom:3px;}
+.presiding-role{color:var(--gold-light);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;}
+.presiding-info p{color:rgba(255,255,255,.72);font-size:.84rem;line-height:1.6;margin-bottom:10px;}
+.presiding-contact{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.55);font-size:.78rem;}
+.presiding-contact i{color:var(--gold-light);}
+
+/* Org divider line from presiding to members */
+.org-connector{display:flex;justify-content:center;margin:0;position:relative;height:48px;}
+.org-connector::before{content:'';position:absolute;top:0;left:50%;width:2px;height:100%;background:var(--gray-200);}
+
+/* Section label for members */
+.org-level-label{text-align:center;margin-bottom:28px;position:relative;}
+.org-level-label span{background:var(--white);border:1.5px solid var(--gray-200);color:var(--navy);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:5px 18px;border-radius:20px;position:relative;z-index:1;}
+.org-level-label::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:var(--gray-200);}
+
+/* Regular members grid */
+.members-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;}
+.member-card{background:var(--white);border-radius:14px;padding:20px 16px;text-align:center;border:1px solid var(--gray-200);transition:var(--transition);position:relative;overflow:hidden;}
+.member-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-mid));}
+.member-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--blue);}
+.member-card.exofficio::before{background:linear-gradient(90deg,var(--teal),#14b8a6);}
+.member-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-mid));margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.3rem;color:white;border:3px solid var(--gold);}
+.member-card.exofficio .member-avatar{background:linear-gradient(135deg,var(--teal),#14b8a6);border-color:var(--teal);}
+.member-name{font-weight:700;color:var(--navy);font-size:.88rem;margin-bottom:4px;line-height:1.3;}
+.member-pos{color:var(--gray-400);font-size:.73rem;margin-bottom:8px;font-weight:500;}
+.member-committee{font-size:.72rem;color:var(--blue);font-weight:600;background:#dbeafe;padding:3px 8px;border-radius:6px;display:inline-block;line-height:1.4;}
+.member-card.exofficio .member-committee{color:var(--teal);background:#ccfbf1;}
+
+/* Ex-officio sub-section */
+.org-exofficio-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:460px;margin:0 auto;}
+
+/* Responsive org chart */
+@media(max-width:1024px){.members-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:768px){
+  .presiding-card{flex-direction:column;text-align:center;padding:28px 20px;}
+  .presiding-card::before{font-size:.6rem;}
+  .members-grid{grid-template-columns:repeat(2,1fr);}
+  .org-exofficio-row{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .members-grid{grid-template-columns:1fr 1fr;}
+  .org-exofficio-row{grid-template-columns:1fr 1fr;}
+}
 
 /* ---- SB SECRETARY OFFICE ---- */
+/* ---- SB SECRETARY OFFICE — ORG CHART ---- */
 .secretary-section{background:var(--off-white);}
-.staff-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;}
-.staff-card{background:var(--white);border-radius:12px;padding:24px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--gray-200);transition:var(--transition);}
-.staff-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
-.staff-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--blue-mid));margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.6rem;color:white;border:3px solid var(--gold);}
-.staff-name{font-weight:700;color:var(--navy);font-size:.95rem;margin-bottom:3px;}
-.staff-pos{color:var(--gold);font-size:.8rem;font-weight:600;margin-bottom:6px;}
-.staff-desc{color:var(--gray-600);font-size:.78rem;line-height:1.5;}
+
+/* Secretary org chart tree */
+.sec-org-wrap{position:relative;}
+
+/* Head of office node */
+.sec-head-row{display:flex;justify-content:center;margin-bottom:0;position:relative;}
+.sec-head-row::after{content:'';position:absolute;bottom:-32px;left:50%;width:2px;height:32px;background:var(--gray-200);}
+.sec-head-card{background:linear-gradient(135deg,var(--navy),var(--blue-mid));border-radius:18px;padding:28px 36px;display:flex;align-items:center;gap:22px;box-shadow:var(--shadow-lg);max-width:580px;width:100%;position:relative;}
+.sec-head-card::before{content:'HEAD OF OFFICE';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.65rem;font-weight:800;letter-spacing:.1em;padding:4px 14px;border-radius:20px;white-space:nowrap;}
+.sec-head-avatar{width:80px;height:80px;border-radius:50%;background:var(--gold);border:3px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--navy);font-weight:800;flex-shrink:0;}
+.sec-head-info h4{font-family:'Playfair Display',serif;font-size:1.15rem;color:white;margin-bottom:2px;}
+.sec-head-info .sec-head-pos{color:var(--gold-light);font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
+.sec-head-info p{color:rgba(255,255,255,.68);font-size:.81rem;line-height:1.5;}
+
+/* Staff grid below head */
+.sec-staff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;}
+.sec-staff-grid::before{content:'';position:absolute;top:-32px;left:50%;width:2px;height:32px;background:var(--gray-200);}
+/* Horizontal line across top of grid */
+.sec-staff-grid::after{content:'';position:absolute;top:-1px;left:16.67%;right:16.67%;height:1px;background:var(--gray-200);}
+
+.staff-card{background:var(--white);border-radius:14px;padding:20px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--gray-200);transition:var(--transition);position:relative;overflow:hidden;}
+.staff-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-mid));}
+.staff-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--blue);}
+.staff-avatar{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--blue-mid));margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;color:white;border:3px solid var(--gold);}
+.staff-name{font-weight:700;color:var(--navy);font-size:.9rem;margin-bottom:3px;line-height:1.3;}
+.staff-pos{color:var(--gold);font-size:.74rem;font-weight:700;margin-bottom:8px;line-height:1.3;}
+.staff-desc{color:var(--gray-600);font-size:.76rem;line-height:1.5;}
+
+/* Vice Mayor office separate card */
+.vm-office-card{background:var(--white);border:1.5px solid var(--gray-200);border-radius:14px;padding:20px;display:flex;align-items:center;gap:16px;box-shadow:var(--shadow);transition:var(--transition);}
+.vm-office-card:hover{box-shadow:var(--shadow-lg);}
+.vm-office-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy);font-weight:800;flex-shrink:0;border:3px solid var(--gold);}
+.vm-office-name{font-weight:700;color:var(--navy);font-size:.9rem;margin-bottom:2px;}
+.vm-office-pos{color:var(--gold);font-size:.74rem;font-weight:700;margin-bottom:4px;}
+.vm-office-desc{color:var(--gray-600);font-size:.76rem;line-height:1.4;}
+
+/* Office info strip */
+.office-info-strip{background:var(--white);border-radius:12px;padding:20px 24px;border:1px solid var(--gray-200);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:32px;}
+.office-info-item{display:flex;align-items:flex-start;gap:10px;font-size:.84rem;color:var(--gray-600);}
+.office-info-item i{color:var(--gold);margin-top:2px;flex-shrink:0;width:16px;}
+.office-info-item strong{color:var(--navy);}
+
+@media(max-width:768px){
+  .sec-staff-grid{grid-template-columns:repeat(2,1fr);}
+  .sec-staff-grid::after{display:none;}
+  .sec-head-card{flex-direction:column;text-align:center;}
+}
+@media(max-width:480px){.sec-staff-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){
+  .sec-two-col{grid-template-columns:1fr !important;}
+}
 
 /* ---- SESSIONS ---- */
 .sessions-section{background:var(--white);}
@@ -511,7 +595,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);}
   .stats-grid{grid-template-columns:1fr 1fr;}
   .search-form{flex-direction:column;border-radius:12px;}
   .search-form select{padding:10px 16px;border-left:none;border-top:1px solid var(--gray-200);}
-  .vm-card{grid-template-columns:1fr;text-align:center;}
   .footer-grid{grid-template-columns:1fr;}
   .cdash-grid{grid-template-columns:1fr;}
   .footer-bottom{flex-direction:column;text-align:center;}
