@@ -3,1067 +3,1108 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Admin Dashboard — SB Claveria</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<meta name="description" content="Official Legislative Portal of the Sangguniang Bayan of Claveria, Masbate. Transparent legislation, citizen services, and local governance."/>
+<meta name="keywords" content="Sangguniang Bayan, Claveria, Masbate, ordinances, resolutions, legislative portal, Philippines"/>
+<meta name="author" content="Sangguniang Bayan of Claveria, Masbate"/>
+<meta property="og:title" content="Sangguniang Bayan of Claveria, Masbate"/>
+<meta property="og:description" content="Official Legislative Portal — Transparent Legislation. Responsive Governance."/>
+<meta property="og:type" content="website"/>
+<title>Sangguniang Bayan of Claveria, Masbate</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-<style>
-:root{
-  --navy:#0a1f44;--navy-light:#1a3a6e;--blue:#1e4d8c;--blue-mid:#2563ab;
-  --gold:#c9a227;--gold-light:#e8be4b;--gold-pale:#fdf3d0;
-  --white:#fff;--off:#f7f9fc;--g100:#eef2f7;--g200:#dce4ef;
-  --g400:#94a3b8;--g600:#475569;--g800:#1e293b;
-  --green:#16a34a;--red:#dc2626;--teal:#0d7377;
-  --shadow:0 4px 24px rgba(10,31,68,.1);--shadow-lg:0 8px 48px rgba(10,31,68,.16);
-  --radius:10px;--trans:.2s ease;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--g800);display:flex;min-height:100vh;}
-
-/* Sidebar */
-.sidebar{width:240px;background:var(--navy);flex-shrink:0;display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100;overflow-y:auto;}
-.sidebar-logo{padding:20px 18px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:12px;}
-.sidebar-logo .seal{width:40px;height:40px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);font-weight:800;flex-shrink:0;}
-.sidebar-logo span{color:white;font-size:.82rem;font-weight:600;line-height:1.3;}
-.sidebar-nav{padding:12px 0;flex:1;}
-.nav-section{padding:6px 18px 4px;font-size:.65rem;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.1em;margin-top:8px;}
-.nav-item{display:flex;align-items:center;gap:10px;padding:9px 18px;color:rgba(255,255,255,.7);cursor:pointer;transition:var(--trans);font-size:.84rem;border-left:3px solid transparent;}
-.nav-item:hover,.nav-item.active{background:rgba(255,255,255,.07);color:white;border-left-color:var(--gold);}
-.nav-item i{width:16px;font-size:.88rem;flex-shrink:0;}
-.nav-badge{margin-left:auto;background:var(--gold);color:var(--navy);font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:10px;}
-.sidebar-footer{padding:14px 18px;border-top:1px solid rgba(255,255,255,.08);}
-.user-chip{display:flex;align-items:center;gap:10px;}
-.user-avatar{width:32px;height:32px;border-radius:50%;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:white;font-weight:700;flex-shrink:0;border:2px solid var(--gold);}
-.user-info{flex:1;min-width:0;}
-.user-name{font-size:.8rem;color:white;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.user-role{font-size:.7rem;color:var(--gold-light);}
-.logout-btn{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;padding:4px;font-size:.85rem;}
-.logout-btn:hover{color:var(--red);}
-
-/* Main */
-.main{margin-left:240px;flex:1;display:flex;flex-direction:column;min-height:100vh;}
-.topbar{background:white;border-bottom:1px solid var(--g200);padding:0 28px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;box-shadow:0 1px 8px rgba(0,0,0,.06);}
-.topbar h2{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);}
-.topbar-actions{display:flex;align-items:center;gap:12px;}
-.btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:7px;font-size:.82rem;font-weight:600;font-family:inherit;cursor:pointer;border:none;transition:var(--trans);text-decoration:none;}
-.btn-primary{background:var(--navy);color:white;}
-.btn-primary:hover{background:var(--blue-mid);}
-.btn-gold{background:var(--gold);color:var(--navy);}
-.btn-gold:hover{background:var(--gold-light);}
-.btn-outline{background:white;color:var(--g600);border:1.5px solid var(--g200);}
-.btn-outline:hover{border-color:var(--navy);color:var(--navy);}
-.btn-danger{background:#fee2e2;color:var(--red);border:1px solid #fca5a5;}
-.btn-danger:hover{background:#fecaca;}
-.btn-sm{padding:6px 12px;font-size:.78rem;}
-.btn-xs{padding:4px 9px;font-size:.73rem;}
-
-.content{padding:28px;flex:1;}
-
-/* Stats grid */
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:28px;}
-.stat-card{background:white;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);border:1px solid var(--g200);display:flex;align-items:center;gap:16px;}
-.stat-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
-.stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--navy);line-height:1;}
-.stat-label{font-size:.78rem;color:var(--g400);margin-top:3px;}
-.stat-sub{font-size:.72rem;color:var(--g400);}
-
-/* Tables */
-.table-card{background:white;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--g200);overflow:hidden;margin-bottom:24px;}
-.table-header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--g100);}
-.table-header h3{font-size:.95rem;font-weight:700;color:var(--navy);}
-.table-search{display:flex;gap:8px;align-items:center;}
-.table-search input{padding:7px 12px;border:1.5px solid var(--g200);border-radius:7px;font-size:.82rem;font-family:inherit;outline:none;width:200px;}
-.table-search input:focus{border-color:var(--blue);}
-table{width:100%;border-collapse:collapse;}
-thead th{padding:10px 14px;text-align:left;font-size:.73rem;font-weight:700;color:var(--g600);text-transform:uppercase;letter-spacing:.05em;background:var(--g100);border-bottom:1px solid var(--g200);}
-tbody td{padding:11px 14px;border-bottom:1px solid var(--g100);font-size:.84rem;color:var(--g600);}
-tbody tr:last-child td{border-bottom:none;}
-tbody tr:hover td{background:var(--off);}
-.td-bold{font-weight:600;color:var(--navy);}
-.badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:.71rem;font-weight:700;}
-.badge-green{background:#dcfce7;color:#15803d;}
-.badge-blue{background:#dbeafe;color:#1d4ed8;}
-.badge-yellow{background:#fef9c3;color:#a16207;}
-.badge-red{background:#fee2e2;color:#b91c1c;}
-.badge-gray{background:var(--g100);color:var(--g600);}
-.badge-navy{background:var(--navy);color:white;}
-
-/* Forms */
-.form-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center;padding:20px;}
-.form-overlay.open{display:flex;}
-.form-modal{background:white;border-radius:14px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.25);}
-.form-modal-header{background:linear-gradient(135deg,var(--navy),var(--blue-mid));padding:20px 24px;border-radius:14px 14px 0 0;display:flex;justify-content:space-between;align-items:center;}
-.form-modal-header h3{font-family:'Playfair Display',serif;color:white;font-size:1.05rem;}
-.close-btn{background:rgba(255,255,255,.15);border:none;color:white;width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:.9rem;}
-.form-body{padding:24px;}
-.form-group{margin-bottom:14px;}
-.form-group label{display:block;font-size:.8rem;font-weight:600;color:var(--g600);margin-bottom:5px;}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:9px 12px;border:1.5px solid var(--g200);border-radius:7px;font-size:.88rem;font-family:inherit;outline:none;transition:var(--trans);}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);}
-.form-group textarea{resize:vertical;min-height:80px;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.form-actions{display:flex;justify-content:flex-end;gap:10px;padding-top:8px;}
-
-/* Misc */
-.page{display:none;}.page.active{display:block;}
-.empty{text-align:center;padding:40px;color:var(--g400);}
-.empty i{font-size:2.5rem;margin-bottom:12px;display:block;}
-.toast{position:fixed;bottom:24px;right:24px;background:var(--navy);color:white;padding:12px 18px;border-radius:9px;font-size:.85rem;font-weight:500;z-index:9999;transform:translateY(20px);opacity:0;transition:.3s ease;pointer-events:none;display:flex;align-items:center;gap:8px;}
-.toast.show{transform:translateY(0);opacity:1;}
-.toast.success i{color:var(--gold-light);}
-.toast.error{background:var(--red);}
-.loading{text-align:center;padding:40px;color:var(--g400);font-size:.9rem;}
-.status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:5px;}
-.dot-green{background:var(--green);}
-.dot-yellow{background:#ca8a04;}
-.dot-red{background:var(--red);}
-.dot-blue{background:var(--blue-mid);}
-@media(max-width:768px){.sidebar{display:none;}.main{margin-left:0;}.stats-grid{grid-template-columns:1fr 1fr;}}
-</style>
+<link rel="stylesheet" href="css/styles.css"/>
 </head>
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-  <div class="sidebar-logo">
-    <div class="seal">SB</div>
-    <span>Sangguniang Bayan<br><span style="color:var(--gold-light);font-size:.72rem;">Claveria, Masbate</span></span>
-  </div>
-  <nav class="sidebar-nav">
-    <div class="nav-section">Overview</div>
-    <div class="nav-item active" onclick="showPage('dashboard',this)"><i class="fas fa-chart-bar"></i> Dashboard</div>
-
-    <div class="nav-section">Legislative</div>
-    <div class="nav-item" onclick="showPage('documents',this)"><i class="fas fa-gavel"></i> Documents</div>
-    <div class="nav-item" onclick="showPage('sessions',this)"><i class="fas fa-calendar-days"></i> Sessions</div>
-    <div class="nav-item" onclick="showPage('members',this)"><i class="fas fa-users"></i> Members</div>
-
-    <div class="nav-section">Citizens</div>
-    <div class="nav-item" onclick="showPage('proposals',this)"><i class="fas fa-lightbulb"></i> Proposals <span class="nav-badge" id="pendingBadge">—</span></div>
-    <div class="nav-item" onclick="showPage('requests',this)"><i class="fas fa-file-magnifying-glass"></i> Doc Requests <span class="nav-badge" id="reqBadge">—</span></div>
-    <div class="nav-item" onclick="showPage('services',this)"><i class="fas fa-handshake-angle"></i> Services</div>
-
-    <div class="nav-section">Content</div>
-    <div class="nav-item" onclick="showPage('news',this)"><i class="fas fa-newspaper"></i> News</div>
-
-    <div class="nav-section">System</div>
-    <div class="nav-item" onclick="showPage('github',this)"><i class="fab fa-github"></i> GitHub Sync</div>
-    <div class="nav-item" onclick="showPage('users',this)"><i class="fas fa-user-gear"></i> Users</div>
-    <div class="nav-item" onclick="showPage('audit',this)"><i class="fas fa-clipboard-list"></i> Audit Log</div>
-  </nav>
-  <div class="sidebar-footer">
-    <div class="user-chip">
-      <div class="user-avatar" id="sidebarAvatar">?</div>
-      <div class="user-info">
-        <div class="user-name" id="sidebarName">Loading…</div>
-        <div class="user-role" id="sidebarRole">—</div>
-      </div>
-      <button class="logout-btn" onclick="logout()" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="tb-inner">
+    <span><i class="fas fa-globe" style="margin-right:5px;color:var(--gold-light)"></i>Republic of the Philippines &nbsp;|&nbsp; Province of Masbate &nbsp;|&nbsp; Municipality of Claveria</span>
+    <div class="tb-right">
+      <span><i class="fas fa-clock" style="margin-right:4px;color:var(--gold-light)"></i>Office Hours: Mon–Fri, 7AM–6PM</span>
+      <a href="mailto:sbclaveria@ymail.com"><i class="fas fa-envelope" style="margin-right:4px"></i>sbclaveria@ymail.com</a>
     </div>
   </div>
 </div>
 
-<!-- MAIN -->
-<div class="main">
-  <div class="topbar">
-    <h2 id="pageTitle">Dashboard</h2>
-    <div class="topbar-actions">
-      <a href="../index.html" target="_blank" class="btn btn-outline btn-sm"><i class="fas fa-external-link-alt"></i> View Site</a>
-      <button class="btn btn-gold btn-sm" id="topbarAction" onclick="topbarAction()"><i class="fas fa-plus"></i> New Document</button>
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a class="logo-block" href="#">
+      <div class="logo-seal">SB</div>
+      <div class="logo-text">
+        <h1>Sangguniang Bayan</h1>
+        <p>Claveria, Masbate</p>
+      </div>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li>
+          <a href="#about">About the SB ▾</a>
+          <div class="dropdown">
+            <a href="#vice-mayor">Vice Mayor</a>
+            <a href="#members">SB Members</a>
+            <a href="#secretary">Office of the SB Secretary</a>
+          </div>
+        </li>
+        <li><a href="#documents">Legislative Docs</a></li>
+        <li><a href="#bulletin">Digital Bulletin</a></li>
+        <li><a href="#sessions">Sessions</a></li>
+        <li><a href="#services">Public Services</a></li>
+        <li><a href="#laws">Know Your Laws</a></li>
+        <li><a href="#proposals">Citizen Proposals</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#transparency">Transparency</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()" id="hamBtn">
+      <span></span><span></span><span></span>
     </div>
   </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#about">About the SB</a>
+    <a href="#vice-mayor">Vice Mayor</a>
+    <a href="#members">SB Members</a>
+    <a href="#secretary">Office of the SB Secretary</a>
+    <a href="#documents">Legislative Documents</a>
+    <a href="#bulletin">Digital Bulletin Board</a>
+    <a href="#sessions">Sessions &amp; Calendar</a>
+    <a href="#services">Public Services (ARTA)</a>
+    <a href="#laws">Know Your Local Laws</a>
+    <a href="#proposals">Citizen Proposals</a>
+    <a href="#news">News &amp; Announcements</a>
+    <a href="#transparency">Transparency</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
 
-  <div class="content">
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-inner">
+    <div class="ticker-label"><i class="fas fa-bullhorn" style="margin-right:5px"></i>Latest</div>
+    <div class="ticker-text">🕖 NEW OFFICE HOURS: 7:00 AM – 6:00 PM (Mon–Wed), per Presidential Directive on Compressed Workweek &nbsp;|&nbsp; 📢 Regular Sessions held every Wednesday, 9:00 AM — Legislative Hall, Municipal Government Compound &nbsp;|&nbsp; 📋 Ordinance No. 2025-04 on Solid Waste Management now in effect &nbsp;|&nbsp; 🏍️ Tricycle Franchise renewal deadline: April 30, 2025 &nbsp;|&nbsp; 🎓 Scholarship Resolution No. 2025-12 approved — Check eligibility at the SB Office &nbsp;|&nbsp; 📧 Email us: sbclaveria@ymail.com</div>
+  </div>
+</div>
 
-    <!-- DASHBOARD PAGE -->
-    <div class="page active" id="page-dashboard">
-      <div class="stats-grid" id="statsGrid"><div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading stats…</div></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-        <div class="table-card">
-          <div class="table-header"><h3><i class="fas fa-gavel" style="color:var(--gold);margin-right:6px"></i>Recent Documents</h3></div>
-          <div id="recentDocs"><div class="loading">Loading…</div></div>
-        </div>
-        <div class="table-card">
-          <div class="table-header"><h3><i class="fas fa-lightbulb" style="color:var(--gold);margin-right:6px"></i>Pending Proposals</h3></div>
-          <div id="pendingProposals"><div class="loading">Loading…</div></div>
-        </div>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-img" id="heroBgImg"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <p class="section-badge" style="display:inline-flex;margin-bottom:18px;background:rgba(201,162,39,.18);border-color:var(--gold-light);color:var(--gold-light);"><i class="fas fa-landmark"></i> Official Legislative Portal</p>
+      <h2>Welcome to the <span>Sangguniang Bayan</span><br>of Claveria, Masbate</h2>
+      <p>Transparent Legislation. Responsive Governance.<br>Your gateway to local laws, citizen services, and legislative records.</p>
+      <div class="hero-buttons">
+        <a href="#bulletin" class="btn btn-gold"><i class="fas fa-newspaper"></i> Latest Ordinances</a>
+        <a href="#bulletin" class="btn btn-outline"><i class="fas fa-clipboard-list"></i> Digital Bulletin</a>
+        <button class="btn btn-outline btn-sm" onclick="openModal('requestModal')"><i class="fas fa-file-lines"></i> Request Documents</button>
+        <button class="btn btn-outline btn-sm" onclick="document.getElementById('trackerSection').scrollIntoView({behavior:'smooth'})"><i class="fas fa-magnifying-glass"></i> Track Request</button>
+        <a href="#proposals" class="btn btn-outline btn-sm"><i class="fas fa-lightbulb"></i> Submit Proposal</a>
       </div>
     </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num" data-count="148">0</div><div class="hero-stat-label">Ordinances Enacted</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" data-count="312">0</div><div class="hero-stat-label">Resolutions Passed</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" data-count="10">0</div><div class="hero-stat-label">Council Members</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" data-count="2024">0</div><div class="hero-stat-label">Legislative Year</div></div>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="var(--off-white)">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z"/>
+    </svg>
+  </div>
+</section>
 
-    <!-- DOCUMENTS PAGE -->
-    <div class="page" id="page-documents">
-      <div class="table-card">
-        <div class="table-header">
-          <h3>Legislative Documents</h3>
-          <div class="table-search">
-            <input type="text" id="docSearch" placeholder="Search…" oninput="searchDocs(this.value)"/>
-            <select id="docTypeFilter" onchange="loadDocs()" style="padding:7px 10px;border:1.5px solid var(--g200);border-radius:7px;font-family:inherit;font-size:.82rem;outline:none;">
-              <option value="">All Types</option>
-              <option value="ordinance">Ordinances</option>
-              <option value="resolution">Resolutions</option>
-              <option value="committee_report">Committee Reports</option>
-              <option value="minutes">Minutes</option>
-            </select>
-            <select id="docStatusFilter" onchange="loadDocs()" style="padding:7px 10px;border:1.5px solid var(--g200);border-radius:7px;font-family:inherit;font-size:.82rem;outline:none;">
-              <option value="">All Statuses</option>
-              <option value="draft">Draft</option>
-              <option value="approved">Approved</option>
-              <option value="first_reading">1st Reading</option>
-              <option value="second_reading">2nd Reading</option>
-              <option value="third_reading">3rd Reading</option>
-            </select>
-            <button class="btn btn-primary btn-sm" onclick="openDocModal()"><i class="fas fa-plus"></i> New</button>
+<!-- SEARCH SECTION -->
+<section class="search-section">
+  <div class="container">
+    <div class="search-big">
+      <h3><i class="fas fa-magnifying-glass" style="color:var(--gold);margin-right:8px"></i>Smart Legislative Search</h3>
+      <div class="search-form">
+        <input type="text" placeholder="Search ordinances, resolutions, or topics…" id="mainSearch"/>
+        <select>
+          <option>All Types</option>
+          <option>Ordinances</option>
+          <option>Resolutions</option>
+          <option>Committee Reports</option>
+        </select>
+        <button onclick="doSearch()"><i class="fas fa-magnifying-glass" style="margin-right:6px"></i>Search</button>
+      </div>
+      <div class="search-tags">
+        <span class="search-tag" onclick="quickSearch('Solid Waste')">🗑️ Solid Waste</span>
+        <span class="search-tag" onclick="quickSearch('Tricycle Franchise')">🏍️ Tricycle Franchise</span>
+        <span class="search-tag" onclick="quickSearch('Scholarship')">🎓 Scholarship</span>
+        <span class="search-tag" onclick="quickSearch('Health')">🏥 Health</span>
+        <span class="search-tag" onclick="quickSearch('Environment')">🌿 Environment</span>
+        <span class="search-tag" onclick="quickSearch('Business')">🏪 Business</span>
+        <span class="search-tag" onclick="quickSearch('Youth')">👦 Youth</span>
+        <span class="search-tag" onclick="quickSearch('Women')">👩 Women</span>
+      </div>
+    </div>
+    <div id="searchResults" class="hidden mt-24" style="max-width:760px;margin:24px auto 0;">
+      <h4 style="color:var(--navy);margin-bottom:14px;font-size:.9rem;font-weight:600;">Search Results</h4>
+      <div id="searchList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL BULLETIN BOARD -->
+<section class="bulletin" id="bulletin">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-clipboard-list"></i> Newly Approved</div>
+      <h2 class="section-title">Digital Bulletin Board</h2>
+      <p class="section-sub">Newly approved ordinances and resolutions, publicly posted for citizen awareness and transparency.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="bb-grid">
+      <!-- Card 1 -->
+      <div class="bb-card">
+        <div class="bb-card-top">
+          <div class="bb-card-badge"><i class="fas fa-gavel"></i> Ordinance</div>
+          <div class="bb-card-num">Ordinance No. 2025-07</div>
+          <div class="bb-card-title">An Ordinance Establishing the Claveria Solid Waste Management Program</div>
+        </div>
+        <div class="bb-card-body">
+          <p class="bb-card-summary">Mandates the segregation of biodegradable, non-biodegradable, and special waste at source. Establishes collection schedules and imposes sanctions for non-compliance.</p>
+          <div class="bb-card-meta">
+            <span class="bb-card-date"><i class="fas fa-calendar-check" style="color:var(--green)"></i> Approved: Feb 26, 2025</span>
+            <span class="tag tag-green">Environment</span>
           </div>
         </div>
-        <div style="overflow-x:auto;">
-          <table id="docsTable">
-            <thead><tr><th>Number</th><th>Type</th><th>Title</th><th>Sector</th><th>Status</th><th>Date Approved</th><th>GitHub</th><th>Actions</th></tr></thead>
-            <tbody id="docsBody"><tr><td colspan="8" class="loading">Loading…</td></tr></tbody>
-          </table>
+        <div class="bb-card-footer">
+          <button class="btn btn-sm btn-navy" onclick="openModal('docModal')"><i class="fas fa-eye"></i> Read Full Text</button>
+          <button class="btn btn-sm btn-outline" style="color:var(--blue);border-color:var(--blue)"><i class="fas fa-download"></i> Download PDF</button>
         </div>
-        <div style="padding:12px 16px;border-top:1px solid var(--g100);display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--g400);">
-          <span id="docsCount">—</span>
-          <div style="display:flex;gap:8px;">
-            <button class="btn btn-outline btn-xs" onclick="docsPage--; loadDocs()" id="docsPrev">◀ Prev</button>
-            <button class="btn btn-outline btn-xs" onclick="docsPage++; loadDocs()" id="docsNext">Next ▶</button>
+      </div>
+      <!-- Card 2 -->
+      <div class="bb-card">
+        <div class="bb-card-top">
+          <div class="bb-card-badge"><i class="fas fa-gavel"></i> Ordinance</div>
+          <div class="bb-card-num">Ordinance No. 2025-06</div>
+          <div class="bb-card-title">An Ordinance Regulating the Operation of Tricycles for Hire in Claveria</div>
+        </div>
+        <div class="bb-card-body">
+          <p class="bb-card-summary">Sets routes, fares, operational guidelines, and franchise requirements for tricycles-for-hire. Requires annual franchise renewal through the SB Office.</p>
+          <div class="bb-card-meta">
+            <span class="bb-card-date"><i class="fas fa-calendar-check" style="color:var(--green)"></i> Approved: Feb 12, 2025</span>
+            <span class="tag tag-blue">Transportation</span>
           </div>
         </div>
+        <div class="bb-card-footer">
+          <button class="btn btn-sm btn-navy" onclick="openModal('docModal')"><i class="fas fa-eye"></i> Read Full Text</button>
+          <button class="btn btn-sm btn-outline" style="color:var(--blue);border-color:var(--blue)"><i class="fas fa-download"></i> Download PDF</button>
+        </div>
       </div>
-    </div>
-
-    <!-- PROPOSALS PAGE -->
-    <div class="page" id="page-proposals">
-      <div class="table-card">
-        <div class="table-header">
-          <h3>Citizen Proposals</h3>
-          <div class="table-search">
-            <select id="propStatusFilter" onchange="loadProposals()" style="padding:7px 10px;border:1.5px solid var(--g200);border-radius:7px;font-family:inherit;font-size:.82rem;outline:none;">
-              <option value="">All Statuses</option>
-              <option value="pending">Pending</option>
-              <option value="review">Under Review</option>
-              <option value="endorsed">Endorsed</option>
-              <option value="declined">Declined</option>
-            </select>
+      <!-- Card 3 — Resolution -->
+      <div class="bb-card">
+        <div class="bb-card-top resolution-top">
+          <div class="bb-card-badge"><i class="fas fa-scroll"></i> Resolution</div>
+          <div class="bb-card-num">Resolution No. 2025-18</div>
+          <div class="bb-card-title">Resolution Approving Scholarship Grants for Qualified Claveria Youth</div>
+        </div>
+        <div class="bb-card-body">
+          <p class="bb-card-summary">Approves the allocation of scholarship grants to 25 qualified college students from Claveria. Grants cover tuition and monthly stipends sourced from the Municipal Development Fund.</p>
+          <div class="bb-card-meta">
+            <span class="bb-card-date"><i class="fas fa-calendar-check" style="color:var(--green)"></i> Approved: Jan 29, 2025</span>
+            <span class="tag tag-orange">Education</span>
           </div>
         </div>
-        <div style="overflow-x:auto;">
-          <table><thead><tr><th>Ref</th><th>Submitter</th><th>Title</th><th>Sector</th><th>Status</th><th>Votes ▲</th><th>Submitted</th><th>Actions</th></tr></thead>
-          <tbody id="proposalsBody"><tr><td colspan="8" class="loading">Loading…</td></tr></tbody></table>
+        <div class="bb-card-footer">
+          <button class="btn btn-sm btn-navy" onclick="openModal('docModal')"><i class="fas fa-eye"></i> Read Full Text</button>
+          <button class="btn btn-sm btn-outline" style="color:var(--blue);border-color:var(--blue)"><i class="fas fa-download"></i> Download PDF</button>
         </div>
       </div>
-    </div>
-
-    <!-- REQUESTS PAGE -->
-    <div class="page" id="page-requests">
-      <div class="table-card">
-        <div class="table-header">
-          <h3>Document Requests</h3>
-          <div class="table-search">
-            <select id="reqStatusFilter" onchange="loadRequests()" style="padding:7px 10px;border:1.5px solid var(--g200);border-radius:7px;font-family:inherit;font-size:.82rem;outline:none;">
-              <option value="">All</option>
-              <option value="submitted">Submitted</option>
-              <option value="processing">Processing</option>
-              <option value="ready">Ready</option>
-              <option value="released">Released</option>
-            </select>
+      <!-- Card 4 -->
+      <div class="bb-card">
+        <div class="bb-card-top">
+          <div class="bb-card-badge"><i class="fas fa-gavel"></i> Ordinance</div>
+          <div class="bb-card-num">Ordinance No. 2025-05</div>
+          <div class="bb-card-title">An Ordinance Protecting Women and Children from Domestic Abuse</div>
+        </div>
+        <div class="bb-card-body">
+          <p class="bb-card-summary">Strengthens implementation of RA 9262 at the local level. Creates a Barangay Violence Against Women desk and mandates reporting protocols for frontline workers.</p>
+          <div class="bb-card-meta">
+            <span class="bb-card-date"><i class="fas fa-calendar-check" style="color:var(--green)"></i> Approved: Jan 15, 2025</span>
+            <span class="tag tag-green">Social</span>
           </div>
         </div>
-        <div style="overflow-x:auto;">
-          <table><thead><tr><th>Tracking #</th><th>Requester</th><th>Document Type</th><th>Reference</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
-          <tbody id="requestsBody"><tr><td colspan="7" class="loading">Loading…</td></tr></tbody></table>
+        <div class="bb-card-footer">
+          <button class="btn btn-sm btn-navy" onclick="openModal('docModal')"><i class="fas fa-eye"></i> Read Full Text</button>
+          <button class="btn btn-sm btn-outline" style="color:var(--blue);border-color:var(--blue)"><i class="fas fa-download"></i> Download PDF</button>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="bb-card">
+        <div class="bb-card-top">
+          <div class="bb-card-badge"><i class="fas fa-gavel"></i> Ordinance</div>
+          <div class="bb-card-num">Ordinance No. 2025-04</div>
+          <div class="bb-card-title">An Ordinance on the Protection of Coastal and Marine Resources</div>
+        </div>
+        <div class="bb-card-body">
+          <p class="bb-card-summary">Designates protected fishing zones, limits commercial fishing vessels within 15km of coastline, and establishes penalties for illegal fishing practices in Claveria waters.</p>
+          <div class="bb-card-meta">
+            <span class="bb-card-date"><i class="fas fa-calendar-check" style="color:var(--green)"></i> Approved: Jan 8, 2025</span>
+            <span class="tag tag-green">Fisheries</span>
+          </div>
+        </div>
+        <div class="bb-card-footer">
+          <button class="btn btn-sm btn-navy" onclick="openModal('docModal')"><i class="fas fa-eye"></i> Read Full Text</button>
+          <button class="btn btn-sm btn-outline" style="color:var(--blue);border-color:var(--blue)"><i class="fas fa-download"></i> Download PDF</button>
+        </div>
+      </div>
+      <!-- Card 6 — Resolution -->
+      <div class="bb-card">
+        <div class="bb-card-top resolution-top">
+          <div class="bb-card-badge"><i class="fas fa-scroll"></i> Resolution</div>
+          <div class="bb-card-num">Resolution No. 2025-15</div>
+          <div class="bb-card-title">Resolution Authorizing MARINA Registration Assistance for Motorboat Operators</div>
+        </div>
+        <div class="bb-card-body">
+          <p class="bb-card-summary">Authorizes the SB to issue resolutions supporting motorboat operators' MARINA registration. Provides a streamlined process through the SB Office for fishermen and boat owners.</p>
+          <div class="bb-card-meta">
+            <span class="bb-card-date"><i class="fas fa-calendar-check" style="color:var(--green)"></i> Approved: Jan 5, 2025</span>
+            <span class="tag tag-blue">Fisheries</span>
+          </div>
+        </div>
+        <div class="bb-card-footer">
+          <button class="btn btn-sm btn-navy" onclick="openModal('docModal')"><i class="fas fa-eye"></i> Read Full Text</button>
+          <button class="btn btn-sm btn-outline" style="color:var(--blue);border-color:var(--blue)"><i class="fas fa-download"></i> Download PDF</button>
         </div>
       </div>
     </div>
+    <div class="text-center mt-32">
+      <a href="#documents" class="btn btn-navy"><i class="fas fa-box-archive"></i> View Full Legislative Archive</a>
+    </div>
+  </div>
+</section>
 
-    <!-- SESSIONS PAGE -->
-    <div class="page" id="page-sessions">
-      <div class="table-card">
-        <div class="table-header">
-          <h3>Council Sessions</h3>
-          <button class="btn btn-primary btn-sm" onclick="openSessionModal()"><i class="fas fa-plus"></i> New Session</button>
-        </div>
-        <div style="overflow-x:auto;">
-          <table><thead><tr><th>Date</th><th>Type</th><th>Time</th><th>Location</th><th>Agenda</th><th>Status</th><th>Actions</th></tr></thead>
-          <tbody id="sessionsBody"><tr><td colspan="7" class="loading">Loading…</td></tr></tbody></table>
-        </div>
+<!-- CITIZEN SERVICES (ARTA) -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-handshake-angle"></i> ARTA-Compliant</div>
+      <h2 class="section-title">Citizen Services Portal</h2>
+      <p class="section-sub">Efficient, transparent, and citizen-friendly services in compliance with the Anti-Red Tape Authority standards.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon svc-icon-navy"><i class="fas fa-users-gear"></i></div>
+        <div class="svc-title">CSO Accreditation</div>
+        <div class="svc-desc">Civil Society Organizations can apply for SB accreditation to participate in public hearings and legislative consultations.</div>
+        <div class="svc-steps">📋 Requirements: Constitution &amp; By-Laws, List of Officers, Financial Report</div>
+        <div class="svc-eta"><i class="fas fa-clock"></i> Processing: 5–7 working days</div>
+        <button class="btn btn-navy btn-sm" onclick="openModal('csoModal')">Apply for Accreditation</button>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon svc-icon-teal"><i class="fas fa-ferry"></i></div>
+        <div class="svc-title">MARINA Resolution (Motorboats)</div>
+        <div class="svc-desc">Request an SB Resolution for MARINA registration support for motorboats and fishing vessels operating in Claveria waters.</div>
+        <div class="svc-steps">📋 Requirements: Boat Certificate, Owner ID, Barangay Clearance</div>
+        <div class="svc-eta"><i class="fas fa-clock"></i> Processing: 3–5 working days</div>
+        <button class="btn btn-navy btn-sm" onclick="openModal('marinaModal')">Request Resolution</button>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon svc-icon-gold"><i class="fas fa-motorcycle"></i></div>
+        <div class="svc-title">Tricycle Franchise Application</div>
+        <div class="svc-desc">Apply for a new tricycle franchise or renew your existing franchise for tricycles-for-hire within Claveria.</div>
+        <div class="svc-steps">📋 Requirements: OR/CR, Driver's License, Barangay Clearance, Police Clearance</div>
+        <div class="svc-eta"><i class="fas fa-clock"></i> Processing: 5 working days</div>
+        <button class="btn btn-navy btn-sm" onclick="openModal('tricycleModal')">Apply for Franchise</button>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon svc-icon-blue"><i class="fas fa-file-contract"></i></div>
+        <div class="svc-title">Certified Legislative Documents</div>
+        <div class="svc-desc">Request certified true copies of ordinances, resolutions, committee reports, and session minutes for legal and official purposes.</div>
+        <div class="svc-steps">📋 Requirements: Valid ID, Request Letter, Official Fee Receipt</div>
+        <div class="svc-eta"><i class="fas fa-clock"></i> Processing: 2–3 working days</div>
+        <button class="btn btn-gold btn-sm" onclick="openModal('requestModal')">Request Document</button>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon svc-icon-green"><i class="fas fa-handshake"></i></div>
+        <div class="svc-title">Public Hearing Registration</div>
+        <div class="svc-desc">Register your name or organization to participate and give comments during public hearings on proposed ordinances.</div>
+        <div class="svc-steps">📋 Requirements: Name, Contact, Organization (if any)</div>
+        <div class="svc-eta"><i class="fas fa-clock"></i> Walk-in or Online Registration</div>
+        <button class="btn btn-navy btn-sm">Register to Speak</button>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon svc-icon-navy"><i class="fas fa-clipboard-check"></i></div>
+        <div class="svc-title">Legislative Certificate of No Objection</div>
+        <div class="svc-desc">Request an SB Certificate of No Objection for projects or activities requiring legislative endorsement in Claveria.</div>
+        <div class="svc-steps">📋 Requirements: Project Description, Location Plan, Endorsement Letter</div>
+        <div class="svc-eta"><i class="fas fa-clock"></i> Processing: 7 working days</div>
+        <button class="btn btn-navy btn-sm">Apply Now</button>
       </div>
     </div>
-
-    <!-- MEMBERS PAGE -->
-    <div class="page" id="page-members">
-      <div class="table-card">
-        <div class="table-header">
-          <h3>SB Members</h3>
-          <button class="btn btn-primary btn-sm" onclick="openMemberModal()"><i class="fas fa-plus"></i> Add Member</button>
-        </div>
-        <table><thead><tr><th>#</th><th>Name</th><th>Position</th><th>Committee</th><th>Type</th><th>Actions</th></tr></thead>
-        <tbody id="membersBody"><tr><td colspan="6" class="loading">Loading…</td></tr></tbody></table>
+    <div style="background:var(--gold-pale);border:1px solid var(--gold);border-radius:12px;padding:20px 24px;margin-top:32px;display:flex;gap:14px;align-items:flex-start;">
+      <i class="fas fa-circle-info" style="color:var(--gold);font-size:1.3rem;margin-top:2px;flex-shrink:0;"></i>
+      <div>
+        <strong style="color:var(--navy);">ARTA Compliance Notice:</strong>
+        <p style="color:var(--gray-600);font-size:.85rem;margin-top:4px;">All services are processed within the timeframes prescribed by the Anti-Red Tape Act of 2007 (RA 9485) and its amendments under RA 11032. Citizens may file a complaint with the ARTA if services are not delivered within prescribed periods.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- SERVICES PAGE -->
-    <div class="page" id="page-services">
-      <div class="table-card">
-        <div class="table-header">
-          <h3>Service Applications</h3>
-          <select id="svcTypeFilter" onchange="loadServices()" style="padding:7px 10px;border:1.5px solid var(--g200);border-radius:7px;font-family:inherit;font-size:.82rem;outline:none;">
-            <option value="">All Services</option>
-            <option value="cso_accreditation">CSO Accreditation</option>
-            <option value="marina_resolution">MARINA Resolution</option>
-            <option value="tricycle_franchise">Tricycle Franchise</option>
-            <option value="cno">Certificate of No Objection</option>
+<!-- DOCUMENT TRACKER -->
+<section class="tracker-section" id="trackerSection">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-file-magnifying-glass"></i> Document Services</div>
+      <h2 class="section-title">Legislative Document Request &amp; Tracker</h2>
+      <p class="section-sub">Request certified copies of legislative documents and track the status of your request in real time.</p>
+      <div class="divider" style="background:linear-gradient(90deg,var(--gold),var(--gold-light));"></div>
+    </div>
+    <div class="tracker-wrap">
+      <div class="tracker-form-card">
+        <h3><i class="fas fa-file-plus" style="margin-right:8px;color:var(--gold-light)"></i>Submit Document Request</h3>
+        <div class="form-group"><label>Full Name *</label><input type="text" placeholder="e.g. Juan Dela Cruz"/></div>
+        <div class="form-group"><label>Contact Number *</label><input type="tel" placeholder="e.g. 09XXXXXXXXX"/></div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="youremail@example.com"/></div>
+        <div class="form-group">
+          <label>Document Type *</label>
+          <select>
+            <option>Select document type…</option>
+            <option>Certified True Copy – Ordinance</option>
+            <option>Certified True Copy – Resolution</option>
+            <option>Session Minutes</option>
+            <option>Committee Report</option>
+            <option>Legislative Accomplishment Report</option>
+            <option>Citizen's Charter</option>
           </select>
         </div>
-        <div style="overflow-x:auto;">
-          <table><thead><tr><th>Ref #</th><th>Applicant</th><th>Service Type</th><th>Status</th><th>Submitted</th><th>Actions</th></tr></thead>
-          <tbody id="servicesBody"><tr><td colspan="6" class="loading">Loading…</td></tr></tbody></table>
+        <div class="form-group"><label>Ordinance / Resolution Number (if known)</label><input type="text" placeholder="e.g. Ordinance No. 2025-07"/></div>
+        <div class="form-group"><label>Purpose of Request *</label><textarea placeholder="Describe the purpose of your document request…"></textarea></div>
+        <div class="form-group">
+          <label>Preferred Release Method</label>
+          <select>
+            <option>Pick-up at SB Office</option>
+            <option>Email (Soft Copy)</option>
+          </select>
         </div>
+        <p class="form-note">📌 A tracking number will be issued upon submission. Processing fee: ₱50 per document (payable at the Municipal Treasurer's Office).</p>
+        <button class="btn btn-gold mt-16" style="width:100%;justify-content:center;" onclick="submitRequest()"><i class="fas fa-paper-plane"></i> Submit Request</button>
       </div>
-    </div>
-
-    <!-- NEWS PAGE -->
-    <div class="page" id="page-news">
-      <div class="table-card">
-        <div class="table-header">
-          <h3>News & Announcements</h3>
-          <button class="btn btn-primary btn-sm" onclick="openNewsModal()"><i class="fas fa-plus"></i> New Post</button>
+      <div class="tracker-status-card">
+        <h3><i class="fas fa-magnifying-glass" style="margin-right:8px;color:var(--gold-light)"></i>Track Your Request</h3>
+        <div class="track-input-row">
+          <input type="text" placeholder="Enter tracking number (e.g. SB-2025-00123)" id="trackInput"/>
+          <button onclick="trackRequest()">Track</button>
         </div>
-        <table><thead><tr><th>Title</th><th>Category</th><th>Status</th><th>Published</th><th>Actions</th></tr></thead>
-        <tbody id="newsBody"><tr><td colspan="5" class="loading">Loading…</td></tr></tbody></table>
-      </div>
-    </div>
-
-    <!-- GITHUB PAGE -->
-    <div class="page" id="page-github">
-      <div class="table-card">
-        <div class="table-header">
-          <h3><i class="fab fa-github" style="margin-right:6px"></i>GitHub Sync Log</h3>
-          <button class="btn btn-outline btn-sm" onclick="loadGithubLog()"><i class="fas fa-refresh"></i> Refresh</button>
-        </div>
-        <div style="overflow-x:auto;">
-          <table><thead><tr><th>Action</th><th>Document</th><th>Commit SHA</th><th>Status</th><th>Triggered By</th><th>Date</th></tr></thead>
-          <tbody id="githubBody"><tr><td colspan="6" class="loading">Loading…</td></tr></tbody></table>
-        </div>
-      </div>
-      <div class="table-card" style="margin-top:20px;">
-        <div class="table-header"><h3>Quick Publish</h3></div>
-        <div style="padding:20px;">
-          <p style="color:var(--g600);font-size:.88rem;margin-bottom:16px;">Select an approved document to publish its Markdown to the GitHub repository. Requires GitHub OAuth login.</p>
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-            <select id="publishDocSelect" style="flex:1;min-width:260px;padding:9px 12px;border:1.5px solid var(--g200);border-radius:7px;font-size:.85rem;font-family:inherit;outline:none;"></select>
-            <button class="btn btn-gold" onclick="publishSelectedDoc()"><i class="fab fa-github"></i> Publish to GitHub</button>
+        <div id="statusResult">
+          <div class="status-result">
+            <div class="status-header">
+              <div>
+                <div class="status-doc">Sample: Certified Copy – Ordinance No. 2025-07</div>
+                <div class="status-date">Submitted: March 1, 2025 &nbsp;|&nbsp; Requested by: J. Dela Cruz</div>
+              </div>
+              <span class="tag tag-green">Active</span>
+            </div>
+            <div class="status-id">Tracking No.: SB-2025-00098</div>
+            <div class="status-steps">
+              <div class="step"><div class="step-dot done"><i class="fas fa-check"></i></div><div class="step-line"><div class="step-name">Submitted</div><div class="step-desc">Request received – March 1, 2025 at 10:23 AM</div></div></div>
+              <div class="step"><div class="step-dot done"><i class="fas fa-check"></i></div><div class="step-line"><div class="step-name">Processing</div><div class="step-desc">Document being prepared by SB Secretary's Office</div></div></div>
+              <div class="step"><div class="step-dot active"><i class="fas fa-spinner fa-spin"></i></div><div class="step-line"><div class="step-name" style="color:var(--gold-light)">Ready for Release</div><div class="step-desc">Document will be ready for pick-up by March 5, 2025</div></div></div>
+              <div class="step"><div class="step-dot pending">4</div><div class="step-line"><div class="step-name" style="color:rgba(255,255,255,.4)">Completed</div><div class="step-desc" style="color:rgba(255,255,255,.3)">Awaiting release</div></div></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- USERS PAGE -->
-    <div class="page" id="page-users">
-      <div class="table-card">
-        <div class="table-header"><h3>System Users</h3></div>
-        <table><thead><tr><th>Avatar</th><th>Username</th><th>Name</th><th>Role</th><th>Last Login</th><th>Active</th><th>Actions</th></tr></thead>
-        <tbody id="usersBody"><tr><td colspan="7" class="loading">Loading…</td></tr></tbody></table>
+<!-- KNOW YOUR LAWS -->
+<section class="laws" id="laws">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-scale-balanced"></i> Plain Language</div>
+      <h2 class="section-title">Know Your Local Laws</h2>
+      <p class="section-sub">Understand the ordinances that affect your daily life, explained in simple and accessible language.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="laws-filter">
+      <button class="filter-btn active" onclick="filterLaws('all',this)">All Sectors</button>
+      <button class="filter-btn" onclick="filterLaws('environment',this)">🌿 Environment</button>
+      <button class="filter-btn" onclick="filterLaws('health',this)">🏥 Health</button>
+      <button class="filter-btn" onclick="filterLaws('transport',this)">🏍️ Transport</button>
+      <button class="filter-btn" onclick="filterLaws('fisheries',this)">🎣 Fisheries</button>
+      <button class="filter-btn" onclick="filterLaws('youth',this)">🎓 Youth &amp; Education</button>
+      <button class="filter-btn" onclick="filterLaws('social',this)">👥 Social</button>
+      <button class="filter-btn" onclick="filterLaws('business',this)">🏪 Business</button>
+    </div>
+    <div class="laws-grid" id="lawsGrid">
+      <div class="law-card" data-sector="environment">
+        <div class="law-card-stripe stripe-green"></div>
+        <div class="law-card-body">
+          <div class="law-sector">🌿 Environment</div>
+          <div class="law-title">Claveria Solid Waste Management Ordinance (Ord. No. 2025-07)</div>
+          <div class="law-summary">Every household must separate garbage into biodegradable (food scraps, leaves) and non-biodegradable (plastics, metals) before collection day. Failure to segregate can result in a ₱500–₱2,000 fine.</div>
+        </div>
+        <div class="law-card-footer"><span class="tag tag-green">In Effect</span><button class="btn btn-sm btn-navy" onclick="openModal('docModal')">Learn More</button></div>
+      </div>
+      <div class="law-card" data-sector="transport">
+        <div class="law-card-stripe stripe-blue"></div>
+        <div class="law-card-body">
+          <div class="law-sector">🏍️ Transport</div>
+          <div class="law-title">Tricycle Franchise &amp; Operations Ordinance (Ord. No. 2025-06)</div>
+          <div class="law-summary">If you operate a tricycle for hire, you need a franchise from the SB, renewed every year. Your tricycle must display your franchise number and follow assigned routes. Unauthorized routes can result in confiscation.</div>
+        </div>
+        <div class="law-card-footer"><span class="tag tag-green">In Effect</span><button class="btn btn-sm btn-navy" onclick="openModal('docModal')">Learn More</button></div>
+      </div>
+      <div class="law-card" data-sector="fisheries">
+        <div class="law-card-stripe stripe-teal"></div>
+        <div class="law-card-body">
+          <div class="law-sector">🎣 Fisheries</div>
+          <div class="law-title">Coastal &amp; Marine Resources Protection (Ord. No. 2025-04)</div>
+          <div class="law-summary">Commercial fishing boats are prohibited within 15 kilometers of the Claveria coastline. Only municipal fishermen with valid licenses may fish in these protected zones. Illegal fishing using dynamite or cyanide carries criminal penalties.</div>
+        </div>
+        <div class="law-card-footer"><span class="tag tag-green">In Effect</span><button class="btn btn-sm btn-navy" onclick="openModal('docModal')">Learn More</button></div>
+      </div>
+      <div class="law-card" data-sector="social">
+        <div class="law-card-stripe stripe-red"></div>
+        <div class="law-card-body">
+          <div class="law-sector">👥 Social</div>
+          <div class="law-title">Women &amp; Children Protection Ordinance (Ord. No. 2025-05)</div>
+          <div class="law-summary">Domestic violence is illegal and punishable under local law. Victims may seek help from the Barangay VAW Desk, the MSWD, or the Municipal Police Station. All reports are handled confidentially.</div>
+        </div>
+        <div class="law-card-footer"><span class="tag tag-green">In Effect</span><button class="btn btn-sm btn-navy" onclick="openModal('docModal')">Learn More</button></div>
+      </div>
+      <div class="law-card" data-sector="youth">
+        <div class="law-card-stripe stripe-gold"></div>
+        <div class="law-card-body">
+          <div class="law-sector">🎓 Youth &amp; Education</div>
+          <div class="law-title">Youth Scholarship Program (Resolution No. 2025-18)</div>
+          <div class="law-summary">Qualified Claveria residents aged 18–24 enrolled in college may apply for a scholarship grant covering tuition and a monthly ₱1,500 stipend. Priority given to honor students and those from low-income families.</div>
+        </div>
+        <div class="law-card-footer"><span class="tag tag-green">Active</span><button class="btn btn-sm btn-navy" onclick="openModal('docModal')">Learn More</button></div>
+      </div>
+      <div class="law-card" data-sector="health">
+        <div class="law-card-stripe stripe-blue"></div>
+        <div class="law-card-body">
+          <div class="law-sector">🏥 Health</div>
+          <div class="law-title">Anti-Smoking Ordinance in Public Places (Ord. No. 2024-18)</div>
+          <div class="law-summary">Smoking is strictly prohibited in all government offices, schools, health centers, markets, and public transport terminals. Designated smoking areas are provided in specified locations. Violators face a fine of ₱200 for the first offense.</div>
+        </div>
+        <div class="law-card-footer"><span class="tag tag-green">In Effect</span><button class="btn btn-sm btn-navy" onclick="openModal('docModal')">Learn More</button></div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- AUDIT PAGE -->
-    <div class="page" id="page-audit">
-      <div class="table-card">
-        <div class="table-header"><h3>Audit Log</h3><button class="btn btn-outline btn-sm" onclick="loadAudit()"><i class="fas fa-refresh"></i> Refresh</button></div>
-        <div style="overflow-x:auto;max-height:600px;overflow-y:auto;">
-          <table><thead><tr><th>User</th><th>Action</th><th>Entity</th><th>IP</th><th>Timestamp</th></tr></thead>
-          <tbody id="auditBody"><tr><td colspan="5" class="loading">Loading…</td></tr></tbody></table>
+<!-- COUNCIL MEMBERS — ORG CHART -->
+<section class="council-section" id="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-sitemap"></i> Organizational Structure</div>
+      <h2 class="section-title">The Sangguniang Bayan</h2>
+      <p class="section-sub">The Municipal Legislative Council of Claveria, Masbate — composed of elected officials who enact local legislation and represent the people's interest.</p>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Level 1: Presiding Officer -->
+    <div class="org-top" id="vice-mayor">
+      <div class="presiding-card">
+        <div class="presiding-avatar" data-member-id="11">FA</div>
+        <div class="presiding-info">
+          <div class="presiding-role"><i class="fas fa-gavel" style="margin-right:6px;"></i>Vice Mayor &amp; Presiding Officer</div>
+          <h3>Hon. Froilan V. Andueza</h3>
+          <p>Elected to serve as the Presiding Officer of the Sangguniang Bayan of Claveria, Masbate. Leads all legislative sessions, oversees committee operations, and is committed to transparent and responsive governance.</p>
+          <div class="presiding-contact"><i class="fas fa-envelope"></i>sbclaveria@ymail.com</div>
         </div>
       </div>
     </div>
 
-  </div><!-- /content -->
-</div><!-- /main -->
+    <!-- Connector line -->
+    <div class="org-connector"></div>
 
-<!-- MODALS -->
-<div class="form-overlay" id="docModal">
-  <div class="form-modal">
-    <div class="form-modal-header"><h3 id="docModalTitle">New Document</h3><button class="close-btn" onclick="closeModal('docModal')">✕</button></div>
-    <div class="form-body">
-      <input type="hidden" id="docId"/>
-      <div class="form-row">
-        <div class="form-group"><label>Document Number *</label><input id="docNumber" placeholder="e.g. 2025-08"/></div>
-        <div class="form-group"><label>Type *</label><select id="docType"><option value="ordinance">Ordinance</option><option value="resolution">Resolution</option><option value="committee_report">Committee Report</option><option value="minutes">Minutes</option></select></div>
+    <!-- Level 2 label -->
+    <div class="org-level-label"><span><i class="fas fa-users" style="margin-right:6px;color:var(--blue);"></i>Regular Members of the Sangguniang Bayan</span></div>
+
+    <!-- Level 2: Regular Members 4×2 grid -->
+    <div id="members" class="members-grid">
+      <div class="member-card">
+        <div class="member-avatar" data-member-id="1">DA</div>
+        <div class="member-name">Hon. Dakila Alim-Ante</div>
+        <div class="member-pos">1st Regular Member</div>
+        <div class="member-committee"><i class="fas fa-heartbeat" style="margin-right:4px;font-size:.65rem;"></i>Health &amp; Sanitation</div>
       </div>
-      <div class="form-group"><label>Title *</label><input id="docTitle" placeholder="Full title of the document"/></div>
-      <div class="form-row">
-        <div class="form-group"><label>Sector</label><select id="docSector"><option value="">Select…</option><option>Environment</option><option>Health</option><option>Transport</option><option>Fisheries</option><option>Education</option><option>Social</option><option>Agriculture</option><option>Business</option><option>Public Safety</option><option>Infrastructure</option></select></div>
-        <div class="form-group"><label>Status</label><select id="docStatus"><option value="draft">Draft</option><option value="first_reading">1st Reading</option><option value="second_reading">2nd Reading</option><option value="third_reading">3rd Reading</option><option value="approved">Approved</option></select></div>
+      <div class="member-card">
+        <div class="member-avatar" data-member-id="2">AS</div>
+        <div class="member-name">Hon. Adan F. Sandigan</div>
+        <div class="member-pos">2nd Regular Member</div>
+        <div class="member-committee"><i class="fas fa-hard-hat" style="margin-right:4px;font-size:.65rem;"></i>Public Works</div>
       </div>
-      <div class="form-row">
-        <div class="form-group"><label>Date Filed</label><input type="date" id="docFiled"/></div>
-        <div class="form-group"><label>Date Approved</label><input type="date" id="docApproved"/></div>
+      <div class="member-card">
+        <div class="member-avatar" data-member-id="3">MA</div>
+        <div class="member-name">Hon. Mark A. Andueza</div>
+        <div class="member-pos">3rd Regular Member</div>
+        <div class="member-committee"><i class="fas fa-graduation-cap" style="margin-right:4px;font-size:.65rem;"></i>Education</div>
       </div>
-      <div class="form-group"><label>Sponsor</label><input id="docSponsor" placeholder="Sponsoring member"/></div>
-      <div class="form-group"><label>Summary</label><textarea id="docSummary" placeholder="Plain-language summary…"></textarea></div>
-      <div class="form-group"><label>Full Text</label><textarea id="docFullText" placeholder="Full text of the ordinance or resolution…" style="min-height:120px;"></textarea></div>
-      <div class="form-actions">
-        <button class="btn btn-outline" onclick="closeModal('docModal')">Cancel</button>
-        <button class="btn btn-primary" onclick="saveDoc()"><i class="fas fa-save"></i> Save Document</button>
+      <div class="member-card">
+        <div class="member-avatar" data-member-id="4">NL</div>
+        <div class="member-name">Hon. Nonelona Lim</div>
+        <div class="member-pos">4th Regular Member</div>
+        <div class="member-committee"><i class="fas fa-seedling" style="margin-right:4px;font-size:.65rem;"></i>Agriculture</div>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar" data-member-id="5">EB</div>
+        <div class="member-name">Hon. Elvin M. Berdin</div>
+        <div class="member-pos">5th Regular Member</div>
+        <div class="member-committee"><i class="fas fa-coins" style="margin-right:4px;font-size:.65rem;"></i>Finance &amp; Appropriations</div>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar" data-member-id="6">JA</div>
+        <div class="member-name">Hon. Joven P. Arriesgado</div>
+        <div class="member-pos">6th Regular Member</div>
+        <div class="member-committee"><i class="fas fa-leaf" style="margin-right:4px;font-size:.65rem;"></i>Environment</div>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar" data-member-id="7">VS</div>
+        <div class="member-name">Hon. Vicente R. Sabaulan</div>
+        <div class="member-pos">7th Regular Member</div>
+        <div class="member-committee"><i class="fas fa-store" style="margin-right:4px;font-size:.65rem;"></i>Trade &amp; Commerce</div>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar" data-member-id="8">RR</div>
+        <div class="member-name">Hon. Ric C. Rubia</div>
+        <div class="member-pos">8th Regular Member</div>
+        <div class="member-committee"><i class="fas fa-shield-halved" style="margin-right:4px;font-size:.65rem;"></i>Public Safety</div>
+      </div>
+    </div>
+
+    <!-- Ex-Officio label and row -->
+    <div class="org-level-label" style="margin-top:28px;"><span><i class="fas fa-star" style="margin-right:6px;color:var(--teal);"></i>Ex-Officio Members</span></div>
+    <div class="org-exofficio-row">
+      <div class="member-card exofficio">
+        <div class="member-avatar" data-member-id="9">CA</div>
+        <div class="member-name">Hon. Charlie Albao</div>
+        <div class="member-pos">Ex-Officio Member</div>
+        <div class="member-committee"><i class="fas fa-landmark" style="margin-right:4px;font-size:.65rem;"></i>Liga ng mga Barangay President</div>
+      </div>
+      <div class="member-card exofficio">
+        <div class="member-avatar" data-member-id="10">JD</div>
+        <div class="member-name">Hon. Joross M. Dela Cruz</div>
+        <div class="member-pos">Ex-Officio Member</div>
+        <div class="member-committee"><i class="fas fa-users" style="margin-right:4px;font-size:.65rem;"></i>SKFP President</div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--gray-200);">
+      <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--gray-600);">
+        <div style="width:24px;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-mid));border-radius:2px;"></div>Regular Member
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--gray-600);">
+        <div style="width:24px;height:3px;background:linear-gradient(90deg,var(--teal),#14b8a6);border-radius:2px;"></div>Ex-Officio Member
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--gray-600);">
+        <div style="width:16px;height:16px;border-radius:50%;background:var(--gold);"></div>Presiding Officer
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SB SECRETARY OFFICE — ORG CHART -->
+<section class="secretary-section" id="secretary">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-sitemap"></i> Secretariat Structure</div>
+      <h2 class="section-title">Office of the SB Secretary</h2>
+      <p class="section-sub">The Secretariat manages all legislative records, document certifications, and citizen-facing public services of the Sangguniang Bayan.</p>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Two-office layout -->
+    <div class="sec-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+
+      <!-- LEFT: Office of the SB Secretary -->
+      <div class="sec-org-wrap">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
+          <div style="width:4px;height:28px;background:linear-gradient(180deg,var(--gold),var(--gold-light));border-radius:4px;"></div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);">Office of the SB Secretary</h3>
+        </div>
+
+        <!-- Head -->
+        <div class="sec-head-row">
+          <div class="sec-head-card">
+            <div class="sec-head-avatar">LG</div>
+            <div class="sec-head-info">
+              <div class="sec-head-pos"><i class="fas fa-crown" style="margin-right:5px;"></i>Secretary to the Sangguniang Bayan</div>
+              <h4>Lea M. Gonzales</h4>
+              <p>Oversees all legislative secretariat functions, certifies documents, and manages SB records and archives.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="org-connector" style="height:32px;"></div>
+
+        <!-- Sub-level label -->
+        <div class="org-level-label" style="margin-bottom:16px;"><span style="font-size:.68rem;">Administrative Staff</span></div>
+
+        <!-- Staff grid 2×2 then single -->
+        <div class="sec-staff-grid">
+          <div class="staff-card">
+            <div class="staff-avatar">BM</div>
+            <div class="staff-name">Bernadette R. Marbella</div>
+            <div class="staff-pos">Planning Officer</div>
+            <div class="staff-desc">Legislative planning, agenda preparation, and coordination of committee activities and public hearings.</div>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">MA</div>
+            <div class="staff-name">Maryjoy Arcillas</div>
+            <div class="staff-pos">Admin Assistant / Clerk</div>
+            <div class="staff-desc">Frontline citizen transactions, correspondence, document requests, and office administration.</div>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">JR</div>
+            <div class="staff-name">James L. Requiron</div>
+            <div class="staff-pos">Admin Assistant / IT</div>
+            <div class="staff-desc">Information technology systems, digital records management, and technical support for legislative operations.</div>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">KB</div>
+            <div class="staff-name">Karen R. Basterechia</div>
+            <div class="staff-pos">Admin Aide / JO Clerk</div>
+            <div class="staff-desc">Proofreading of session transcripts and verbatim records, ensuring accuracy of all official documentation.</div>
+          </div>
+          <div class="staff-card" style="grid-column:1 / -1;max-width:calc(50% - 8px);margin:0 auto;">
+            <div class="staff-avatar">JL</div>
+            <div class="staff-name">Jesciebel Languido</div>
+            <div class="staff-pos">Admin Aide / JO Clerk</div>
+            <div class="staff-desc">Accounting and voucher processing, inventory management, and financial transaction records.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Office of the Vice Mayor -->
+      <div class="sec-org-wrap">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
+          <div style="width:4px;height:28px;background:linear-gradient(180deg,var(--navy),var(--blue-mid));border-radius:4px;"></div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);">Office of the Vice Mayor</h3>
+        </div>
+
+        <!-- Vice Mayor office description card -->
+        <div style="background:linear-gradient(135deg,var(--navy),var(--blue-mid));border-radius:16px;padding:24px;margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;">
+            <div style="width:52px;height:52px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--navy);font-weight:800;flex-shrink:0;border:2px solid rgba(255,255,255,.2);">FA</div>
+            <div>
+              <div style="color:var(--gold-light);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:2px;">Office Head</div>
+              <div style="color:white;font-weight:700;font-size:.95rem;">Hon. Froilan V. Andueza</div>
+              <div style="color:rgba(255,255,255,.6);font-size:.76rem;">Vice Mayor, Claveria, Masbate</div>
+            </div>
+          </div>
+          <p style="color:rgba(255,255,255,.65);font-size:.8rem;line-height:1.6;border-top:1px solid rgba(255,255,255,.1);padding-top:12px;">The Office of the Vice Mayor directs the legislative agenda, presides over all council sessions, and coordinates the overall operations of the Sangguniang Bayan.</p>
+        </div>
+
+        <!-- Sub-level label -->
+        <div class="org-level-label" style="margin-bottom:16px;"><span style="font-size:.68rem;">Support Staff</span></div>
+
+        <!-- Utility aide card -->
+        <div class="vm-office-card">
+          <div class="vm-office-avatar">JS</div>
+          <div>
+            <div class="vm-office-name">Joel Sambajon</div>
+            <div class="vm-office-pos">Utility Aide</div>
+            <div class="vm-office-desc">Provides general utility and maintenance support for the Office of the Vice Mayor.</div>
+          </div>
+        </div>
+
+        <!-- Functions of the office -->
+        <div style="margin-top:24px;background:var(--white);border-radius:12px;padding:20px;border:1px solid var(--gray-200);">
+          <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:14px;"><i class="fas fa-list-check" style="color:var(--gold);margin-right:6px;"></i>Key Functions</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Presides over all regular and special sessions</li>
+            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Signs approved ordinances and resolutions</li>
+            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Appoints standing and special committees</li>
+            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Coordinates with the Municipal Mayor on legislation</li>
+            <li style="display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--gray-600);"><i class="fas fa-check-circle" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>Acts as Mayor in case of absence or incapacity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Office info strip -->
+    <div class="office-info-strip">
+      <div class="office-info-item"><i class="fas fa-location-dot"></i><div><strong>Location</strong><br>Legislative Hall, Municipal Government Compound, Poblacion District 1, Claveria, Masbate 5419</div></div>
+      <div class="office-info-item"><i class="fas fa-clock"></i><div><strong>Office Hours</strong><br>Monday – Friday, 7:00 AM – 6:00 PM</div></div>
+      <div class="office-info-item"><i class="fas fa-envelope"></i><div><strong>Email</strong><br>sbclaveria@ymail.com</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SESSIONS CALENDAR -->
+<section class="sessions-section" id="sessions">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-calendar-days"></i> Sessions &amp; Calendar</div>
+      <h2 class="section-title">Upcoming Council Sessions</h2>
+      <p class="section-sub">Stay informed about scheduled regular and special sessions of the Sangguniang Bayan.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="sessions-wrap">
+      <div class="mini-cal">
+        <div class="cal-header">
+          <button class="cal-nav">◀</button>
+          <div class="cal-month">March 2025</div>
+          <button class="cal-nav">▶</button>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-day-name">S</div><div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div>
+          <div class="cal-day other-month">23</div><div class="cal-day other-month">24</div><div class="cal-day other-month">25</div><div class="cal-day other-month">26</div><div class="cal-day other-month">27</div><div class="cal-day other-month">28</div><div class="cal-day">1</div>
+          <div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day today">7</div><div class="cal-day">8</div>
+          <div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day session">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div>
+          <div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day session">20</div><div class="cal-day">21</div><div class="cal-day">22</div>
+          <div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day session">27</div><div class="cal-day">28</div><div class="cal-day">29</div>
+          <div class="cal-day">30</div><div class="cal-day">31</div>
+        </div>
+        <div style="margin-top:16px;font-size:.75rem;color:rgba(255,255,255,.55);">
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px;"><div style="width:14px;height:14px;border-radius:3px;background:var(--gold);"></div> Session Day</div>
+          <div style="display:flex;gap:8px;align-items:center;"><div style="width:14px;height:14px;border-radius:3px;border:1.5px solid var(--gold-light);"></div> Today</div>
+        </div>
+      </div>
+      <div class="sessions-list">
+        <div class="session-item"><div class="session-date-box"><div class="session-day">12</div><div class="session-mon">Mar</div></div><div class="session-info"><h4>Regular Session – Wednesday, March 12, 2025</h4><p><i class="fas fa-clock" style="margin-right:5px;color:var(--blue)"></i>9:00 AM &nbsp;|&nbsp; <i class="fas fa-location-dot" style="margin-right:3px;color:var(--blue)"></i>Legislative Hall, Municipal Government Compound</p><p style="font-size:.78rem;color:var(--gray-400);margin-top:4px;">Agenda: 2nd Reading – Solid Waste Ordinance Amendment; Committee Reports on Infrastructure</p></div><span class="session-type tag tag-blue">Regular</span></div>
+        <div class="session-item" style="border-left-color:var(--gold);"><div class="session-date-box"><div class="session-day">20</div><div class="session-mon">Mar</div></div><div class="session-info"><h4>Special Session – Budget Deliberation</h4><p><i class="fas fa-clock" style="margin-right:5px;color:var(--gold)"></i>2:00 PM &nbsp;|&nbsp; <i class="fas fa-location-dot" style="margin-right:3px;color:var(--gold)"></i>Legislative Hall, Municipal Government Compound</p><p style="font-size:.78rem;color:var(--gray-400);margin-top:4px;">Agenda: Review of Supplemental Budget No. 1, CY 2025; Public Hearing on Infrastructure Projects</p></div><span class="session-type tag tag-orange">Special</span></div>
+        <div class="session-item"><div class="session-date-box"><div class="session-day">26</div><div class="session-mon">Mar</div></div><div class="session-info"><h4>Regular Session – Wednesday, March 26, 2025</h4><p><i class="fas fa-clock" style="margin-right:5px;color:var(--blue)"></i>9:00 AM &nbsp;|&nbsp; <i class="fas fa-location-dot" style="margin-right:3px;color:var(--blue)"></i>Legislative Hall, Municipal Government Compound</p><p style="font-size:.78rem;color:var(--gray-400);margin-top:4px;">Agenda: 3rd Reading – Youth Scholarship Guidelines; New Business</p></div><span class="session-type tag tag-blue">Regular</span></div>
+        <div class="session-item" style="border-left-color:#16a34a;"><div class="session-date-box"><div class="session-day">2</div><div class="session-mon">Apr</div></div><div class="session-info"><h4>Regular Session – Wednesday, April 2, 2025</h4><p><i class="fas fa-clock" style="margin-right:5px;color:var(--blue)"></i>9:00 AM &nbsp;|&nbsp; <i class="fas fa-location-dot" style="margin-right:3px;color:var(--blue)"></i>Legislative Hall, Municipal Government Compound</p><p style="font-size:.78rem;color:var(--gray-400);margin-top:4px;">Regular sessions are held every Wednesday. Public is welcome to observe all open sessions.</p></div><span class="session-type tag tag-blue">Regular</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEGISLATIVE STATISTICS DASHBOARD -->
+<section class="dashboard" id="documents">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-chart-bar"></i> Legislative Dashboard</div>
+      <h2 class="section-title">Legislative Statistics</h2>
+      <p class="section-sub">Visual overview of the Sangguniang Bayan's legislative performance and accomplishments.</p>
+      <div class="divider" style="background:linear-gradient(90deg,var(--gold),var(--gold-light));"></div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-icon" style="background:rgba(201,162,39,.2);"><i class="fas fa-gavel" style="color:var(--gold-light)"></i></div><div class="stat-num" data-count="148">148</div><div class="stat-label">Total Ordinances Passed</div></div>
+      <div class="stat-card"><div class="stat-icon" style="background:rgba(37,99,171,.25);"><i class="fas fa-scroll" style="color:#93c5fd"></i></div><div class="stat-num" data-count="312">312</div><div class="stat-label">Resolutions Approved</div></div>
+      <div class="stat-card"><div class="stat-icon" style="background:rgba(22,163,74,.2);"><i class="fas fa-check-circle" style="color:#86efac"></i></div><div class="stat-num" data-count="23">23</div><div class="stat-label">Active Legislative Measures</div></div>
+      <div class="stat-card"><div class="stat-icon" style="background:rgba(220,38,38,.2);"><i class="fas fa-file-circle-check" style="color:#fca5a5"></i></div><div class="stat-num" data-count="456">456</div><div class="stat-label">Document Requests Processed</div></div>
+    </div>
+    <div class="chart-area">
+      <div class="chart-card">
+        <div class="chart-title"><i class="fas fa-chart-bar" style="margin-right:6px;color:var(--gold-light)"></i>Ordinances by Sector (2020–2025)</div>
+        <div class="bar-chart">
+          <div class="bar-item"><div class="bar-label">Environment</div><div class="bar-track"><div class="bar-fill" style="width:85%;background:linear-gradient(90deg,#22c55e,#86efac)"></div></div><div class="bar-val">28</div></div>
+          <div class="bar-item"><div class="bar-label">Health</div><div class="bar-track"><div class="bar-fill" style="width:70%;background:linear-gradient(90deg,#3b82f6,#93c5fd)"></div></div><div class="bar-val">23</div></div>
+          <div class="bar-item"><div class="bar-label">Transport</div><div class="bar-track"><div class="bar-fill" style="width:55%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><div class="bar-val">18</div></div>
+          <div class="bar-item"><div class="bar-label">Agriculture</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:linear-gradient(90deg,#a16207,#d97706)"></div></div><div class="bar-val">16</div></div>
+          <div class="bar-item"><div class="bar-label">Fisheries</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:linear-gradient(90deg,var(--teal),#14b8a6)"></div></div><div class="bar-val">15</div></div>
+          <div class="bar-item"><div class="bar-label">Social</div><div class="bar-track"><div class="bar-fill" style="width:40%;background:linear-gradient(90deg,#ec4899,#f9a8d4)"></div></div><div class="bar-val">13</div></div>
+          <div class="bar-item"><div class="bar-label">Education</div><div class="bar-track"><div class="bar-fill" style="width:33%;background:linear-gradient(90deg,#7c3aed,#a855f7)"></div></div><div class="bar-val">11</div></div>
+          <div class="bar-item"><div class="bar-label">Business</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:linear-gradient(90deg,#dc2626,#f87171)"></div></div><div class="bar-val">9</div></div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title"><i class="fas fa-chart-pie" style="margin-right:6px;color:var(--gold-light)"></i>Legislative Output 2025</div>
+        <svg viewBox="0 0 200 200" width="100%" style="max-height:160px;display:block;margin:auto;">
+          <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="30"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#22c55e" stroke-width="30" stroke-dasharray="130 372" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#3b82f6" stroke-width="30" stroke-dasharray="95 372" stroke-dashoffset="-130" transform="rotate(-90 100 100)"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="var(--gold)" stroke-width="30" stroke-dasharray="80 372" stroke-dashoffset="-225" transform="rotate(-90 100 100)"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#ec4899" stroke-width="30" stroke-dasharray="67 372" stroke-dashoffset="-305" transform="rotate(-90 100 100)"/>
+          <text x="100" y="97" text-anchor="middle" fill="white" font-size="18" font-family="Playfair Display" font-weight="700">47</text>
+          <text x="100" y="112" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="9">measures in 2025</text>
+        </svg>
+        <div class="pie-legend">
+          <div class="pie-item"><div class="pie-dot" style="background:#22c55e"></div><div class="pie-name">Ordinances</div><div class="pie-pct">35%</div></div>
+          <div class="pie-item"><div class="pie-dot" style="background:#3b82f6"></div><div class="pie-name">Resolutions</div><div class="pie-pct">25%</div></div>
+          <div class="pie-item"><div class="pie-dot" style="background:var(--gold)"></div><div class="pie-name">Committee Reports</div><div class="pie-pct">21%</div></div>
+          <div class="pie-item"><div class="pie-dot" style="background:#ec4899"></div><div class="pie-name">Public Hearings</div><div class="pie-pct">18%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CITIZEN LEGISLATIVE DASHBOARD -->
+<section class="citizen-dash" id="citizen-dashboard">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-user-gear"></i> Personalized</div>
+      <h2 class="section-title">Citizen Legislative Dashboard</h2>
+      <p class="section-sub">Laws, proposals, and hearings that may affect you — organized by sector.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="citizen-tabs">
+      <button class="ctab active" onclick="switchTab('fishers',this)">🎣 Fishers</button>
+      <button class="ctab" onclick="switchTab('youth',this)">🎓 Youth</button>
+      <button class="ctab" onclick="switchTab('farmers',this)">🌾 Farmers</button>
+      <button class="ctab" onclick="switchTab('business',this)">🏪 Business</button>
+      <button class="ctab" onclick="switchTab('transport',this)">🏍️ Transport</button>
+    </div>
+    <div class="cdash-grid" id="citizenDash"></div>
+  </div>
+</section>
+
+<!-- CITIZEN PROPOSALS -->
+<section class="proposals-section" id="proposals">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-lightbulb"></i> Citizen Participation</div>
+      <h2 class="section-title">Citizens' &amp; Organizations' Legislative Proposals</h2>
+      <p class="section-sub">Any resident or accredited organization of Claveria may submit a proposed ordinance or resolution for the Sangguniang Bayan's consideration.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="proposals-layout">
+      <div class="proposal-form-card" id="proposalFormWrap">
+        <h3><i class="fas fa-pen-to-square" style="margin-right:7px;"></i>Submit a Proposal</h3>
+        <p>Fill out this form to submit your proposed ordinance or resolution. The SB Secretary's Office will log it and forward it to the appropriate committee.</p>
+        <div id="proposalFormBody">
+          <div class="pf-group"><label>Your Full Name / Organization Name *</label><input type="text" id="pf-name" placeholder="e.g. Juan Dela Cruz or Claveria Farmers' Coop"/></div>
+          <div class="pf-group"><label>Submitter Type *</label><select id="pf-submitter-type"><option value="">Select type…</option><option>Individual Citizen</option><option>Accredited CSO / NGO</option><option>Barangay Council</option><option>Sectoral Organization</option><option>Business Association</option><option>Academic Institution</option></select></div>
+          <div class="pf-group"><label>Contact Number *</label><input type="tel" id="pf-contact" placeholder="09XXXXXXXXX"/></div>
+          <div class="pf-group"><label>Proposal Type *</label><select id="pf-type"><option value="">Select proposal type…</option><option>Proposed Ordinance</option><option>Proposed Resolution</option></select></div>
+          <div class="pf-group"><label>Sector / Topic Area *</label><select id="pf-sector"><option value="">Select sector…</option><option>Environment &amp; Sanitation</option><option>Health &amp; Nutrition</option><option>Education &amp; Youth</option><option>Fisheries &amp; Marine</option><option>Agriculture &amp; Farming</option><option>Transportation</option><option>Business &amp; Commerce</option><option>Social Services &amp; Women</option><option>Public Safety</option><option>Infrastructure</option><option>Other</option></select></div>
+          <div class="pf-group"><label>Proposed Title *</label><input type="text" id="pf-title" placeholder="e.g. An Ordinance Protecting Mangrove Areas in Claveria"/></div>
+          <div class="pf-group"><label>Brief Description / Rationale * <span style="color:rgba(255,255,255,.4);font-size:.75rem;">(max 500 chars)</span></label><textarea id="pf-desc" maxlength="500" placeholder="Describe the problem you want to address, your proposed solution, and who it will benefit…" oninput="updateCharCount(this)"></textarea><div class="char-count"><span id="charCount">0</span>/500</div></div>
+          <div class="pf-group"><label>Reference Laws / Supporting Docs (optional)</label><input type="text" id="pf-docs" placeholder="e.g. RA 9003, DENR AO 2013-19"/></div>
+          <div class="proposal-disclaimer"><i class="fas fa-circle-info" style="color:var(--gold-light);margin-right:5px;"></i>By submitting, you confirm this proposal is made in good faith for the benefit of Claveria. All proposals are subject to committee review and public hearing. Submission does not guarantee enactment.</div>
+          <button class="btn btn-gold" style="width:100%;justify-content:center;" onclick="submitProposal()"><i class="fas fa-paper-plane"></i> Submit Proposal to the SB</button>
+        </div>
+        <div id="proposalSuccessBody" class="hidden submit-success-overlay">
+          <i class="fas fa-check-circle"></i>
+          <h4>Proposal Submitted!</h4>
+          <p>Your proposal has been received and logged by the Office of the SB Secretary. It will be reviewed and referred to the appropriate committee within 5 working days.</p>
+          <div class="ref-num" id="proposalRefNum">CLP-2025-0041</div>
+          <p style="font-size:.76rem;margin-top:6px;color:#166534;">Reference number — keep this for follow-up inquiries at the SB Office.</p>
+          <button class="btn btn-navy btn-sm mt-16" onclick="resetProposalForm()"><i class="fas fa-plus"></i> Submit Another Proposal</button>
+        </div>
+      </div>
+      <div class="proposals-list-wrap">
+        <div class="proposals-count-bar">
+          <div class="pcount"><i class="fas fa-list" style="color:var(--navy);"></i>&nbsp;<span id="totalCount">6</span>&nbsp;Total</div>
+          <div class="pcount" style="color:#a16207;border-color:#fde68a;background:#fef9c3;"><i class="fas fa-clock" style="color:#a16207;"></i>&nbsp;<span id="pendingCount">2</span>&nbsp;Pending</div>
+          <div class="pcount" style="color:#1d4ed8;border-color:#bfdbfe;background:#dbeafe;"><i class="fas fa-magnifying-glass" style="color:#1d4ed8;"></i>&nbsp;<span id="reviewCount">2</span>&nbsp;Under Review</div>
+          <div class="pcount" style="color:#15803d;border-color:#bbf7d0;background:#dcfce7;"><i class="fas fa-check" style="color:#15803d;"></i>&nbsp;<span id="endorsedCount">2</span>&nbsp;Endorsed</div>
+        </div>
+        <div class="proposals-tabs">
+          <button class="ptab active" onclick="filterProposals('all',this)">All</button>
+          <button class="ptab" onclick="filterProposals('pending',this)">⏳ Pending</button>
+          <button class="ptab" onclick="filterProposals('review',this)">🔍 Under Review</button>
+          <button class="ptab" onclick="filterProposals('endorsed',this)">✅ Endorsed</button>
+          <button class="ptab" onclick="filterProposals('declined',this)">❌ Declined</button>
+        </div>
+        <div id="proposalsList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS & ANNOUNCEMENTS -->
+<section class="news-section" id="news">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-newspaper"></i> Latest Updates</div>
+      <h2 class="section-title">News &amp; Announcements</h2>
+      <p class="section-sub">Stay updated with the latest developments from the Sangguniang Bayan of Claveria.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="news-grid">
+      <div class="news-card" style="border:2px solid var(--gold);">
+        <div class="news-img" style="background:linear-gradient(135deg,#1e3a5f,#1e4d8c);"><div class="news-img-inner">🕖</div><span class="news-category" style="background:var(--gold);color:var(--navy);">LATEST</span></div>
+        <div class="news-body"><div class="news-date"><i class="fas fa-calendar" style="margin-right:5px;color:var(--gold)"></i>March 19, 2025</div><div class="news-title">New Office Hours: 7:00 AM – 6:00 PM Starting Today</div><div class="news-excerpt">In compliance with the directive of the President of the Republic of the Philippines, the SB of Claveria, Masbate adopts a compressed workweek schedule effective immediately. Citizens are advised to transact early.</div><button class="btn btn-sm btn-gold">Read More</button></div>
+      </div>
+      <div class="news-card">
+        <div class="news-img" style="background:linear-gradient(135deg,var(--navy),var(--blue-mid));"><div class="news-img-inner">⚖️</div><span class="news-category">Legislative</span></div>
+        <div class="news-body"><div class="news-date"><i class="fas fa-calendar" style="margin-right:5px;color:var(--gold)"></i>February 28, 2025</div><div class="news-title">SB Approves Solid Waste Management Ordinance on 3rd Reading</div><div class="news-excerpt">The Sangguniang Bayan unanimously approved the new Solid Waste Management Ordinance, mandating source segregation and scheduled collection in all 15 barangays.</div><button class="btn btn-sm btn-navy">Read More</button></div>
+      </div>
+      <div class="news-card">
+        <div class="news-img" style="background:linear-gradient(135deg,var(--teal),#14b8a6);"><div class="news-img-inner">🎓</div><span class="news-category">Education</span></div>
+        <div class="news-body"><div class="news-date"><i class="fas fa-calendar" style="margin-right:5px;color:var(--gold)"></i>February 15, 2025</div><div class="news-title">25 Claveria Youth to Receive College Scholarships Under New SB Resolution</div><div class="news-excerpt">Resolution No. 2025-18 allocates funds for 25 scholarship grants covering tuition and monthly stipends for qualified youth from low-income families.</div><button class="btn btn-sm btn-navy">Read More</button></div>
+      </div>
+      <div class="news-card">
+        <div class="news-img" style="background:linear-gradient(135deg,#b45309,#d97706);"><div class="news-img-inner">🏍️</div><span class="news-category">Public Service</span></div>
+        <div class="news-body"><div class="news-date"><i class="fas fa-calendar" style="margin-right:5px;color:var(--gold)"></i>February 5, 2025</div><div class="news-title">Tricycle Franchise Renewal Season Opens – Deadline Set for April 30</div><div class="news-excerpt">The Office of the SB Secretary announces the opening of the annual tricycle franchise renewal period. All operators must renew by April 30, 2025 to avoid penalties.</div><button class="btn btn-sm btn-navy">Read More</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPARENCY -->
+<section class="transparency" id="transparency">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-eye"></i> Open Government</div>
+      <h2 class="section-title">Transparency Corner</h2>
+      <p class="section-sub">Access public documents, reports, and records in compliance with the Right to Information Act and Open Government Partnership.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="trans-grid">
+      <a href="#" class="trans-card"><div class="trans-icon"><i class="fas fa-file-shield"></i></div><div class="trans-title">Citizen's Charter</div><div class="trans-desc">View our ARTA-compliant Citizen's Charter detailing all services, requirements, and timeframes.</div></a>
+      <a href="#bulletin" class="trans-card"><div class="trans-icon"><i class="fas fa-gavel"></i></div><div class="trans-title">Approved Ordinances Archive</div><div class="trans-desc">Browse the complete archive of all ordinances enacted by the Sangguniang Bayan.</div></a>
+      <a href="#" class="trans-card"><div class="trans-icon"><i class="fas fa-chart-line"></i></div><div class="trans-title">Legislative Accomplishment Reports</div><div class="trans-desc">Annual legislative accomplishment reports submitted to the Sangguniang Panlalawigan.</div></a>
+      <a href="#" class="trans-card"><div class="trans-icon"><i class="fas fa-clipboard-user"></i></div><div class="trans-title">Attendance of SB Members</div><div class="trans-desc">Track attendance records of SB members during regular and special sessions.</div></a>
+      <a href="#" class="trans-card"><div class="trans-icon"><i class="fas fa-coins"></i></div><div class="trans-title">Budget &amp; Financial Records</div><div class="trans-desc">View approved budgets and financial allocations for the SB operations and programs.</div></a>
+      <a href="#" class="trans-card"><div class="trans-icon"><i class="fas fa-microphone-lines"></i></div><div class="trans-title">Session Minutes &amp; Verbatim</div><div class="trans-desc">Access official minutes and verbatim proceedings of SB sessions open to the public.</div></a>
+    </div>
+
+    <!-- SCOREBOARD -->
+    <div class="scoreboard-wrap" id="sbScoreboard">
+      <div class="scoreboard-header">
+        <h3><i class="fas fa-trophy" style="color:var(--gold);margin-right:10px;"></i>SB Members Legislative Performance Scoreboard</h3>
+        <div class="sb-controls">
+          <select class="sb-year-select" onchange="renderScoreboard(this.value, currentSbSort)">
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="all">All Years</option>
+          </select>
+          <button class="sb-sort-btn active" onclick="renderScoreboard(currentSbYear,'total',this)">Sort: Total</button>
+          <button class="sb-sort-btn" onclick="renderScoreboard(currentSbYear,'authored',this)">Sort: Authored</button>
+          <button class="sb-sort-btn" onclick="renderScoreboard(currentSbYear,'sponsored',this)">Sort: Sponsored</button>
+        </div>
+      </div>
+      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 18px;margin-bottom:24px;display:flex;gap:12px;align-items:flex-start;">
+        <i class="fas fa-circle-info" style="color:#2563eb;flex-shrink:0;margin-top:2px;font-size:1rem;"></i>
+        <div style="font-size:.82rem;color:#1e3a5f;line-height:1.7;"><strong>How to read this scoreboard:</strong> Legislative output is <em>one dimension</em> of a member's service. Committee hearings, constituent assistance, and attendance are equally important. Figures are sourced from official session records verified by the Office of the SB Secretary.</div>
+      </div>
+      <div class="sb-trophy-row" id="sbTrophyRow"></div>
+      <div class="scoreboard-legend">
+        <div class="sb-legend-item"><div class="sb-legend-dot" style="background:var(--navy);"></div>Authored</div>
+        <div class="sb-legend-item"><div class="sb-legend-dot" style="background:var(--blue-mid);"></div>Sponsored</div>
+        <div class="sb-legend-item"><div class="sb-legend-dot" style="background:var(--teal);"></div>Co-Sponsored</div>
+        <div class="sb-legend-item"><div class="sb-legend-dot" style="background:var(--gold);border-radius:50%;"></div>Total Legislative Output</div>
+      </div>
+      <p style="font-size:.8rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Regular Members</p>
+      <div style="overflow-x:auto;margin-bottom:28px;"><table class="scoreboard-table"><thead class="sb-thead"><tr><th style="width:48px;">#</th><th>Member</th><th>Authored</th><th>Sponsored</th><th class="hide-mobile">Co-Sponsored</th><th class="hide-mobile">Breakdown</th><th>Total</th></tr></thead><tbody id="sbTableBody"></tbody></table></div>
+      <p style="font-size:.8rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Ex-Officio Members</p>
+      <p style="font-size:.78rem;color:var(--gray-400);margin-bottom:10px;">Ex-officio members hold external mandates as heads of their respective federations. Their legislative participation differs in scope from regular members.</p>
+      <div style="overflow-x:auto;margin-bottom:20px;"><table class="scoreboard-table"><thead class="sb-thead"><tr><th style="width:48px;">#</th><th>Member</th><th>Authored</th><th>Sponsored</th><th class="hide-mobile">Co-Sponsored</th><th class="hide-mobile">Breakdown</th><th>Total</th></tr></thead><tbody id="sbExOffTableBody"></tbody></table></div>
+      <div class="scoreboard-footer-note">
+        <i class="fas fa-circle-info"></i>
+        <div>
+          <p style="margin-bottom:8px;"><strong>Definitions:</strong></p>
+          <p style="margin-bottom:5px;"><strong>Author</strong> — the member who originates and writes the proposed ordinance or resolution.</p>
+          <p style="margin-bottom:5px;"><strong>Sponsor</strong> — the member who formally presents and defends the measure before the legislative body.</p>
+          <p style="margin-bottom:10px;"><strong>Co-Sponsor</strong> — a member who supports the measure and agrees to be listed as backing it.</p>
+          <p style="color:#94a3b8;font-size:.75rem;">⚠️ Note: These figures are placeholder data and must be replaced with verified records from the Office of the SB Secretary before publishing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+            <div style="width:44px;height:44px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy);font-size:1.1rem;">SB</div>
+            <div><h3 style="margin:0;">Sangguniang Bayan</h3><p style="color:var(--gold-light);font-size:.72rem;margin:0;text-transform:uppercase;letter-spacing:.05em;">Claveria, Masbate</p></div>
+          </div>
+          <p>Transparent Legislation. Responsive Governance. Serving the people of Claveria, Masbate with integrity, accountability, and dedication.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-btn"><i class="fas fa-rss"></i></a>
+          </div>
+          <div class="map-placeholder"><i class="fas fa-map-location-dot"></i><span>Legislative Hall, Poblacion District 1, Claveria, Masbate 5419</span><span style="font-size:.75rem;">Google Maps integration available</span></div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About the SB</a></li><li><a href="#bulletin">Digital Bulletin</a></li><li><a href="#services">Citizen Services</a></li><li><a href="#laws">Know Your Laws</a></li><li><a href="#proposals">Citizen Proposals</a></li><li><a href="#sessions">Sessions</a></li><li><a href="#transparency">Transparency</a></li></ul></div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="#">CSO Accreditation</a></li><li><a href="#">MARINA Resolution</a></li><li><a href="#">Tricycle Franchise</a></li><li><a href="#">Document Request</a></li><li><a href="#">Track Request</a></li><li><a href="#">Public Hearing Reg.</a></li></ul></div>
+        <div class="footer-col"><h4>Contact Us</h4><ul class="footer-contact"><li><i class="fas fa-location-dot"></i><span>Legislative Hall, Municipal Government Compound, Poblacion District 1, Claveria, Masbate 5419</span></li><li><i class="fas fa-envelope"></i><span>sbclaveria@ymail.com</span></li><li><i class="fas fa-clock"></i><span>Mon–Fri: 7:00 AM – 6:00 PM<br>Closed on holidays</span></li></ul></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2025 Sangguniang Bayan of Claveria, Masbate. All rights reserved.</span>
+      <span>Republic of the Philippines &nbsp;|&nbsp; <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Accessibility</a> &nbsp;|&nbsp; <a href="#">Site Map</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ==================== MODALS ==================== -->
+<div class="modal-overlay" id="docModal">
+  <div class="modal">
+    <div class="modal-header" style="position:relative;"><h3>Ordinance No. 2025-07</h3><p>An Ordinance Establishing the Claveria Solid Waste Management Program</p><button class="modal-close" onclick="closeModal('docModal')">✕</button></div>
+    <div class="modal-body">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;"><span class="tag tag-green">Environment</span><span class="tag tag-blue">Approved: Feb 26, 2025</span><span class="tag tag-green">In Effect</span></div>
+      <h4 style="color:var(--navy);margin-bottom:8px;">Plain Language Summary</h4>
+      <p style="color:var(--gray-600);font-size:.88rem;line-height:1.7;margin-bottom:16px;">This ordinance requires every household, business, and institution in Claveria to separate garbage into three categories: (1) biodegradable waste, (2) non-biodegradable waste, and (3) special or hazardous waste.</p>
+      <p style="color:var(--gray-600);font-size:.88rem;line-height:1.7;margin-bottom:16px;">Non-compliance is subject to fines of ₱500 for the first offense, ₱1,000 for the second, and ₱2,000 for subsequent violations.</p>
+      <div style="background:var(--gold-pale);border:1px solid var(--gold);border-radius:8px;padding:14px;margin-bottom:16px;"><strong style="color:var(--navy);font-size:.85rem;">What this means for you:</strong><p style="color:var(--gray-600);font-size:.83rem;margin-top:6px;">Prepare three separate bins at home. Your barangay will post collection schedules.</p></div>
+      <div style="display:flex;gap:10px;"><button class="btn btn-navy btn-sm"><i class="fas fa-download"></i> Download Full Text (PDF)</button><button class="btn btn-outline btn-sm" style="color:var(--blue);border-color:var(--blue)" onclick="openModal('requestModal');closeModal('docModal')"><i class="fas fa-file-lines"></i> Request Certified Copy</button></div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="requestModal">
+  <div class="modal">
+    <div class="modal-header" style="position:relative;"><h3>Document Request Form</h3><p>Office of the SB Secretary – Claveria, Masbate</p><button class="modal-close" onclick="closeModal('requestModal')">✕</button></div>
+    <div class="modal-body">
+      <div id="reqFormArea">
+        <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Full Name *</label><input type="text" placeholder="Your full name" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+        <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Document Requested *</label><select style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;background:white;"><option>Certified True Copy – Ordinance</option><option>Certified True Copy – Resolution</option><option>Session Minutes</option><option>Committee Report</option></select></div>
+        <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Ordinance / Resolution No.</label><input type="text" placeholder="e.g. Ordinance No. 2025-07" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+        <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Contact Number *</label><input type="tel" placeholder="09XXXXXXXXX" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+        <p style="font-size:.78rem;color:var(--gray-400);margin-bottom:16px;">📌 Processing fee: ₱50 per document. Pay at the Municipal Treasurer's Office upon release.</p>
+        <button class="btn btn-gold" style="width:100%;justify-content:center;" onclick="submitRequestModal()"><i class="fas fa-paper-plane"></i> Submit Request</button>
+      </div>
+      <div id="reqSuccessArea" class="hidden">
+        <div style="background:#dcfce7;border:1px solid #86efac;border-radius:10px;padding:18px;display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;"><i class="fas fa-check-circle" style="color:var(--green);font-size:1.4rem;"></i><div><h4 style="color:#15803d;font-weight:700;margin-bottom:4px;">Request Submitted Successfully!</h4><p style="color:#166534;font-size:.83rem;">Your request has been received by the Office of the SB Secretary.</p></div></div>
+        <div style="background:var(--off-white);border-radius:10px;padding:18px;text-align:center;"><p style="color:var(--gray-600);font-size:.83rem;margin-bottom:8px;">Your Tracking Number</p><div class="tracking-num" id="generatedTrackNum">SB-2025-00124</div><p style="color:var(--gray-400);font-size:.77rem;margin-top:8px;">Expected release: 2–3 working days.</p></div>
+        <button class="btn btn-navy mt-16" style="width:100%;justify-content:center;" onclick="closeModal('requestModal')">Close</button>
       </div>
     </div>
   </div>
 </div>
-
-<div class="form-overlay" id="statusModal">
-  <div class="form-modal" style="max-width:440px;">
-    <div class="form-modal-header"><h3 id="statusModalTitle">Update Status</h3><button class="close-btn" onclick="closeModal('statusModal')">✕</button></div>
-    <div class="form-body">
-      <input type="hidden" id="statusEntityId"/>
-      <input type="hidden" id="statusEntityType"/>
-      <div class="form-group"><label>New Status</label><select id="newStatus"></select></div>
-      <div class="form-group"><label>Notes / Reviewer Comments</label><textarea id="statusNotes" placeholder="Optional notes…"></textarea></div>
-      <div class="form-actions">
-        <button class="btn btn-outline" onclick="closeModal('statusModal')">Cancel</button>
-        <button class="btn btn-primary" onclick="saveStatus()"><i class="fas fa-check"></i> Update Status</button>
-      </div>
+<div class="modal-overlay" id="csoModal">
+  <div class="modal">
+    <div class="modal-header" style="position:relative;"><h3>CSO Accreditation Application</h3><p>Sangguniang Bayan of Claveria, Masbate</p><button class="modal-close" onclick="closeModal('csoModal')">✕</button></div>
+    <div class="modal-body">
+      <div style="background:var(--gold-pale);border:1px solid var(--gold);border-radius:8px;padding:14px;margin-bottom:18px;"><strong style="color:var(--navy);font-size:.85rem;"><i class="fas fa-circle-info" style="color:var(--gold);margin-right:5px;"></i>Requirements:</strong><ul style="color:var(--gray-600);font-size:.83rem;margin-top:8px;padding-left:18px;line-height:1.8;"><li>Organization's Constitution and By-Laws (certified copy)</li><li>List of Current Officers with contact info</li><li>Latest Annual Financial Report</li><li>Certificate of Registration (if any)</li><li>Barangay or Mayor's endorsement letter</li></ul></div>
+      <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Organization Name *</label><input type="text" placeholder="Name of your organization" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+      <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Contact Person &amp; Number *</label><input type="text" placeholder="Name and contact number" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+      <p style="font-size:.78rem;color:var(--gray-400);margin-bottom:14px;">Submit complete requirements in person at the Office of the SB Secretary. Processing takes 5–7 working days.</p>
+      <button class="btn btn-navy" style="width:100%;justify-content:center;" onclick="closeModal('csoModal')"><i class="fas fa-check"></i> Noted – I'll Visit the SB Office</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="marinaModal">
+  <div class="modal">
+    <div class="modal-header" style="position:relative;"><h3>MARINA Resolution Request</h3><p>For Motorboat Operators – Claveria, Masbate</p><button class="modal-close" onclick="closeModal('marinaModal')">✕</button></div>
+    <div class="modal-body">
+      <div style="background:var(--gold-pale);border:1px solid var(--gold);border-radius:8px;padding:14px;margin-bottom:18px;"><strong style="color:var(--navy);font-size:.85rem;"><i class="fas fa-circle-info" style="color:var(--gold);margin-right:5px;"></i>Requirements:</strong><ul style="color:var(--gray-600);font-size:.83rem;margin-top:8px;padding-left:18px;line-height:1.8;"><li>Boat Certificate / Registration Papers</li><li>Owner's Valid ID (government-issued)</li><li>Barangay Clearance</li><li>Application letter addressed to the Honorable Vice Mayor</li></ul></div>
+      <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Boat Owner's Name *</label><input type="text" placeholder="Full legal name" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+      <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Boat Name / Number *</label><input type="text" placeholder="Boat name or registration number" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+      <p style="font-size:.78rem;color:var(--gray-400);margin-bottom:14px;">Processing time: 3–5 working days. Bring original and photocopies of all requirements to the SB Office.</p>
+      <button class="btn btn-navy" style="width:100%;justify-content:center;" onclick="closeModal('marinaModal')"><i class="fas fa-check"></i> Understood – Visit SB Office</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="tricycleModal">
+  <div class="modal">
+    <div class="modal-header" style="position:relative;"><h3>Tricycle Franchise Application</h3><p>New Application or Renewal – Claveria, Masbate</p><button class="modal-close" onclick="closeModal('tricycleModal')">✕</button></div>
+    <div class="modal-body">
+      <div style="background:var(--gold-pale);border:1px solid var(--gold);border-radius:8px;padding:14px;margin-bottom:18px;"><strong style="color:var(--navy);font-size:.85rem;"><i class="fas fa-circle-info" style="color:var(--gold);margin-right:5px;"></i>Requirements:</strong><ul style="color:var(--gray-600);font-size:.83rem;margin-top:8px;padding-left:18px;line-height:1.8;"><li>Original Receipt &amp; Certificate of Registration (OR/CR)</li><li>Driver's License (Professional)</li><li>Barangay Clearance</li><li>Police Clearance</li><li>Medical Certificate</li><li>2x2 ID Photos (2 copies)</li></ul></div>
+      <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Application Type</label><select style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;background:white;"><option>New Franchise Application</option><option>Franchise Renewal</option><option>Transfer of Franchise</option></select></div>
+      <div class="form-group" style="margin-bottom:14px;"><label style="display:block;font-size:.82rem;color:var(--gray-600);margin-bottom:5px;font-weight:500;">Operator / Driver Name *</label><input type="text" placeholder="Full legal name" style="width:100%;padding:10px 13px;border-radius:8px;border:1px solid var(--gray-200);font-size:.88rem;font-family:inherit;outline:none;"/></div>
+      <p style="font-size:.78rem;color:var(--gray-400);margin-bottom:14px;">Franchise fee: ₱500 (new) / ₱300 (renewal). Deadline for renewal: April 30, 2025.</p>
+      <button class="btn btn-gold" style="width:100%;justify-content:center;" onclick="closeModal('tricycleModal')"><i class="fas fa-motorcycle"></i> Proceed to SB Office</button>
     </div>
   </div>
 </div>
 
-<div class="form-overlay" id="sessionModal">
-  <div class="form-modal" style="max-width:460px;">
-    <div class="form-modal-header"><h3>Schedule Session</h3><button class="close-btn" onclick="closeModal('sessionModal')">✕</button></div>
-    <div class="form-body">
-      <div class="form-row">
-        <div class="form-group"><label>Type</label><select id="sessType"><option value="regular">Regular</option><option value="special">Special</option><option value="committee">Committee</option></select></div>
-        <div class="form-group"><label>Date *</label><input type="date" id="sessDate"/></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Start Time</label><input type="time" id="sessTime" value="09:00"/></div>
-        <div class="form-group"><label>Status</label><select id="sessStatus"><option value="scheduled">Scheduled</option><option value="ongoing">Ongoing</option><option value="adjourned">Adjourned</option><option value="cancelled">Cancelled</option></select></div>
-      </div>
-      <div class="form-group"><label>Location</label><input id="sessLocation" value="Legislative Hall, Municipal Government Compound"/></div>
-      <div class="form-group"><label>Agenda</label><textarea id="sessAgenda" placeholder="Session agenda items…"></textarea></div>
-      <div class="form-actions">
-        <button class="btn btn-outline" onclick="closeModal('sessionModal')">Cancel</button>
-        <button class="btn btn-primary" onclick="saveSession()"><i class="fas fa-calendar-check"></i> Save Session</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="form-overlay" id="memberModal">
-  <div class="form-modal" style="max-width:460px;">
-    <div class="form-modal-header"><h3>Add / Edit Member</h3><button class="close-btn" onclick="closeModal('memberModal')">✕</button></div>
-    <div class="form-body">
-      <input type="hidden" id="memberId"/>
-      <div class="form-group"><label>Full Name *</label><input id="memberName" placeholder="Hon. First Last Name"/></div>
-      <div class="form-group"><label>Position *</label><input id="memberPosition" placeholder="e.g. 1st Regular Member"/></div>
-      <div class="form-group"><label>Committee</label><input id="memberCommittee" placeholder="e.g. Committee on Health"/></div>
-      <div class="form-row">
-        <div class="form-group"><label>Email</label><input type="email" id="memberEmail" placeholder="optional"/></div>
-        <div class="form-group"><label>Sort Order</label><input type="number" id="memberOrder" value="0"/></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label><input type="checkbox" id="memberPresiding" style="width:auto;margin-right:6px;"/> Presiding Officer</label></div>
-        <div class="form-group"><label><input type="checkbox" id="memberExOfficio" style="width:auto;margin-right:6px;"/> Ex-Officio</label></div>
-      </div>
-      <div class="form-actions">
-        <button class="btn btn-outline" onclick="closeModal('memberModal')">Cancel</button>
-        <button class="btn btn-primary" onclick="saveMember()"><i class="fas fa-save"></i> Save Member</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="form-overlay" id="newsModal">
-  <div class="form-modal">
-    <div class="form-modal-header"><h3 id="newsModalTitle">New News Post</h3><button class="close-btn" onclick="closeModal('newsModal')">✕</button></div>
-    <div class="form-body">
-      <input type="hidden" id="newsId"/>
-      <div class="form-row">
-        <div class="form-group"><label>Category</label><select id="newsCategory"><option value="announcement">Announcement</option><option value="legislative">Legislative</option><option value="education">Education</option><option value="public_service">Public Service</option><option value="health">Health</option></select></div>
-        <div class="form-group"><label>Emoji Icon</label><input id="newsEmoji" value="📢" placeholder="📢" style="font-size:1.2rem;"/></div>
-      </div>
-      <div class="form-group"><label>Title *</label><input id="newsTitle" placeholder="News headline"/></div>
-      <div class="form-group"><label>Excerpt</label><textarea id="newsExcerpt" placeholder="Short summary shown in news cards…"></textarea></div>
-      <div class="form-group"><label>Full Content</label><textarea id="newsContent" placeholder="Full article content…" style="min-height:100px;"></textarea></div>
-      <div class="form-row">
-        <div class="form-group"><label><input type="checkbox" id="newsFeatured" style="width:auto;margin-right:6px;"/> Featured</label></div>
-        <div class="form-group"><label><input type="checkbox" id="newsPublished" style="width:auto;margin-right:6px;"/> Publish immediately</label></div>
-      </div>
-      <div class="form-actions">
-        <button class="btn btn-outline" onclick="closeModal('newsModal')">Cancel</button>
-        <button class="btn btn-primary" onclick="saveNews()"><i class="fas fa-save"></i> Save Post</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- TOAST -->
-<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
-
-<script>
-// Backend serves frontend on same port — API is always same origin
-const API = window.location.origin;
-
-const token = localStorage.getItem('sb_token');
-if (!token) window.location.href = 'login.html';
-
-let currentUser = null;
-let docsPage = 0;
-const PAGE_SIZE = 20;
-
-// ── API helper ────────────────────────────────────────────────────────────
-async function api(method, path, body) {
-  const opts = {
-    method,
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-  };
-  if (body) opts.body = JSON.stringify(body);
-  const res = await fetch(`${API}${path}`, opts);
-  if (res.status === 401) { localStorage.removeItem('sb_token'); window.location.href = 'login.html'; }
-  const data = await res.json().catch(() => ({}));
-  return { status: res.status, data };
-}
-
-// ── Toast ─────────────────────────────────────────────────────────────────
-function toast(msg, type='success') {
-  const el = document.getElementById('toast');
-  el.className = `toast ${type}`;
-  document.getElementById('toastMsg').textContent = msg;
-  el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 3000);
-}
-
-// ── Navigation ────────────────────────────────────────────────────────────
-const pageTitles = {
-  dashboard:'Dashboard', documents:'Legislative Documents', proposals:'Citizen Proposals',
-  requests:'Document Requests', sessions:'Council Sessions', members:'SB Members',
-  services:'Service Applications', news:'News & Announcements', github:'GitHub Sync',
-  users:'System Users', audit:'Audit Log',
-};
-const pageActions = {
-  documents:'<i class="fas fa-plus"></i> New Document',
-  sessions: '<i class="fas fa-plus"></i> New Session',
-  news:     '<i class="fas fa-plus"></i> New Post',
-};
-const pageActionFns = {
-  documents: openDocModal, sessions: openSessionModal, news: openNewsModal,
-};
-
-function showPage(name, navEl) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById(`page-${name}`).classList.add('active');
-  if (navEl) navEl.classList.add('active');
-  document.getElementById('pageTitle').textContent = pageTitles[name] || name;
-  const act = document.getElementById('topbarAction');
-  if (pageActions[name]) { act.innerHTML = pageActions[name]; act.style.display=''; }
-  else { act.style.display='none'; }
-  // Load data
-  const loaders = { documents:loadDocs, proposals:loadProposals, requests:loadRequests,
-    sessions:loadSessions, members:loadMembers, services:loadServices,
-    news:loadNews, github:loadGithubLog, users:loadUsers, audit:loadAudit };
-  if (loaders[name]) loaders[name]();
-}
-
-function topbarAction() {
-  const active = document.querySelector('.nav-item.active')?.getAttribute('onclick')?.match(/showPage\('(\w+)'/)?.[1];
-  if (active && pageActionFns[active]) pageActionFns[active]();
-}
-
-// ── Modals ────────────────────────────────────────────────────────────────
-function openModal(id) { document.getElementById(id).classList.add('open'); }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-document.querySelectorAll('.form-overlay').forEach(m => m.addEventListener('click', e => { if (e.target===m) m.classList.remove('open'); }));
-
-// ── Badges ────────────────────────────────────────────────────────────────
-function badge(text, cls) { return `<span class="badge badge-${cls}">${text}</span>`; }
-function statusBadge(status) {
-  const map = { approved:'green', draft:'gray', first_reading:'blue', second_reading:'blue', third_reading:'yellow',
-    pending:'yellow', review:'blue', endorsed:'green', declined:'red', enacted:'navy',
-    submitted:'yellow', processing:'blue', ready:'green', released:'gray', cancelled:'red',
-    scheduled:'blue', ongoing:'green', adjourned:'gray', regular:'blue', special:'yellow' };
-  return badge(status, map[status]||'gray');
-}
-
-// ── User info ─────────────────────────────────────────────────────────────
-async function loadUser() {
-  const { data } = await api('GET', '/api/auth/me');
-  currentUser = data;
-  document.getElementById('sidebarName').textContent = data.display_name || data.username;
-  document.getElementById('sidebarRole').textContent = data.role;
-  document.getElementById('sidebarAvatar').textContent = (data.display_name || data.username||'?')[0].toUpperCase();
-}
-
-function logout() {
-  api('POST', '/api/auth/logout');
-  localStorage.removeItem('sb_token');
-  window.location.href = 'login.html';
-}
-
-// ── Dashboard ─────────────────────────────────────────────────────────────
-async function loadDashboard() {
-  const { data: stats } = await api('GET', '/api/admin/stats');
-
-  document.getElementById('statsGrid').innerHTML = `
-    <div class="stat-card"><div class="stat-icon" style="background:#eff6ff;"><i class="fas fa-gavel" style="color:var(--blue-mid);"></i></div><div><div class="stat-num">${stats.documents.total}</div><div class="stat-label">Total Documents</div><div class="stat-sub">${stats.documents.approved} approved · ${stats.documents.drafts} drafts</div></div></div>
-    <div class="stat-card"><div class="stat-icon" style="background:#fef9c3;"><i class="fas fa-lightbulb" style="color:#a16207;"></i></div><div><div class="stat-num">${stats.proposals.total}</div><div class="stat-label">Proposals</div><div class="stat-sub">${stats.proposals.pending} pending · ${stats.proposals.endorsed} endorsed</div></div></div>
-    <div class="stat-card"><div class="stat-icon" style="background:#dcfce7;"><i class="fas fa-file-magnifying-glass" style="color:var(--green);"></i></div><div><div class="stat-num">${stats.requests.total}</div><div class="stat-label">Doc Requests</div><div class="stat-sub">${stats.requests.pending} pending · ${stats.requests.ready} ready</div></div></div>
-    <div class="stat-card"><div class="stat-icon" style="background:var(--gold-pale);"><i class="fas fa-calendar-days" style="color:var(--gold);"></i></div><div><div class="stat-num">${stats.sessions.upcoming}</div><div class="stat-label">Upcoming Sessions</div><div class="stat-sub">${stats.sessions.total} total scheduled</div></div></div>
-    <div class="stat-card"><div class="stat-icon" style="background:#f0fdf4;"><i class="fas fa-handshake-angle" style="color:var(--teal);"></i></div><div><div class="stat-num">${stats.services.total}</div><div class="stat-label">Service Apps</div><div class="stat-sub">${stats.services.pending} pending review</div></div></div>
-    <div class="stat-card"><div class="stat-icon" style="background:#f8fafc;"><i class="fab fa-github" style="color:var(--g800);"></i></div><div><div class="stat-num">${stats.github.successful}</div><div class="stat-label">GitHub Syncs</div><div class="stat-sub">${stats.github.failed} errors</div></div></div>
-  `;
-
-  // Badge updates
-  document.getElementById('pendingBadge').textContent = stats.proposals.pending || '—';
-  document.getElementById('reqBadge').textContent = stats.requests.pending || '—';
-
-  // Recent docs
-  const { data: docs } = await api('GET', '/api/documents?limit=5');
-  document.getElementById('recentDocs').innerHTML = docs.data?.length ? `
-    <table><thead><tr><th>Number</th><th>Title</th><th>Status</th></tr></thead>
-    <tbody>${docs.data.map(d=>`<tr><td>${d.doc_number}</td><td class="td-bold" style="max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${d.title}</td><td>${statusBadge(d.status)}</td></tr>`).join('')}</tbody></table>
-  ` : '<div class="empty"><i class="fas fa-inbox"></i>No documents</div>';
-
-  // Pending proposals
-  const { data: props } = await api('GET', '/api/proposals?status=pending&limit=5');
-  document.getElementById('pendingProposals').innerHTML = props.data?.length ? `
-    <table><thead><tr><th>Ref</th><th>Title</th><th>Votes</th></tr></thead>
-    <tbody>${props.data.map(p=>`<tr><td>${p.ref_number}</td><td style="max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${p.title}</td><td>▲${p.votes_for}</td></tr>`).join('')}</tbody></table>
-  ` : '<div class="empty"><i class="fas fa-inbox"></i>No pending proposals</div>';
-}
-
-// ── Documents ─────────────────────────────────────────────────────────────
-async function loadDocs() {
-  const q      = document.getElementById('docSearch').value;
-  const type   = document.getElementById('docTypeFilter').value;
-  const status = document.getElementById('docStatusFilter').value;
-  const offset = docsPage * PAGE_SIZE;
-  let url = `/api/documents?limit=${PAGE_SIZE}&offset=${offset}`;
-  if (q)      url += `&q=${encodeURIComponent(q)}`;
-  if (type)   url += `&type=${type}`;
-  if (status) url += `&status=${status}`;
-
-  const { data } = await api('GET', url);
-  document.getElementById('docsCount').textContent = `${data.total} documents`;
-  document.getElementById('docsPrev').disabled = docsPage === 0;
-  document.getElementById('docsNext').disabled = (docsPage+1)*PAGE_SIZE >= data.total;
-
-  document.getElementById('docsBody').innerHTML = data.data?.length ? data.data.map(d => `
-    <tr>
-      <td class="td-bold">${d.doc_number}</td>
-      <td>${statusBadge(d.doc_type)}</td>
-      <td style="max-width:280px;"><span title="${d.title}">${d.title.slice(0,60)}${d.title.length>60?'…':''}</span></td>
-      <td>${d.sector||'—'}</td>
-      <td>${statusBadge(d.status)}</td>
-      <td>${d.date_approved||'—'}</td>
-      <td>${d.github_url ? `<a href="${d.github_url}" target="_blank" style="color:var(--blue);font-size:.75rem;"><i class="fab fa-github"></i> View</a>` : '—'}</td>
-      <td>
-        <button class="btn btn-outline btn-xs" onclick="editDoc(${d.id})"><i class="fas fa-pen"></i></button>
-        <button class="btn btn-gold btn-xs" onclick="publishDoc(${d.id})" title="Publish to GitHub"><i class="fab fa-github"></i></button>
-        <button class="btn btn-danger btn-xs" onclick="deleteDoc(${d.id})"><i class="fas fa-trash"></i></button>
-      </td>
-    </tr>
-  `).join('') : `<tr><td colspan="8" class="empty"><i class="fas fa-inbox"></i>No documents found</td></tr>`;
-}
-
-let searchDebounce;
-function searchDocs(q) { clearTimeout(searchDebounce); searchDebounce = setTimeout(() => { docsPage=0; loadDocs(); }, 350); }
-
-function openDocModal(docData) {
-  document.getElementById('docModalTitle').textContent = docData ? 'Edit Document' : 'New Document';
-  ['docId','docNumber','docTitle','docSponsor','docSummary','docFullText'].forEach(id => document.getElementById(id).value = '');
-  if (docData) {
-    document.getElementById('docId').value       = docData.id;
-    document.getElementById('docNumber').value   = docData.doc_number;
-    document.getElementById('docTitle').value    = docData.title;
-    document.getElementById('docType').value     = docData.doc_type;
-    document.getElementById('docSector').value   = docData.sector||'';
-    document.getElementById('docStatus').value   = docData.status;
-    document.getElementById('docFiled').value    = docData.date_filed||'';
-    document.getElementById('docApproved').value = docData.date_approved||'';
-    document.getElementById('docSponsor').value  = docData.sponsor||'';
-    document.getElementById('docSummary').value  = docData.summary||'';
-    document.getElementById('docFullText').value = docData.full_text||'';
-  }
-  openModal('docModal');
-}
-
-async function editDoc(id) {
-  const { data } = await api('GET', `/api/documents/${id}`);
-  openDocModal(data);
-}
-
-async function saveDoc() {
-  const id = document.getElementById('docId').value;
-  const body = {
-    doc_number:    document.getElementById('docNumber').value,
-    doc_type:      document.getElementById('docType').value,
-    title:         document.getElementById('docTitle').value,
-    sector:        document.getElementById('docSector').value,
-    status:        document.getElementById('docStatus').value,
-    date_filed:    document.getElementById('docFiled').value,
-    date_approved: document.getElementById('docApproved').value,
-    sponsor:       document.getElementById('docSponsor').value,
-    summary:       document.getElementById('docSummary').value,
-    full_text:     document.getElementById('docFullText').value,
-  };
-  const { status, data } = id ? await api('PUT', `/api/documents/${id}`, body) : await api('POST', '/api/documents', body);
-  if (status >= 400) { toast(data.error||'Error saving document','error'); return; }
-  toast(id ? 'Document updated.' : 'Document created.');
-  closeModal('docModal');
-  loadDocs();
-}
-
-async function deleteDoc(id) {
-  if (!confirm('Delete this document? This cannot be undone.')) return;
-  const { status, data } = await api('DELETE', `/api/documents/${id}`);
-  if (status >= 400) { toast(data.error||'Error','error'); return; }
-  toast('Document deleted.'); loadDocs();
-}
-
-async function publishDoc(id) {
-  if (!confirm('Publish this document to GitHub? It will be committed to the repository.')) return;
-  const { status, data } = await api('POST', `/api/documents/${id}/publish`);
-  if (status >= 400) { toast(data.error||'Publish failed','error'); return; }
-  toast(`Published! Commit: ${data.commit?.slice(0,7)}`);
-  loadDocs();
-}
-
-// ── Proposals ─────────────────────────────────────────────────────────────
-async function loadProposals() {
-  const status = document.getElementById('propStatusFilter').value;
-  const { data } = await api('GET', `/api/proposals?limit=50${status?'&status='+status:''}`);
-  document.getElementById('proposalsBody').innerHTML = data.data?.length ? data.data.map(p=>`
-    <tr>
-      <td class="td-bold">${p.ref_number}</td>
-      <td>${p.submitter_name}<br><span style="font-size:.72rem;color:var(--g400);">${p.submitter_type}</span></td>
-      <td style="max-width:250px;" title="${p.title}">${p.title.slice(0,55)}…</td>
-      <td>${p.sector}</td>
-      <td>${statusBadge(p.status)}</td>
-      <td><span style="color:var(--green);font-weight:600;">▲${p.votes_for}</span></td>
-      <td>${p.created_at?.split('T')[0]||p.created_at?.split(' ')[0]||'—'}</td>
-      <td><button class="btn btn-outline btn-xs" onclick="openUpdateStatus(${p.id},'proposal',['pending','review','endorsed','declined','enacted'])"><i class="fas fa-pen"></i> Status</button></td>
-    </tr>
-  `).join('') : `<tr><td colspan="8" class="empty">No proposals</td></tr>`;
-}
-
-// ── Requests ──────────────────────────────────────────────────────────────
-async function loadRequests() {
-  const status = document.getElementById('reqStatusFilter').value;
-  const { data } = await api('GET', `/api/requests?limit=50${status?'&status='+status:''}`);
-  document.getElementById('requestsBody').innerHTML = Array.isArray(data) && data.length ? data.map(r=>`
-    <tr>
-      <td class="td-bold">${r.tracking_number}</td>
-      <td>${r.requester_name}</td>
-      <td>${r.doc_type}</td>
-      <td>${r.doc_reference||'—'}</td>
-      <td>${statusBadge(r.status)}</td>
-      <td>${r.created_at?.split('T')[0]||'—'}</td>
-      <td><button class="btn btn-outline btn-xs" onclick="openUpdateStatus(${r.id},'request',['submitted','processing','ready','released','cancelled'])"><i class="fas fa-pen"></i> Status</button></td>
-    </tr>
-  `).join('') : `<tr><td colspan="7" class="empty">No requests</td></tr>`;
-}
-
-// ── Sessions ──────────────────────────────────────────────────────────────
-async function loadSessions() {
-  const { data } = await api('GET', '/api/sessions?limit=50');
-  document.getElementById('sessionsBody').innerHTML = Array.isArray(data) && data.length ? data.map(s=>`
-    <tr>
-      <td class="td-bold">${s.session_date}</td>
-      <td>${statusBadge(s.session_type)}</td>
-      <td>${s.start_time}</td>
-      <td style="max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${s.location}</td>
-      <td style="max-width:200px;" title="${s.agenda||''}">${(s.agenda||'—').slice(0,50)}${(s.agenda||'').length>50?'…':''}</td>
-      <td>${statusBadge(s.status)}</td>
-      <td>
-        <button class="btn btn-outline btn-xs" onclick="openUpdateStatus(${s.id},'session',['scheduled','ongoing','adjourned','cancelled'])"><i class="fas fa-pen"></i></button>
-        <button class="btn btn-danger btn-xs" onclick="deleteSession(${s.id})"><i class="fas fa-trash"></i></button>
-      </td>
-    </tr>
-  `).join('') : `<tr><td colspan="7" class="empty">No sessions</td></tr>`;
-}
-
-function openSessionModal() { openModal('sessionModal'); }
-async function saveSession() {
-  const body = {
-    session_type: document.getElementById('sessType').value,
-    session_date: document.getElementById('sessDate').value,
-    start_time:   document.getElementById('sessTime').value,
-    location:     document.getElementById('sessLocation').value,
-    agenda:       document.getElementById('sessAgenda').value,
-    status:       document.getElementById('sessStatus').value,
-  };
-  if (!body.session_date) { toast('Session date is required','error'); return; }
-  const { status, data } = await api('POST', '/api/sessions', body);
-  if (status >= 400) { toast(data.error||'Error','error'); return; }
-  toast('Session scheduled.');
-  closeModal('sessionModal');
-  loadSessions();
-}
-
-async function deleteSession(id) {
-  if (!confirm('Delete this session?')) return;
-  await api('DELETE', `/api/sessions/${id}`);
-  toast('Session deleted.'); loadSessions();
-}
-
-// ── Members ───────────────────────────────────────────────────────────────
-async function loadMembers() {
-  const { data } = await api('GET', '/api/members');
-  document.getElementById('membersBody').innerHTML = Array.isArray(data) && data.length ? data.map(m=>`
-    <tr>
-      <td>${m.sort_order}</td>
-      <td class="td-bold">${m.full_name}</td>
-      <td>${m.position}</td>
-      <td>${m.committee||'—'}</td>
-      <td>${m.is_exofficio ? badge('Ex-Officio','gray') : badge('Regular','blue')}</td>
-      <td>
-        <button class="btn btn-outline btn-xs" onclick="editMember(${JSON.stringify(m).replace(/"/g,'&quot;')})"><i class="fas fa-pen"></i></button>
-        <button class="btn btn-danger btn-xs" onclick="deactivateMember(${m.id})"><i class="fas fa-user-minus"></i></button>
-      </td>
-    </tr>
-  `).join('') : `<tr><td colspan="6" class="empty">No members</td></tr>`;
-}
-
-function openMemberModal() {
-  ['memberId','memberName','memberPosition','memberCommittee','memberEmail'].forEach(id => document.getElementById(id).value='');
-  document.getElementById('memberOrder').value = 0;
-  document.getElementById('memberPresiding').checked = false;
-  document.getElementById('memberExOfficio').checked  = false;
-  openModal('memberModal');
-}
-
-function editMember(m) {
-  document.getElementById('memberId').value        = m.id;
-  document.getElementById('memberName').value      = m.full_name;
-  document.getElementById('memberPosition').value  = m.position;
-  document.getElementById('memberCommittee').value = m.committee||'';
-  document.getElementById('memberEmail').value     = m.email||'';
-  document.getElementById('memberOrder').value     = m.sort_order;
-  document.getElementById('memberPresiding').checked = !!m.is_presiding;
-  document.getElementById('memberExOfficio').checked  = !!m.is_exofficio;
-  openModal('memberModal');
-}
-
-async function saveMember() {
-  const id = document.getElementById('memberId').value;
-  const body = {
-    full_name:   document.getElementById('memberName').value,
-    position:    document.getElementById('memberPosition').value,
-    committee:   document.getElementById('memberCommittee').value,
-    email:       document.getElementById('memberEmail').value,
-    sort_order:  Number(document.getElementById('memberOrder').value),
-    is_presiding:document.getElementById('memberPresiding').checked ? 1 : 0,
-    is_exofficio:document.getElementById('memberExOfficio').checked  ? 1 : 0,
-  };
-  const { status, data } = id ? await api('PUT', `/api/members/${id}`, body) : await api('POST', '/api/members', body);
-  if (status >= 400) { toast(data.error||'Error','error'); return; }
-  toast(id ? 'Member updated.' : 'Member added.');
-  closeModal('memberModal'); loadMembers();
-}
-
-async function deactivateMember(id) {
-  if (!confirm('Deactivate this member? They will be removed from the public list.')) return;
-  await api('DELETE', `/api/members/${id}`);
-  toast('Member deactivated.'); loadMembers();
-}
-
-// ── Services ──────────────────────────────────────────────────────────────
-async function loadServices() {
-  const stype = document.getElementById('svcTypeFilter').value;
-  const { data } = await api('GET', `/api/services?limit=50${stype?'&service_type='+stype:''}`);
-  const labels = { cso_accreditation:'CSO Accreditation', marina_resolution:'MARINA Resolution', tricycle_franchise:'Tricycle Franchise', cno:'Cert. No Objection' };
-  document.getElementById('servicesBody').innerHTML = Array.isArray(data) && data.length ? data.map(s=>`
-    <tr>
-      <td class="td-bold">${s.ref_number}</td>
-      <td>${s.applicant_name}</td>
-      <td>${labels[s.service_type]||s.service_type}</td>
-      <td>${statusBadge(s.status)}</td>
-      <td>${s.created_at?.split('T')[0]||'—'}</td>
-      <td><button class="btn btn-outline btn-xs" onclick="openUpdateStatus(${s.id},'service',['submitted','processing','approved','rejected'])"><i class="fas fa-pen"></i> Status</button></td>
-    </tr>
-  `).join('') : `<tr><td colspan="6" class="empty">No applications</td></tr>`;
-}
-
-// ── News ──────────────────────────────────────────────────────────────────
-async function loadNews() {
-  const { data } = await api('GET', '/api/news?limit=50');
-  document.getElementById('newsBody').innerHTML = Array.isArray(data) && data.length ? data.map(n=>`
-    <tr>
-      <td class="td-bold">${n.emoji_icon} ${n.title}</td>
-      <td>${badge(n.category,'blue')}</td>
-      <td>${n.published ? badge('Published','green') : badge('Draft','gray')}</td>
-      <td>${n.published_at?.split('T')[0]||'—'}</td>
-      <td>
-        <button class="btn btn-outline btn-xs" onclick="editNews(${n.id})"><i class="fas fa-pen"></i></button>
-        ${!n.published ? `<button class="btn btn-gold btn-xs" onclick="publishNews(${n.id})"><i class="fas fa-paper-plane"></i> Publish</button>` : ''}
-        <button class="btn btn-danger btn-xs" onclick="deleteNews(${n.id})"><i class="fas fa-trash"></i></button>
-      </td>
-    </tr>
-  `).join('') : `<tr><td colspan="5" class="empty">No news posts</td></tr>`;
-}
-
-function openNewsModal() {
-  document.getElementById('newsModalTitle').textContent = 'New News Post';
-  ['newsId','newsTitle','newsExcerpt','newsContent'].forEach(id => document.getElementById(id).value='');
-  document.getElementById('newsEmoji').value = '📢';
-  document.getElementById('newsCategory').value = 'announcement';
-  document.getElementById('newsFeatured').checked = false;
-  document.getElementById('newsPublished').checked = false;
-  openModal('newsModal');
-}
-
-async function editNews(id) {
-  const { data: n } = await api('GET', `/api/news/${id}`);
-  document.getElementById('newsModalTitle').textContent = 'Edit News Post';
-  document.getElementById('newsId').value       = n.id;
-  document.getElementById('newsTitle').value    = n.title;
-  document.getElementById('newsExcerpt').value  = n.excerpt||'';
-  document.getElementById('newsContent').value  = n.content||'';
-  document.getElementById('newsEmoji').value    = n.emoji_icon||'📢';
-  document.getElementById('newsCategory').value = n.category;
-  document.getElementById('newsFeatured').checked  = !!n.is_featured;
-  document.getElementById('newsPublished').checked = !!n.published;
-  openModal('newsModal');
-}
-
-async function saveNews() {
-  const id = document.getElementById('newsId').value;
-  const body = {
-    title:      document.getElementById('newsTitle').value,
-    category:   document.getElementById('newsCategory').value,
-    excerpt:    document.getElementById('newsExcerpt').value,
-    content:    document.getElementById('newsContent').value,
-    emoji_icon: document.getElementById('newsEmoji').value,
-    is_featured:document.getElementById('newsFeatured').checked ? 1 : 0,
-    published:  document.getElementById('newsPublished').checked ? 1 : 0,
-  };
-  const { status, data } = id ? await api('PUT', `/api/news/${id}`, body) : await api('POST', '/api/news', body);
-  if (status >= 400) { toast(data.error||'Error','error'); return; }
-  toast(id ? 'Post updated.' : 'Post created.');
-  closeModal('newsModal'); loadNews();
-}
-
-async function publishNews(id) {
-  const { status, data } = await api('PUT', `/api/news/${id}`, { published: 1 });
-  if (status >= 400) { toast(data.error||'Error','error'); return; }
-  toast('Post published!'); loadNews();
-}
-
-async function deleteNews(id) {
-  if (!confirm('Delete this news post?')) return;
-  await api('DELETE', `/api/news/${id}`);
-  toast('Post deleted.'); loadNews();
-}
-
-// ── Status updater ────────────────────────────────────────────────────────
-const statusEndpoints = { proposal:'/api/proposals/', request:'/api/requests/', session:'/api/sessions/', service:'/api/services/' };
-
-function openUpdateStatus(id, type, statuses) {
-  document.getElementById('statusEntityId').value   = id;
-  document.getElementById('statusEntityType').value = type;
-  document.getElementById('statusModalTitle').textContent = `Update ${type.charAt(0).toUpperCase()+type.slice(1)} Status`;
-  document.getElementById('newStatus').innerHTML = statuses.map(s=>`<option value="${s}">${s}</option>`).join('');
-  document.getElementById('statusNotes').value = '';
-  openModal('statusModal');
-}
-
-async function saveStatus() {
-  const id    = document.getElementById('statusEntityId').value;
-  const type  = document.getElementById('statusEntityType').value;
-  const status= document.getElementById('newStatus').value;
-  const notes = document.getElementById('statusNotes').value;
-  const endpoint = statusEndpoints[type];
-  if (!endpoint) return;
-  const { status: httpStatus, data } = await api('PUT', `${endpoint}${id}`, { status, notes });
-  if (httpStatus >= 400) { toast(data.error||'Error','error'); return; }
-  toast('Status updated.');
-  closeModal('statusModal');
-  const reloaders = { proposal:loadProposals, request:loadRequests, session:loadSessions, service:loadServices };
-  if (reloaders[type]) reloaders[type]();
-}
-
-// ── GitHub ────────────────────────────────────────────────────────────────
-async function loadGithubLog() {
-  const { data } = await api('GET', '/api/admin/github-log');
-  document.getElementById('githubBody').innerHTML = Array.isArray(data) && data.length ? data.map(g=>`
-    <tr>
-      <td>${g.action}</td>
-      <td>${g.doc_number ? `${g.doc_number}<br><span style="font-size:.73rem;color:var(--g400);">${(g.title||'').slice(0,40)}</span>` : '—'}</td>
-      <td>${g.commit_sha ? `<a href="${g.commit_url||'#'}" target="_blank" style="font-family:monospace;font-size:.78rem;color:var(--blue);">${g.commit_sha.slice(0,8)}</a>` : '—'}</td>
-      <td>${statusBadge(g.status)}</td>
-      <td>${g.username||'—'}</td>
-      <td>${g.created_at?.split('T')[0]||'—'}</td>
-    </tr>
-  `).join('') : `<tr><td colspan="6" class="empty">No sync history yet</td></tr>`;
-
-  // Load approved docs into publish selector
-  const { data: docs } = await api('GET', '/api/documents?status=approved&limit=100');
-  document.getElementById('publishDocSelect').innerHTML = docs.data?.map(d=>`<option value="${d.id}">${d.doc_number} — ${d.title.slice(0,50)}</option>`).join('')||'<option>No approved documents</option>';
-}
-
-async function publishSelectedDoc() {
-  const id = document.getElementById('publishDocSelect').value;
-  if (!id) { toast('Select a document to publish','error'); return; }
-  if (!confirm('Publish this document to GitHub?')) return;
-  const { status, data } = await api('POST', `/api/documents/${id}/publish`);
-  if (status >= 400) { toast(data.error||'Publish failed','error'); return; }
-  toast(`Published! Commit: ${data.commit?.slice(0,7)||'done'}`);
-  loadGithubLog();
-}
-
-// ── Users ─────────────────────────────────────────────────────────────────
-async function loadUsers() {
-  const { data } = await api('GET', '/api/admin/users');
-  document.getElementById('usersBody').innerHTML = Array.isArray(data) && data.length ? data.map(u=>`
-    <tr>
-      <td><img src="${u.avatar_url||''}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;background:var(--g100);" onerror="this.style.display='none'"/></td>
-      <td class="td-bold">${u.username}</td>
-      <td>${u.display_name||'—'}</td>
-      <td>
-        <select onchange="changeRole(${u.id},this.value)" style="padding:4px 8px;border:1.5px solid var(--g200);border-radius:6px;font-size:.78rem;font-family:inherit;">
-          ${['admin','staff','member','viewer'].map(r=>`<option value="${r}" ${r===u.role?'selected':''}>${r}</option>`).join('')}
-        </select>
-      </td>
-      <td>${u.last_login?.split('T')[0]||'Never'}</td>
-      <td><span class="status-dot ${u.is_active?'dot-green':'dot-red'}"></span>${u.is_active?'Active':'Inactive'}</td>
-      <td><button class="btn btn-${u.is_active?'danger':'outline'} btn-xs" onclick="toggleUserActive(${u.id},${u.is_active?0:1})">${u.is_active?'Deactivate':'Activate'}</button></td>
-    </tr>
-  `).join('') : `<tr><td colspan="7" class="empty">No users</td></tr>`;
-}
-
-async function changeRole(id, role) {
-  const { status, data } = await api('PUT', `/api/admin/users/${id}/role`, { role });
-  if (status >= 400) { toast(data.error||'Error','error'); loadUsers(); return; }
-  toast(`Role updated to ${role}.`);
-}
-
-async function toggleUserActive(id, active) {
-  const { status, data } = await api('PUT', `/api/admin/users/${id}/active`, { is_active: active });
-  if (status >= 400) { toast(data.error||'Error','error'); return; }
-  toast(active ? 'User activated.' : 'User deactivated.');
-  loadUsers();
-}
-
-// ── Audit ─────────────────────────────────────────────────────────────────
-async function loadAudit() {
-  const { data } = await api('GET', '/api/admin/audit');
-  document.getElementById('auditBody').innerHTML = Array.isArray(data) && data.length ? data.map(a=>`
-    <tr>
-      <td>${a.username||'—'}</td>
-      <td><code style="font-size:.75rem;background:var(--g100);padding:2px 6px;border-radius:4px;">${a.action}</code></td>
-      <td>${a.entity_type ? `${a.entity_type} #${a.entity_id}` : '—'}</td>
-      <td>${a.ip_address||'—'}</td>
-      <td>${a.created_at?.replace('T',' ').split('.')[0]||'—'}</td>
-    </tr>
-  `).join('') : `<tr><td colspan="5" class="empty">No audit entries</td></tr>`;
-}
-
-// ── Init ──────────────────────────────────────────────────────────────────
-async function init() {
-  await loadUser();
-  await loadDashboard();
-}
-
-init();
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
