@@ -149,8 +149,15 @@ function seedDatabase() {
 }
 
 if (require.main === module) {
-  const counts = seedDatabase();
-  console.log('Seeded:', counts);
+  const { initDb } = require('./connection');
+  initDb().then(() => {
+    const counts = seedDatabase();
+    console.log('Seeded:', counts);
+    process.exit(0);
+  }).catch(err => {
+    console.error('[seed] Failed:', err.message);
+    process.exit(1);
+  });
 }
 
 module.exports = { seedDatabase };
