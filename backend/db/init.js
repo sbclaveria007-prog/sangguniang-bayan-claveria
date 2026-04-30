@@ -185,8 +185,14 @@ function initDatabase() {
 }
 
 if (require.main === module) {
-  initDatabase();
-  process.exit(0);
+  const { initDb } = require('./connection');
+  initDb().then(() => {
+    initDatabase();
+    process.exit(0);
+  }).catch(err => {
+    console.error('[init] Failed:', err.message);
+    process.exit(1);
+  });
 }
 
 module.exports = { initDatabase, DB_PATH };
