@@ -15,10 +15,7 @@ services:
 
     ## Build command — install deps, init DB, seed data
     ## better-sqlite3 is optional; sql.js is the guaranteed fallback
-    buildCommand: |
-      npm install --omit=dev &&
-      node db/init.js &&
-      node db/seed.js
+    buildCommand: npm install --omit=dev
 
     ## Start command — just run the server (DB already seeded in build)
     startCommand: node server.js
