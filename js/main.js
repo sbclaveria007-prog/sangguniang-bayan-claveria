@@ -483,3 +483,51 @@ renderScoreboard('2025', 'total');
     heroEl.style.opacity = '0.65';
   }));
 })();
+// ---- LOAD MEMBER & STAFF PHOTOS ----
+// Fetches photo_url for SB members from the backend API and injects into
+// org chart avatars. Also restores staff photos saved in localStorage.
+(function loadMemberPhotos() {
+  const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://localhost:3000' : '';
+
+  // 1. Inject member photos from API
+  fetch(`${API_BASE}/api/members`)
+    .then(r => r.ok ? r.json() : [])
+    .then(data => {
+      const members = Array.isArray(data) ? data : (data.data || []);
+      members.forEach(m => {
+        if (!m.photo_url) return;
+        document.querySelectorAll(`[data-member-id="${m.id}"]`).forEach(el => {
+          injectPhoto(el, m.photo_url);
+        });
+      });
+    })
+    .catch(() => {});
+
+  // 2. Inject staff photos from localStorage (saved via admin panel)
+  const staffIds = ['staff_lg','staff_bm','staff_ma','staff_jr','staff_kb','staff_jl','staff_js'];
+  staffIds.forEach(id => {
+    const photo = localStorage.getItem(`photo_${id}`);
+    if (!photo) return;
+    document.querySelectorAll(`[data-staff-id="${id}"]`).forEach(el => {
+      injectPhoto(el, photo);
+    });
+  });
+})();
+
+function injectPhoto(avatarEl, photoUrl) {
+  if (!photoUrl || !avatarEl) return;
+  // Remove any previously injected photo
+  const existing = avatarEl.querySelector('img.injected-photo');
+  if (existing) existing.remove();
+
+  const img = document.createElement('img');
+  img.className = 'injected-photo';
+  img.src = photoUrl;
+  img.alt = '';
+  img.style.cssText = 'width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:50%;z-index:2;';
+  img.onerror = () => img.remove();
+  avatarEl.style.position = 'relative';
+  avatarEl.style.overflow = 'hidden';
+  avatarEl.appendChild(img);
+}
