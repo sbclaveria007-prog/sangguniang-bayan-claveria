@@ -6,15 +6,16 @@ on:
   pull_request:
     branches: [main]
 
+# Cancel any in-progress run for the same branch when a new push arrives
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  # ── Test backend ──────────────────────────────────────────────────────────
+  # ── Test ──────────────────────────────────────────────────────────────────
   test:
     name: Run Backend Tests
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: backend      # all steps run inside backend/ by default
 
     steps:
       - name: Checkout
@@ -24,15 +25,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          # No cache: option — avoids lock-file scanning errors
 
       - name: Install dependencies
-        # --omit=optional skips better-sqlite3 native compile entirely
-        # sql.js (pure JS) is used automatically as the fallback
         run: npm install --omit=optional
+        working-directory: backend
 
-      - name: Run test suite
+      - name: Run tests
         run: node tests/run.js
+        working-directory: backend
         env:
           NODE_ENV: test
           JWT_SECRET: ci_test_jwt_secret
@@ -62,6 +62,12 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
+    # Separate concurrency group for Pages — waits instead of cancelling
+    # because cancelling a Pages deployment mid-flight causes the same error
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+
     permissions:
       contents: read
       pages: write
@@ -78,11 +84,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload site artifact
+      - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
-      - name: Deploy to Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
