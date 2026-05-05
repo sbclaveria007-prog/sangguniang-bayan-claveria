@@ -9,24 +9,27 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Sans',sans-serif;background:linear-gradient(135deg,#0a1f44 0%,#1e4d8c 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
-.card{background:#fff;border-radius:16px;padding:48px 40px;max-width:420px;width:100%;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.3);}
+.card{background:#fff;border-radius:16px;padding:48px 40px;max-width:440px;width:100%;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.3);}
 .seal{width:72px;height:72px;background:#c9a227;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;color:#0a1f44;font-weight:800;margin:0 auto 20px;border:3px solid #e8be4b;}
 h1{font-family:'Playfair Display',serif;color:#0a1f44;font-size:1.4rem;margin-bottom:6px;}
-.subtitle{color:#64748b;font-size:.88rem;margin-bottom:32px;line-height:1.5;}
-.error-box{background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:12px 16px;color:#b91c1c;font-size:.85rem;margin-bottom:20px;display:none;}
+.subtitle{color:#64748b;font-size:.88rem;margin-bottom:28px;line-height:1.5;}
+.error-box{background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:12px 16px;color:#b91c1c;font-size:.83rem;margin-bottom:20px;display:none;text-align:left;line-height:1.5;}
 .error-box.show{display:block;}
-.github-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;background:#24292e;color:#fff;border:none;border-radius:10px;font-size:.95rem;font-family:inherit;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s ease;margin-bottom:12px;}
+.error-box strong{display:block;margin-bottom:4px;}
+.info-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:12px 16px;color:#1e40af;font-size:.8rem;margin-bottom:20px;text-align:left;line-height:1.7;}
+.info-box strong{display:block;margin-bottom:4px;color:#1e3a5f;}
+.github-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;background:#24292e;color:#fff;border:none;border-radius:10px;font-size:.95rem;font-family:inherit;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s ease;margin-bottom:20px;}
 .github-btn:hover{background:#444;transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.25);}
 .github-btn i{font-size:1.2rem;}
-.divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:#94a3b8;font-size:.8rem;}
+.github-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+.divider{display:flex;align-items:center;gap:12px;margin:4px 0 18px;color:#94a3b8;font-size:.78rem;}
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:#e2e8f0;}
-.dev-form{text-align:left;}
-.dev-form label{display:block;font-size:.8rem;font-weight:600;color:#475569;margin-bottom:5px;}
-.dev-form input{width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:.88rem;font-family:inherit;outline:none;margin-bottom:12px;transition:.2s;}
+.dev-form label{display:block;font-size:.78rem;font-weight:600;color:#475569;margin-bottom:5px;text-align:left;}
+.dev-form input{width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:.86rem;font-family:inherit;outline:none;margin-bottom:12px;transition:.2s;}
 .dev-form input:focus{border-color:#1e4d8c;}
-.dev-btn{width:100%;padding:12px;background:#1e4d8c;color:#fff;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s;}
+.dev-btn{width:100%;padding:11px;background:#1e4d8c;color:#fff;border:none;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s;}
 .dev-btn:hover{background:#2563ab;}
-.notice{font-size:.75rem;color:#94a3b8;margin-top:20px;line-height:1.5;}
+.notice{font-size:.72rem;color:#94a3b8;margin-top:18px;line-height:1.6;}
 </style>
 </head>
 <body>
@@ -35,31 +38,44 @@ h1{font-family:'Playfair Display',serif;color:#0a1f44;font-size:1.4rem;margin-bo
   <h1>Sangguniang Bayan</h1>
   <p class="subtitle">Claveria, Masbate — Staff Portal<br>Sign in to access the admin dashboard.</p>
 
-  <div class="error-box" id="errBox"></div>
+  <div class="error-box" id="errBox">
+    <strong id="errTitle">Sign-in failed</strong>
+    <span id="errMsg"></span>
+  </div>
 
-  <a class="github-btn" href="#" id="ghBtn" onclick="loginWithGitHub()">
-    <i class="fab fa-github"></i> Sign in with GitHub
+  <div class="info-box" id="infoBox" style="display:none;">
+    <strong>⚙️ Setup required</strong>
+    <span id="infoMsg"></span>
+  </div>
+
+  <a class="github-btn" id="ghBtn" href="#" onclick="loginWithGitHub(event)">
+    <i class="fab fa-github"></i> <span id="ghBtnText">Sign in with GitHub</span>
   </a>
 
-  <div class="divider">or dev login</div>
+  <div class="divider">or use dev token</div>
 
-  <div class="dev-form" id="devForm">
-    <label>Username</label>
-    <input type="text" id="devUsername" placeholder="e.g. admin" value="test_admin_user"/>
-    <label>JWT Token</label>
-    <input type="text" id="devToken" placeholder="Paste a JWT token"/>
+  <div class="dev-form">
+    <label>JWT Token (for local testing)</label>
+    <input type="text" id="devToken" placeholder="Paste a valid JWT token here"/>
     <button class="dev-btn" onclick="devLogin()">Enter with Token</button>
   </div>
 
-  <p class="notice">GitHub OAuth is required for production use.<br>Dev login is for local testing only.</p>
+  <p class="notice">GitHub OAuth is required for staff access.<br>
+  Make sure the server is running on <strong>localhost:3000</strong> first.</p>
 </div>
 
 <script>
-// Backend serves frontend, so API is always on the same host/port
+// Always use the same origin — backend serves frontend
 const API = window.location.origin;
 
-function loginWithGitHub() {
-  window.location.href = `${API}/api/auth/github`;
+function loginWithGitHub(e) {
+  e.preventDefault();
+  const btn = document.getElementById('ghBtn');
+  document.getElementById('ghBtnText').textContent = 'Redirecting to GitHub…';
+  btn.style.opacity = '.7';
+  btn.style.pointerEvents = 'none';
+  // Small delay so the button state is visible before redirect
+  setTimeout(() => { window.location.href = `${API}/api/auth/github`; }, 200);
 }
 
 function devLogin() {
@@ -69,26 +85,49 @@ function devLogin() {
   window.location.href = 'index.html';
 }
 
-function showError(msg) {
-  const el = document.getElementById('errBox');
-  el.textContent = msg;
-  el.classList.add('show');
+function showError(msg, title) {
+  const box = document.getElementById('errBox');
+  document.getElementById('errTitle').textContent = title || 'Sign-in failed';
+  document.getElementById('errMsg').textContent = ' ' + msg;
+  box.classList.add('show');
 }
 
-// Check for token in URL (GitHub OAuth redirect)
+function showInfo(msg) {
+  const box = document.getElementById('infoBox');
+  document.getElementById('infoMsg').textContent = ' ' + msg;
+  box.style.display = 'block';
+}
+
+// Handle redirect back from GitHub OAuth or error states
 const params = new URLSearchParams(window.location.search);
 const token  = params.get('token');
 const error  = params.get('error');
+const detail = params.get('detail');
 
 if (token) {
+  // Success — save token and go to dashboard
   localStorage.setItem('sb_token', token);
-  window.location.href = 'index.html';
+  window.location.replace('index.html');
+
 } else if (error) {
-  const msgs = {
-    state_mismatch: 'Authentication failed: security state mismatch. Please try again.',
-    auth_failed:    'GitHub authentication failed. Check your OAuth app configuration.',
+  const errorMessages = {
+    missing_client_id: 'GITHUB_CLIENT_ID is not set in your .env file. Open backend/.env and add your GitHub OAuth App credentials.',
+    state_mismatch:    'Security state mismatch. This can happen if you took too long or opened multiple tabs. Please try again.',
+    auth_failed:       detail ? `Authentication failed: ${decodeURIComponent(detail)}` : 'GitHub authentication failed. Check that your GITHUB_CLIENT_SECRET is correct in .env.',
+    no_code:           'GitHub did not return an authorization code. Try clicking Sign in again.',
+    access_denied:     'You denied access to the GitHub OAuth App. Please authorize to continue.',
   };
-  showError(msgs[error] || `Error: ${error}`);
+  showError(errorMessages[error] || `Unexpected error: ${error}. Check the server terminal for details.`, 'Sign-in failed');
+
+  // Show setup tips for config errors
+  if (error === 'missing_client_id' || error === 'auth_failed') {
+    showInfo('Make sure your backend/.env file has GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, and ADMIN_GITHUB_USERS set to your GitHub username. Restart the server after editing .env.');
+  }
+}
+
+// Clean the URL so errors don't show on refresh
+if (error || token) {
+  window.history.replaceState({}, '', window.location.pathname);
 }
 </script>
 </body>
