@@ -3,6 +3,19 @@ const { getDb } = require('./connection');
 
 function seedDatabase() {
   const db = getDb();
+  const bcrypt = require('bcryptjs');
+
+  // ── Create default admin account (password login — no GitHub needed) ──────
+  const adminExists = db.prepare("SELECT id FROM users WHERE username='admin'").get();
+  if (!adminExists) {
+    const hash = bcrypt.hashSync('Admin@2025', 10);
+    db.prepare(`
+      INSERT INTO users (github_id, username, display_name, role, is_active, password_hash)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `).run('local_admin', 'admin', 'Administrator', 'admin', 1, hash);
+    console.log('[seed] Default admin account created — username: admin / password: Admin@2025');
+    console.log('[seed] ⚠️  Change this password after first login!');
+  }
 
   // ── Members ──────────────────────────────────────────────────────────────
   const insertMember = db.prepare(`
