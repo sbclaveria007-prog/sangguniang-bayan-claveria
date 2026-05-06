@@ -9,126 +9,179 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Sans',sans-serif;background:linear-gradient(135deg,#0a1f44 0%,#1e4d8c 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
-.card{background:#fff;border-radius:16px;padding:48px 40px;max-width:440px;width:100%;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.3);}
-.seal{width:72px;height:72px;background:#c9a227;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;color:#0a1f44;font-weight:800;margin:0 auto 20px;border:3px solid #e8be4b;}
-h1{font-family:'Playfair Display',serif;color:#0a1f44;font-size:1.4rem;margin-bottom:6px;}
-.subtitle{color:#64748b;font-size:.88rem;margin-bottom:28px;line-height:1.5;}
-.error-box{background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:12px 16px;color:#b91c1c;font-size:.83rem;margin-bottom:20px;display:none;text-align:left;line-height:1.5;}
-.error-box.show{display:block;}
-.error-box strong{display:block;margin-bottom:4px;}
-.info-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:12px 16px;color:#1e40af;font-size:.8rem;margin-bottom:20px;text-align:left;line-height:1.7;}
-.info-box strong{display:block;margin-bottom:4px;color:#1e3a5f;}
-.github-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;background:#24292e;color:#fff;border:none;border-radius:10px;font-size:.95rem;font-family:inherit;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s ease;margin-bottom:20px;}
-.github-btn:hover{background:#444;transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.25);}
-.github-btn i{font-size:1.2rem;}
-.github-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
-.divider{display:flex;align-items:center;gap:12px;margin:4px 0 18px;color:#94a3b8;font-size:.78rem;}
+.card{background:#fff;border-radius:16px;padding:48px 40px;max-width:420px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,.3);}
+.seal{width:72px;height:72px;background:#c9a227;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;color:#0a1f44;font-weight:800;margin:0 auto 16px;border:3px solid #e8be4b;}
+h1{font-family:'Playfair Display',serif;color:#0a1f44;font-size:1.35rem;text-align:center;margin-bottom:4px;}
+.subtitle{color:#64748b;font-size:.84rem;text-align:center;margin-bottom:28px;}
+.alert{border-radius:8px;padding:12px 14px;font-size:.83rem;margin-bottom:18px;display:none;align-items:flex-start;gap:8px;}
+.alert.show{display:flex;}
+.alert-error{background:#fee2e2;border:1px solid #fca5a5;color:#b91c1c;}
+.alert-success{background:#dcfce7;border:1px solid #86efac;color:#15803d;}
+.alert-info{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:.8rem;font-weight:600;color:#374151;margin-bottom:6px;}
+.field-wrap{position:relative;}
+.field input{width:100%;padding:11px 14px 11px 38px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:.9rem;font-family:inherit;outline:none;transition:.2s;color:#1e293b;}
+.field input:focus{border-color:#1e4d8c;box-shadow:0 0 0 3px rgba(30,77,140,.1);}
+.field input.error{border-color:#dc2626;}
+.field i{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:.85rem;}
+.toggle-pw{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:#94a3b8;cursor:pointer;font-size:.85rem;padding:2px;}
+.btn-login{width:100%;padding:13px;background:#0a1f44;color:#fff;border:none;border-radius:8px;font-size:.95rem;font-weight:700;font-family:inherit;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;}
+.btn-login:hover{background:#1e4d8c;}
+.btn-login:disabled{opacity:.6;cursor:not-allowed;}
+.divider{display:flex;align-items:center;gap:12px;margin:22px 0;color:#94a3b8;font-size:.78rem;}
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:#e2e8f0;}
-.dev-form label{display:block;font-size:.78rem;font-weight:600;color:#475569;margin-bottom:5px;text-align:left;}
-.dev-form input{width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:.86rem;font-family:inherit;outline:none;margin-bottom:12px;transition:.2s;}
-.dev-form input:focus{border-color:#1e4d8c;}
-.dev-btn{width:100%;padding:11px;background:#1e4d8c;color:#fff;border:none;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s;}
-.dev-btn:hover{background:#2563ab;}
-.notice{font-size:.72rem;color:#94a3b8;margin-top:18px;line-height:1.6;}
+.btn-github{width:100%;padding:12px;background:#24292e;color:#fff;border:none;border-radius:8px;font-size:.88rem;font-weight:600;font-family:inherit;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-github:hover{background:#3d3d3d;}
+.btn-github.disabled{opacity:.45;cursor:not-allowed;}
+.hint{font-size:.75rem;color:#94a3b8;text-align:center;margin-top:20px;line-height:1.6;}
+.hint strong{color:#475569;}
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none;}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 <div class="card">
   <div class="seal">SB</div>
   <h1>Sangguniang Bayan</h1>
-  <p class="subtitle">Claveria, Masbate — Staff Portal<br>Sign in to access the admin dashboard.</p>
+  <p class="subtitle">Claveria, Masbate — Admin Portal</p>
 
-  <div class="error-box" id="errBox">
-    <strong id="errTitle">Sign-in failed</strong>
-    <span id="errMsg"></span>
+  <div class="alert alert-error" id="errAlert">
+    <i class="fas fa-circle-exclamation"></i>
+    <span id="errMsg">Invalid username or password.</span>
+  </div>
+  <div class="alert alert-success" id="okAlert">
+    <i class="fas fa-check-circle"></i>
+    <span>Login successful! Redirecting…</span>
   </div>
 
-  <div class="info-box" id="infoBox" style="display:none;">
-    <strong>⚙️ Setup required</strong>
-    <span id="infoMsg"></span>
+  <!-- Password login form -->
+  <form onsubmit="doLogin(event)">
+    <div class="field">
+      <label>Username</label>
+      <div class="field-wrap">
+        <i class="fas fa-user"></i>
+        <input type="text" id="username" placeholder="e.g. admin" autocomplete="username" required/>
+      </div>
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <div class="field-wrap">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" required/>
+        <button type="button" class="toggle-pw" onclick="togglePw()" tabindex="-1">
+          <i class="fas fa-eye" id="pwEyeIcon"></i>
+        </button>
+      </div>
+    </div>
+    <button class="btn-login" type="submit" id="loginBtn">
+      <div class="spinner" id="spinner"></div>
+      <span id="loginBtnText"><i class="fas fa-sign-in-alt"></i> Sign In</span>
+    </button>
+  </form>
+
+  <div class="divider">or</div>
+
+  <button class="btn-github" id="ghBtn" onclick="loginWithGitHub()">
+    <i class="fab fa-github"></i>
+    <span id="ghBtnText">Sign in with GitHub</span>
+  </button>
+
+  <div class="hint">
+    Default credentials: <strong>admin</strong> / <strong>Admin@2025</strong><br>
+    Please change your password after first login.
   </div>
-
-  <a class="github-btn" id="ghBtn" href="#" onclick="loginWithGitHub(event)">
-    <i class="fab fa-github"></i> <span id="ghBtnText">Sign in with GitHub</span>
-  </a>
-
-  <div class="divider">or use dev token</div>
-
-  <div class="dev-form">
-    <label>JWT Token (for local testing)</label>
-    <input type="text" id="devToken" placeholder="Paste a valid JWT token here"/>
-    <button class="dev-btn" onclick="devLogin()">Enter with Token</button>
-  </div>
-
-  <p class="notice">GitHub OAuth is required for staff access.<br>
-  Make sure the server is running on <strong>localhost:3000</strong> first.</p>
 </div>
 
 <script>
-// Always use the same origin — backend serves frontend
 const API = window.location.origin;
 
-function loginWithGitHub(e) {
+async function doLogin(e) {
   e.preventDefault();
-  const btn = document.getElementById('ghBtn');
-  document.getElementById('ghBtnText').textContent = 'Redirecting to GitHub…';
-  btn.style.opacity = '.7';
-  btn.style.pointerEvents = 'none';
-  // Small delay so the button state is visible before redirect
-  setTimeout(() => { window.location.href = `${API}/api/auth/github`; }, 200);
-}
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+  hideAlerts();
+  setLoading(true);
 
-function devLogin() {
-  const token = document.getElementById('devToken').value.trim();
-  if (!token) { showError('Paste a JWT token to continue.'); return; }
-  localStorage.setItem('sb_token', token);
-  window.location.href = 'index.html';
-}
+  try {
+    const res  = await fetch(`${API}/api/auth/login`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ username, password }),
+    });
+    const data = await res.json();
 
-function showError(msg, title) {
-  const box = document.getElementById('errBox');
-  document.getElementById('errTitle').textContent = title || 'Sign-in failed';
-  document.getElementById('errMsg').textContent = ' ' + msg;
-  box.classList.add('show');
-}
+    if (!res.ok) {
+      showError(data.error || 'Login failed. Please try again.');
+      setLoading(false);
+      return;
+    }
 
-function showInfo(msg) {
-  const box = document.getElementById('infoBox');
-  document.getElementById('infoMsg').textContent = ' ' + msg;
-  box.style.display = 'block';
-}
+    // Success
+    localStorage.setItem('sb_token', data.token);
+    document.getElementById('okAlert').classList.add('show');
+    setTimeout(() => { window.location.href = 'index.html'; }, 800);
 
-// Handle redirect back from GitHub OAuth or error states
-const params = new URLSearchParams(window.location.search);
-const token  = params.get('token');
-const error  = params.get('error');
-const detail = params.get('detail');
-
-if (token) {
-  // Success — save token and go to dashboard
-  localStorage.setItem('sb_token', token);
-  window.location.replace('index.html');
-
-} else if (error) {
-  const errorMessages = {
-    missing_client_id: 'GITHUB_CLIENT_ID is not set in your .env file. Open backend/.env and add your GitHub OAuth App credentials.',
-    state_mismatch:    'Security state mismatch. This can happen if you took too long or opened multiple tabs. Please try again.',
-    auth_failed:       detail ? `Authentication failed: ${decodeURIComponent(detail)}` : 'GitHub authentication failed. Check that your GITHUB_CLIENT_SECRET is correct in .env.',
-    no_code:           'GitHub did not return an authorization code. Try clicking Sign in again.',
-    access_denied:     'You denied access to the GitHub OAuth App. Please authorize to continue.',
-  };
-  showError(errorMessages[error] || `Unexpected error: ${error}. Check the server terminal for details.`, 'Sign-in failed');
-
-  // Show setup tips for config errors
-  if (error === 'missing_client_id' || error === 'auth_failed') {
-    showInfo('Make sure your backend/.env file has GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, and ADMIN_GITHUB_USERS set to your GitHub username. Restart the server after editing .env.');
+  } catch (err) {
+    showError('Cannot connect to server. Make sure the backend is running on port 3000.');
+    setLoading(false);
   }
 }
 
-// Clean the URL so errors don't show on refresh
-if (error || token) {
-  window.history.replaceState({}, '', window.location.pathname);
+function loginWithGitHub() {
+  const btn = document.getElementById('ghBtn');
+  const txt = document.getElementById('ghBtnText');
+  txt.textContent = 'Redirecting to GitHub…';
+  btn.disabled = true;
+  setTimeout(() => { window.location.href = `${API}/api/auth/github`; }, 200);
 }
+
+function togglePw() {
+  const input = document.getElementById('password');
+  const icon  = document.getElementById('pwEyeIcon');
+  if (input.type === 'password') {
+    input.type = 'text';
+    icon.className = 'fas fa-eye-slash';
+  } else {
+    input.type = 'password';
+    icon.className = 'fas fa-eye';
+  }
+}
+
+function setLoading(on) {
+  document.getElementById('loginBtn').disabled    = on;
+  document.getElementById('spinner').style.display = on ? 'block' : 'none';
+  document.getElementById('loginBtnText').style.display = on ? 'none' : 'flex';
+}
+
+function showError(msg) {
+  document.getElementById('errMsg').textContent = msg;
+  document.getElementById('errAlert').classList.add('show');
+}
+
+function hideAlerts() {
+  document.getElementById('errAlert').classList.remove('show');
+  document.getElementById('okAlert').classList.remove('show');
+}
+
+// Handle GitHub OAuth redirect with token
+const params = new URLSearchParams(window.location.search);
+const token  = params.get('token');
+const error  = params.get('error');
+
+if (token) {
+  localStorage.setItem('sb_token', token);
+  window.location.replace('index.html');
+} else if (error) {
+  const msgs = {
+    missing_client_id: 'GitHub OAuth is not configured. Please use username/password login instead.',
+    state_mismatch:    'Security error during GitHub login. Please try again.',
+    auth_failed:       'GitHub authentication failed. Use username/password login instead.',
+    no_code:           'GitHub did not return a code. Please try again.',
+  };
+  showError(msgs[error] || `GitHub error: ${error}. Try username/password login.`);
+}
+if (error || token) history.replaceState({}, '', location.pathname);
 </script>
 </body>
 </html>
