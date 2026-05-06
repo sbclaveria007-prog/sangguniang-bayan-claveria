@@ -20,7 +20,8 @@ function initDatabase() {
       role         TEXT NOT NULL DEFAULT 'viewer',
       is_active    INTEGER NOT NULL DEFAULT 1,
       created_at   TEXT NOT NULL DEFAULT (datetime('now')),
-      last_login   TEXT
+      last_login   TEXT,
+      password_hash TEXT
     );
 
     CREATE TABLE IF NOT EXISTS documents (
